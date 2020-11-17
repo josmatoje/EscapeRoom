@@ -14,6 +14,7 @@ public class EscapeRoom {
         //Mensajes de bienvenida
         System.out.println("");
         
+        //do-while del escape room completo
         do{
             
             //Vida inicial y movimientos
@@ -27,6 +28,8 @@ public class EscapeRoom {
             
         }while(respuestaSiNo);
         
+        System.out.println("Esperamos que vuelva pronto.");
+        System.out.println("¡Que la fuerza te acompañe!");
     }
     
 }
