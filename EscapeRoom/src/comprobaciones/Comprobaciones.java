@@ -19,7 +19,7 @@ public class Comprobaciones {
             respuesta=teclado.next().toLowerCase().charAt(0);
         }
         
-        afirmativo = respuesta=='s';
+        afirmativo = respuesta=='s'; //Si respuesta=='s' afirmativo es true, en caso contrario es false
         
         
         return afirmativo;
