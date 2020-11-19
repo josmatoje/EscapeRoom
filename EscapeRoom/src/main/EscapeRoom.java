@@ -1,6 +1,6 @@
-package escaperoom;
+package main;
 
-import comprobaciones.Comprobaciones;
+import comprobaciones.*;
 
 public class EscapeRoom {
     
@@ -65,6 +65,7 @@ public class EscapeRoom {
         
         System.out.println("Esperamos que vuelva pronto.");
         System.out.println("¡Que la fuerza te acompañe!");
+        
     }
     
 }
