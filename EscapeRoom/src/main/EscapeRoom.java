@@ -13,13 +13,7 @@ public class EscapeRoom {
         Comprobaciones comp = new Comprobaciones();
         Mensajes mensaje = new Mensajes();
         
-        //Mensajes de bienvenida
-        System.out.println("            --------------------------------BIENVENIDO----------------------------------------");
-        System.out.println("");
-        System.out.println("Este usted antes el escape room más espectacular habido en la faz de la tierra.");
-        System.out.println("Podrá usted repetirlo tantas veces como quiera realizando runs totalmente independientes una de la otra.");
-        System.out.println("Tambien al salir pouede volver a este programa si lo desea, eso es evidente.");
-        System.out.println("Pues empecemos...");
+        mensaje.mensajeBienvenida();
         
         //do-while del escape room completo
         do{
