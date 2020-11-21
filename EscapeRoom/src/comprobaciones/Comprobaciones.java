@@ -4,6 +4,15 @@ import java.util.Scanner;
 
 public class Comprobaciones {
     
+    
+    /*
+    Metodo que pregunta Si o No y devuelve true en caso de seleccionar si o false en caso contrario
+        Signatura: public boolean validacionSiNo () 
+        Precondiciones: --
+        Entrada: --
+        Salida: boleano 
+        Postcondiciones:--
+    */
     public boolean validacionSiNo () {
     
         char respuesta;
@@ -20,7 +29,6 @@ public class Comprobaciones {
         }
         
         afirmativo = respuesta=='s'; //Si respuesta=='s' afirmativo es true, en caso contrario es false
-        
         
         return afirmativo;
     }
