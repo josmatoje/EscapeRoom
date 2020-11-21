@@ -9,6 +9,7 @@ public class EscapeRoom {
         
         //Declaracion de variables
         boolean respuestaSiNo;
+        int zona=0;
         
         Comprobaciones comp = new Comprobaciones();
         Mensajes mensaje = new Mensajes();
@@ -23,12 +24,12 @@ public class EscapeRoom {
             //If-else de dificultad
             int movimientos = 120, vida = 100;  //movimiento por minuto vida puede no ser necesaria(?) por como planteamos el juego
             
+            
+            
             //Vida inicial y movimientos
             System.out.println("");
 
-            //Menu principal
-            System.out.println("---MENU PRINCIPAL---");
-            System.out.println("");
+            mensaje.mensajesMenu(zona);
         
             respuestaSiNo = comp.validacionSiNo();
             
