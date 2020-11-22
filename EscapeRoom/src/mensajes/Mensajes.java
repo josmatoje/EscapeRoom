@@ -3,16 +3,16 @@ package mensajes;
 
 public class Mensajes {
     
-    public void mensajeBienvenida(){
-        System.out.println("            --------------------------------BIENVENIDO----------------------------------------");
+    public void Bienvenida(){
+        System.out.println("----------------------------------------BIENVENIDO------------------------------------------------");
         System.out.println("");
-        System.out.println("Este usted antes el escape room más espectacular habido en la faz de la tierra.");
+        System.out.println("Esta usted antes el escape room más espectacular habido en la faz de la tierra.");
         System.out.println("Podrá usted repetirlo tantas veces como quiera realizando runs totalmente independientes una de la otra.");
-        System.out.println("Tambien al salir pouede volver a este programa si lo desea, eso es evidente.");
+        System.out.println("Tambien al salir puede volver a este programa si lo desea, eso es evidente.");
         System.out.println("Pues empecemos...");
     }
     
-    public void mensajeInicio(){
+    public void Inicio(){
         System.out.println(".");
         System.out.println(".");
         System.out.println(".");
@@ -42,15 +42,24 @@ public class Mensajes {
         System.out.println(".");
     }
     
-    public void mensajesMenu(int habitacion){
+    public void Menu(int habitacion){
         
         
         
     }
     
-    public void mensajeEstado (int vida, int movimiento){
+    public void Estado (int vida, int movimiento){
         
         
+        
+    }
+    
+    public void Salida (){
+        
+        System.out.println("El camino más corto era...");//COmpletar
+        
+        System.out.println("Esperamos que vuelva pronto.");
+        System.out.println("¡Que la fuerza te acompañe!");
         
     }
 }
