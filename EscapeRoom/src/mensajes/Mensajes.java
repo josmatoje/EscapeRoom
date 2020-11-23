@@ -42,7 +42,104 @@ public class Mensajes {
         System.out.println(".");
     }
     
-    public void Menu(int habitacion){
+    public void Sala(int sala, boolean[] nuevaSala){
+        
+        switch(sala){
+            
+            case 0:
+                System.out.println("        ********SALA DE MANDOS********");
+                System.out.println("__________________________________________________");
+                System.out.println("Cada acción que elijas es un paso que gastas...");
+                System.out.println("¿Qué vas a hacer?");
+                System.out.println("1. Inspeccionar estanteria");
+                System.out.println("2. Avanzar hasta la cocina");
+                System.out.println("3. Avanzar hasta la sala de reuniones");
+                System.out.println("4. Avanzar hasta la puerta desconocida");
+                System.out.println("");
+                System.out.println("5. Estado de la partida");
+                System.out.println("6. Salir del juego");
+            break;
+            
+            case 1:
+                System.out.println("        ************COCINA************");
+                System.out.println("__________________________________________________");
+                System.out.println("Cada acción que elijas es un paso que gastas...");
+                System.out.println("¿Qué vas a hacer?");
+                System.out.println("1. Inspeccionar la cocina");
+                System.out.println("2. Avanzar hasta la cantina");
+                System.out.println("3. Retroceder a la sala de mandos");
+                System.out.println("");
+                System.out.println("4. Estado de la partida");
+                System.out.println("5. Salir del juego");
+            break;
+            
+            case 2:
+                System.out.println("        ************CANTINA************");
+                System.out.println("__________________________________________________");
+                System.out.println("Cada acción que elijas es un paso que gastas...");
+                System.out.println("¿Qué vas a hacer?");
+                System.out.println("1. Inspeccionar cantina");
+                System.out.println("2. Avanzar hasta la enfermeria");//O poner otra cosa para que no se sepa
+                System.out.println("3. Retroceder a la cocina");
+                System.out.println("");
+                System.out.println("4. Estado de la partida");
+                System.out.println("5. Salir del juego");
+            break;
+            
+            case 3:/*Menú opcional/temporal
+                System.out.println("        ***********ENFERMERIA***********");
+                System.out.println("__________________________________________________");
+                System.out.println("Cada acción que elijas es un paso que gastas...");
+                System.out.println("¿Qué vas a hacer?");
+                System.out.println("1. Inspeccionar enfermeria");
+                System.out.println("2. Retroceder a la cantina");
+                System.out.println("");
+                System.out.println("3. Estado de la partida");
+                System.out.println("4. Salir del juego");*/
+            break;
+            
+            case 4:
+                System.out.println("        *******SALA DE REUNIONES*******");
+                System.out.println("__________________________________________________");
+                System.out.println("Cada acción que elijas es un paso que gastas...");
+                System.out.println("¿Qué vas a hacer?");
+                System.out.println("1. Inspeccionar sala de reuniones");
+                System.out.println("2. Avanzar hasta los dormitorios");
+                System.out.println("3. Avanzar hasta la zona de motores");
+                System.out.println("4. Retroceder hasta la sala de mandos");
+                System.out.println("");
+                System.out.println("5. Estado de la partida");
+                System.out.println("6. Salir del juego");
+            break;
+            
+            case 5:
+                System.out.println("        *********DROMITORIOS*********");
+                System.out.println("__________________________________________________");
+                System.out.println("Cada acción que elijas es un paso que gastas...");
+                System.out.println("¿Qué vas a hacer?");
+                System.out.println("1. Inspeccionar dormitorios");
+                System.out.println("2. Retroceder a la sala de reuniones");
+                System.out.println("");
+                System.out.println("3. Estado de la partida");
+                System.out.println("4. Salir del juego");
+            break;
+            
+            case 6:
+                System.out.println("        ********ZONA DE MOTORES********");
+                System.out.println("__________________________________________________");
+                System.out.println("Cada acción que elijas es un paso que gastas...");
+                System.out.println("¿Qué vas a hacer?");
+                System.out.println("1. Inspeccionar zona de motores");
+                System.out.println("2. Retroceder a la sala de reuniones");
+                System.out.println("");
+                System.out.println("3. Estado de la partida");
+                System.out.println("4. Salir del juego");
+            break;
+            
+        }
+    }
+    
+    public void Menu(int sala){
         
         
         
