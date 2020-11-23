@@ -44,6 +44,11 @@ public class Mensajes {
     
     public void Sala(int sala, boolean[] nuevaSala){
         
+        
+    }
+    
+    public void Menu(int sala){
+        
         switch(sala){
             
             case 0:
@@ -137,11 +142,6 @@ public class Mensajes {
             break;
             
         }
-    }
-    
-    public void Menu(int sala){
-        
-        
         
     }
     
@@ -153,7 +153,7 @@ public class Mensajes {
     
     public void Salida (){
         
-        System.out.println("El camino más corto era...");//COmpletar
+        System.out.println("El camino más corto era...");//Completar
         
         System.out.println("Esperamos que vuelva pronto.");
         System.out.println("¡Que la fuerza te acompañe!");
