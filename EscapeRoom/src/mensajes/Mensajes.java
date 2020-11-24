@@ -3,7 +3,7 @@ package mensajes;
 
 public class Mensajes {
     
-    public void Bienvenida(){
+    public static void Bienvenida(){
         System.out.println("----------------------------------------BIENVENIDO------------------------------------------------");
         System.out.println("");
         System.out.println("Esta usted antes el escape room más espectacular habido en la faz de la tierra.");
@@ -55,92 +55,221 @@ public class Mensajes {
                 System.out.println("        ********SALA DE MANDOS********");
                 System.out.println("__________________________________________________");
                 System.out.println("Cada acción que elijas es un paso que gastas...");
-                System.out.println("¿Qué vas a hacer?");
                 System.out.println("1. Inspeccionar estanteria");
                 System.out.println("2. Avanzar hasta la cocina");
                 System.out.println("3. Avanzar hasta la sala de reuniones");
                 System.out.println("4. Avanzar hasta la puerta desconocida");
                 System.out.println("");
+                System.out.println("Tambien puedes:");
                 System.out.println("5. Estado de la partida");
                 System.out.println("6. Salir del juego");
+                System.out.println("¿Qué vas a hacer?");
             break;
             
             case 1:
                 System.out.println("        ************COCINA************");
                 System.out.println("__________________________________________________");
                 System.out.println("Cada acción que elijas es un paso que gastas...");
-                System.out.println("¿Qué vas a hacer?");
                 System.out.println("1. Inspeccionar la cocina");
                 System.out.println("2. Avanzar hasta la cantina");
                 System.out.println("3. Retroceder a la sala de mandos");
                 System.out.println("");
+                System.out.println("Tambien puedes:");
                 System.out.println("4. Estado de la partida");
                 System.out.println("5. Salir del juego");
+                System.out.println("¿Qué vas a hacer?");
             break;
             
             case 2:
                 System.out.println("        ************CANTINA************");
                 System.out.println("__________________________________________________");
                 System.out.println("Cada acción que elijas es un paso que gastas...");
-                System.out.println("¿Qué vas a hacer?");
                 System.out.println("1. Inspeccionar cantina");
                 System.out.println("2. Avanzar hasta la enfermeria");//O poner otra cosa para que no se sepa
                 System.out.println("3. Retroceder a la cocina");
                 System.out.println("");
+                System.out.println("Tambien puedes:");
                 System.out.println("4. Estado de la partida");
                 System.out.println("5. Salir del juego");
+                System.out.println("¿Qué vas a hacer?");
             break;
             
             case 3:/*Menú opcional/temporal
                 System.out.println("        ***********ENFERMERIA***********");
                 System.out.println("__________________________________________________");
                 System.out.println("Cada acción que elijas es un paso que gastas...");
-                System.out.println("¿Qué vas a hacer?");
                 System.out.println("1. Inspeccionar enfermeria");
                 System.out.println("2. Retroceder a la cantina");
                 System.out.println("");
+                System.out.println("Tambien puedes:");
                 System.out.println("3. Estado de la partida");
-                System.out.println("4. Salir del juego");*/
+                System.out.println("4. Salir del juego");
+                System.out.println("¿Qué vas a hacer?");*/
             break;
             
             case 4:
                 System.out.println("        *******SALA DE REUNIONES*******");
                 System.out.println("__________________________________________________");
                 System.out.println("Cada acción que elijas es un paso que gastas...");
-                System.out.println("¿Qué vas a hacer?");
                 System.out.println("1. Inspeccionar sala de reuniones");
                 System.out.println("2. Avanzar hasta los dormitorios");
                 System.out.println("3. Avanzar hasta la zona de motores");
                 System.out.println("4. Retroceder hasta la sala de mandos");
                 System.out.println("");
+                System.out.println("Tambien puedes:");
                 System.out.println("5. Estado de la partida");
                 System.out.println("6. Salir del juego");
+                System.out.println("¿Qué vas a hacer?");
             break;
             
             case 5:
                 System.out.println("        *********DROMITORIOS*********");
                 System.out.println("__________________________________________________");
                 System.out.println("Cada acción que elijas es un paso que gastas...");
-                System.out.println("¿Qué vas a hacer?");
                 System.out.println("1. Inspeccionar dormitorios");
                 System.out.println("2. Retroceder a la sala de reuniones");
                 System.out.println("");
+                System.out.println("Tambien puedes:");
                 System.out.println("3. Estado de la partida");
                 System.out.println("4. Salir del juego");
+                System.out.println("¿Qué vas a hacer?");
             break;
             
             case 6:
                 System.out.println("        ********ZONA DE MOTORES********");
                 System.out.println("__________________________________________________");
                 System.out.println("Cada acción que elijas es un paso que gastas...");
-                System.out.println("¿Qué vas a hacer?");
                 System.out.println("1. Inspeccionar zona de motores");
                 System.out.println("2. Retroceder a la sala de reuniones");
                 System.out.println("");
+                System.out.println("Tambien puedes:");
                 System.out.println("3. Estado de la partida");
                 System.out.println("4. Salir del juego");
+                System.out.println("¿Qué vas a hacer?");
+                break;
+            
+            default: System.out.println("Algo ha salido mal");
+            
+        }
+        
+    }
+    
+    public void MenuInteraccion (int sala, boolean[] inventario){
+        
+        switch (sala){
+            
+            case 0:
+                System.out.println("        ********SALA DE MANDOS********");
+                System.out.println("__________________________________________________");
+                System.out.println("Te acercas a la estanteria y ves:");
+                System.out.println("1. Unos restos de cables rotos.");
+                System.out.println("2. Una llave doblada con una M");
+                System.out.println("3. una clave de acceso medio quemada");
+                System.out.println("");
+                System.out.println("Tambien puedes:");
+                System.out.println("4. Volver al centro de la sala");
+                System.out.println("5. Estado de la partida");
+                System.out.println("6. Salir del juego");
+                System.out.println("");
+                System.out.println("¿Qué vas a hacer?");
             break;
             
+            case 1:
+                System.out.println("        ************COCINA************");
+                System.out.println("__________________________________________________");
+                System.out.println("Te acercas a la estanteria y ves:");
+                System.out.println("1. Unos restos de cables rotos.");
+                System.out.println("2. Una llave doblada con una M");
+                System.out.println("3. una clave de acceso medio quemada");
+                System.out.println("");
+                System.out.println("Tambien puedes:");
+                System.out.println("4. Volver al centro de la sala");
+                System.out.println("5. Estado de la partida");
+                System.out.println("6. Salir del juego");
+                System.out.println("");
+                System.out.println("¿Qué vas a hacer?");
+            
+            case 2:
+                System.out.println("        ************CANTINA************");
+                System.out.println("__________________________________________________");
+                System.out.println("Te acercas a la estanteria y ves:");
+                System.out.println("1. Unos restos de cables rotos.");
+                System.out.println("2. Una llave doblada con una M");
+                System.out.println("3. una clave de acceso medio quemada");
+                System.out.println("");
+                System.out.println("Tambien puedes:");
+                System.out.println("4. Volver al centro de la sala");
+                System.out.println("5. Estado de la partida");
+                System.out.println("6. Salir del juego");
+                System.out.println("");
+                System.out.println("¿Qué vas a hacer?");
+            break;
+            
+            case 3:/*Menú opcional/temporal
+                System.out.println("        ***********ENFERMERIA***********");
+                System.out.println("__________________________________________________");
+                System.out.println("Te acercas a la estanteria y ves:");
+                System.out.println("1. Unos restos de cables rotos.");
+                System.out.println("2. Una llave doblada con una M");
+                System.out.println("3. una clave de acceso medio quemada");
+                System.out.println("");
+                System.out.println("Tambien puedes:");
+                System.out.println("4. Volver al centro de la sala");
+                System.out.println("5. Estado de la partida");
+                System.out.println("6. Salir del juego");
+                System.out.println("");
+                System.out.println("¿Qué vas a hacer?");*/
+            break;
+            
+            case 4:
+                System.out.println("        *******SALA DE REUNIONES*******");
+                System.out.println("__________________________________________________");
+                System.out.println("Te acercas a la estanteria y ves:");
+                System.out.println("1. Unos restos de cables rotos.");
+                System.out.println("2. Una llave doblada con una M");
+                System.out.println("3. una clave de acceso medio quemada");
+                System.out.println("");
+                System.out.println("Tambien puedes:");
+                System.out.println("4. Volver al centro de la sala");
+                System.out.println("5. Estado de la partida");
+                System.out.println("6. Salir del juego");
+                System.out.println("");
+                System.out.println("¿Qué vas a hacer?");
+            break;
+            
+            case 5:
+                System.out.println("        *********DROMITORIOS*********");
+                System.out.println("__________________________________________________");
+                System.out.println("Te acercas a la estanteria y ves:");
+                System.out.println("1. Unos restos de cables rotos.");
+                System.out.println("2. Una llave doblada con una M");
+                System.out.println("3. una clave de acceso medio quemada");
+                System.out.println("");
+                System.out.println("Tambien puedes:");
+                System.out.println("4. Volver al centro de la sala");
+                System.out.println("5. Estado de la partida");
+                System.out.println("6. Salir del juego");
+                System.out.println("");
+                System.out.println("¿Qué vas a hacer?");
+            break;
+            
+            case 6:
+                System.out.println("        ********ZONA DE MOTORES********");
+                System.out.println("__________________________________________________");
+                System.out.println("Te acercas a la estanteria y ves:");
+                System.out.println("1. Unos restos de cables rotos.");
+                System.out.println("2. Una llave doblada con una M");
+                System.out.println("3. una clave de acceso medio quemada");
+                System.out.println("");
+                System.out.println("Tambien puedes:");
+                System.out.println("4. Volver al centro de la sala");
+                System.out.println("5. Estado de la partida");
+                System.out.println("6. Salir del juego");
+                System.out.println("");
+                System.out.println("¿Qué vas a hacer?");
+            break;
+            
+            default: System.out.println("Algo ha salido mal");
         }
         
     }

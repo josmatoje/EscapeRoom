@@ -271,6 +271,51 @@ public class EscapeRoom {
                 }
                 movimientos--;
                 
+                if(eleccion==1){//Si eleccion del menu es 1 (podria ir en el switch case 1:)
+                    
+                    mensaje.MenuInteraccion(sala, objetosObtenidos);//Mensaje de los menus internos de cada sala
+                    
+                    eleccion=comp.eleccionMenuInteraccion(sala);
+                    
+                    //Repeticion menu interno (de la sala) hasta que no "salga" de esta
+                    do{
+                        
+                        switch (eleccion){
+                            
+                            case 0:
+                                
+                            break;
+                            
+                            case 1:
+                                
+                            break;
+                            
+                            case 2:
+                                
+                            break;
+                            
+                            case 3:
+                                
+                            break;
+                            
+                            case 4:
+                                
+                            break;
+                            
+                            case 5:
+                                
+                            break;
+                            
+                            case 6:
+                                
+                            break;
+                            
+                            default: System.out.println("Algo ha salido mal");
+                        }
+                        
+                    }while(eleccion!=1);//declarar otra variable en caso de estar en el switch del menu (case 1:)
+                }
+                
                 
             }while(vida>0 && movimientos>0 && !ganado && !salirJuego);
         

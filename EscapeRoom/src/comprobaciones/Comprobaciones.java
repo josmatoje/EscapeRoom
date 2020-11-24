@@ -74,4 +74,18 @@ public class Comprobaciones {
         return eleccion;
     }
     
+    public int eleccionMenuInteraccion(int sala){
+        
+        int eleccion=0;
+        Scanner teclado = new Scanner(System.in);
+        
+        eleccion=teclado.nextInt();
+        
+        //Valorar cada menu
+        
+        teclado.close();
+        
+        return eleccion;
+    }
+    
 }
