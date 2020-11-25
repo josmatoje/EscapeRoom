@@ -42,153 +42,6 @@ public class Mensajes {
         System.out.println(".");
     }
     
-    public void Sala(int sala, boolean salaVisitada[], boolean objetosObtenidos[]){
-        
-        if( !salaVisitada[sala]){ //si la sala no esta visitada, primer Mensaje 
-        
-            switch(sala){
-
-                case 0: 
-                    System.out.println(
-                        "Al abrir los ojos observas muchos escombros y objetos destrozados,"
-                        + " decides levantarte para observar un poco mejor la situación.");
-
-                break;
-
-                case 1: 
-                    System.out.println(
-                        "Entras en la cocina, sin fuerza ninguna pero el olor a salsa barbacoa te hace olvidar que estás perdiendo sangre con cada paso que das."
-                        + "  Ese olor te lleva a un pobre gato quemándose en las tuberías.");
-
-                break;
-
-                case 2: 
-                    System.out.println(
-                        "La cantina parece mucho mejor que la cocina,"
-                        + " aunque también tengan sus zonas de quema por fuga de gas.");
-
-                break;
-
-                case 3: 
-                    System.out.println(
-                        "Enoncontraste la enfermeria y parece que las maquinas de mantenimiento de"
-                        + " vida parecen intactas. Aunque no se recomienda su uso sin el personal autorizado,"
-                        + "esta ocasion de vida o muerte no te deja otra opcion. Con tu mirada nublada tardas unos minutos"
-                        + "en entender el funcionamiento y como ponerla en analisis corporal completo. Al finalizar el"
-                        + "analisis la maquina encuentra todos tus problemas e te inivta a entrar en ella abriendo la puerta."
-                        + "Ya dentro, tras curar tus neuronas recuerdas que el comandante fuiste tu y que toda la flota"
-                        + "fue a la muerte por tu decision suicida de ir a por todas. Finalmente tu corazon no resiste el "
-                        + "impacto emocional y se para. La maquina te lo vuelve a curar, mandandote al mismo pensamiento, lo "
-                        + "que te causa otra muerte dolorosa y emocional y asi indefinidas veces, sin poder morir, sintiendo"
-                        + "la angustia infinita de matarlos a todos.");
-
-                break;
-
-                case 4: 
-                    System.out.println(
-                        " Dentro de la sala todo parece como si no hubiera pasado nada y es que las paredes blindadas"
-                        + " y la protección contra los rayos ionizantes dan su fruto");
-
-                break;
-
-                case 5: 
-                    System.out.println(
-                        "Todo parece tranquilo, como si no hubiera pasado nada."
-                        + " Ves varias habitaciones cerradas pero la mayoría están abiertas.");
-
-                break;
-
-                case 6: 
-                    System.out.println(
-                        "Es la primera vez que entras aquí, ves muchas puertas cerradas"
-                        + " de lo que entiendes son cosas de motores");
-                break;
-
-            }//Fin switch primer Mensaje 
-
-        } //Fin if
-
-         /*  
-           0:Llaves
-          1:Cables
-          2:Claves de acceso
-
-          3:Comida
-          4:Sarten
-          5:Cuchillos
-
-          --Silla (no objeto)
-          6:Restos de comida
-          7:Instrucciones de una nave
-
-          8: Casco
-          9: Boligrafo
-          10: Papel
-
-          11: Arma
-          12: Codigo enfermera
-          13: Medicina coagulante
-          14: Combustible
-          15: Sierra mecanica
-            */
-
-
-        switch(sala){ //Se mostrará siempre, una breve descripcion de la sala para no perderse
-
-            case 0: 
-                System.out.println(
-                    " Delante tuya se abre el camino a tres puertas distintas, tus recuerdos te indican que a tu izquierda tienes la cocina con muchos alimentos y"
-                    + " utensilios que te podrían ayudar en tu supervivencia y a tu derecha la sala de reuniones que tanto odiabas pero tanto poder directivo tenía. La puerta central  nunca la habías visto antes,"
-                    + " te parece muy llamativa y surrealista, llena de colores que no pega nada con el interior de la nave."
-                    + " además de eso localizas una estantería caída con algunos objetos pero no ves a la distancia que estas");
-            break;
-
-
-            case 1: 
-                System.out.println(
-                     " Al fondo de la cocina localizas varios objetos aun sin quemarse,"
-                     + " aun así no parecen de mucha utilidad");
-            break;
-
-
-            case 2: 
-
-                System.out.print(" Inspeccionas la cantina y ves una silla de madera en la que se solían sentar los jefes a almorzar, ");
-
-                if(objetosObtenidos[6])
-                    System.out.print("restos de comida de algún soldado que estaría comiendo durante el ataque");
-
-
-                if(objetosObtenidos[7])
-                    System.out.print("y algo parecido a las instrucciones de la nave en una mesa");
-
-            break;
-
-            case 3: 
-                System.out.println("");//No hay nada sobre la cocina
-            break;
-            
-            case 4: 
-                System.out.println(
-                    "  Algo te huele mal al ver que no hay ningún documento importante."
-                    +  " Al parecer los jefes ejecutivos sabían de antes como iba a terminar todo esto y"
-                    + " decidieron dejar la nave sin avisar a nadie y limpiar la zona de cualquier material útil,"
-                    + " típico de comandantes del imperio que solo piensan en ellos mismos.");
-            break;
-
-            case 5: 
-                System.out.println(""); //Nada sobre lo dormitorios
-            break;
-            
-            case 6: 
-                System.out.println(
-                    "No hay mucho que hacer por aquí ya que está todo destrozados"
-                    + " del impacto aunque si ves algunas cosas que puedes usar:");
-            break;
-
-        }// Fin switch
-
-    }//Fin metodo MensajeSala
     
     public void Menu(int sala){
         
@@ -427,7 +280,7 @@ public class Mensajes {
 
         System.out.print(" vidas");
 
-        System.out.println(" y sangre para " + movimientos+" moviemientos");
+        System.out.println(" y sangre para " + movimiento+" moviemientos");
        
     }
     
@@ -441,9 +294,12 @@ public class Mensajes {
     }
     
     
-    public void mensajeNuevaSala(int sala, boolean salaVisitada[]){
+    public void Sala(int sala, boolean nuevaSala, boolean objetosObtenidos[]){
 
         
+        if( nuevaSala){ //si la sala no esta visitada, primer Mensaje 
+            
+       
           switch(sala){
           
               case 0: System.out.println("Al abrir los ojos observas muchos escombros y objetos destrozados,"
@@ -478,11 +334,89 @@ public class Mensajes {
                       + " de lo que entiendes son cosas de motores");
           
           }
+          
+      }//fin if
         
         
+        
+         switch(sala){ //Se mostrará siempre, una breve descripcion de la sala para no perderse
+          
+              case 0: System.out.println(
+                      " Delante tuya se abre el camino a tres puertas distintas, tus recuerdos te indican que a tu izquierda tienes la cocina con muchos alimentos y"
+                      + " utensilios que te podrían ayudar en tu supervivencia y a tu derecha la sala de reuniones que tanto odiabas pero tanto poder directivo tenía. La puerta central  nunca la habías visto antes,"
+                      + " te parece muy llamativa y surrealista, llena de colores que no pega nada con el interior de la nave."
+                      + " además de eso localizas una estantería caída con algunos objetos pero no ves a la distancia que estas");
+              break;
+              
+              
+               case 1: System.out.println(
+                       " Al fondo de la cocina localizas varios objetos aun sin quemarse,"
+                       + " aun así no parecen de mucha utilidad");
+              break;
+              
+              
+               case 2: System.out.print(
+                       " Inspeccionas la cantina y ves una silla de madera en la que se solían sentar los jefes a almorzar, ");
+                    
+               if(objetosObtenidos[6]){
+                    
+                   System.out.print(
+                           "restos de comida de algún soldado que estaría comiendo durante el ataque");
+                    
+                    }
+               
+               
+                if(objetosObtenidos[7]){
+                    
+                   System.out.print(
+                           "y algo parecido a las instrucciones de la nave en una mesa");
+                    
+                    }
+                      
+                  
+              break;
+              
+              
+              
+               case 3: System.out.println("");//No hay nada sobre la cocina
+              break;
+              
+              
+              
+              
+                case 4: System.out.println(
+                        "  Algo te huele mal al ver que no hay ningún documento importante."
+                        + " Al parecer los jefes ejecutivos sabían de antes como iba a terminar todo esto y"
+                       + " decidieron dejar la nave sin avisar a nadie y limpiar la zona de cualquier material útil,"
+                        + " típico de comandantes del imperio que solo piensan en ellos mismos.");
+              break;
+              
+              
+               case 5: System.out.println(""); //Nada sobre lo dormitorios
+              break;
+              
+              
+              
+                case 6: System.out.println(
+                        "No hay mucho que hacer por aquí ya que está todo destrozados"
+                        + " del impacto aunque si ves algunas cosas que puedes usar:");
+              break;
+          
+     
+          
+          }// Fin switch        
+        
     
-    }
-    
-      
+    }//Fin clase Sala
     
 }
+
+          
+          
+          
+          
+  
+               
+              
+
+
