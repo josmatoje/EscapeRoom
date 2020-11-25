@@ -22,17 +22,16 @@ public class EscapeRoom {
                                                 "Una llave doblada con una M",
                                                 "Una clave de acceso medio quemada",
                                                 "Un trozo de pan galactico que no se pudre en 5 años",
-                                                "Sarten",
-                                                "Cuchillos",
-                                                "Restos de comida",
-                                                "Instrucciones de una nave",
+                                                "Una sarte de cobalto niquelado, vieja pero indestructible",
+                                                "Cuchillos de madera",
+                                                "Comida enlatada",
+                                                "Instrucciones de un jet antiguo",
                                                 "Casco",
                                                 "Boligrafo",
                                                 "Papel",
                                                 "Arma",
                                                 "Codigo enfermera",
                                                 "Medicina coagulante",
-                                                "Combustible",
                                                 "Sierra mecanica" };
         /*
         0:Llaves
