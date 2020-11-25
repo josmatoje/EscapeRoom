@@ -17,10 +17,10 @@ public class EscapeRoom {
         
         boolean[] nuevaSala = new boolean [7];//Indica si salas visitadas
         
-        String[] nombreObjetos = new String[]{  "Llaves", //No esta  10:Medicinas 11:Vacunas 12:Curas
-                                                "Cables",
-                                                "Claves de acceso",
-                                                "Comida",
+        String[] nombreObjetos = new String[]{  "Unos restos de cables rotos", //No esta  10:Medicinas 11:Vacunas 12:Curas
+                                                "Una llave doblada con una M",
+                                                "Una clave de acceso medio quemada",
+                                                "Un trozo de pan galactico que no se pudre en 5 años",
                                                 "Sarten",
                                                 "Cuchillos",
                                                 "Restos de comida",

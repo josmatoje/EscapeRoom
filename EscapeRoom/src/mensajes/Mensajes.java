@@ -3,7 +3,7 @@ package mensajes;
 
 public class Mensajes {
     
-    public static void Bienvenida(){
+    public void Bienvenida(){
         System.out.println("----------------------------------------BIENVENIDO------------------------------------------------");
         System.out.println("");
         System.out.println("Esta usted antes el escape room más espectacular habido en la faz de la tierra.");
@@ -150,7 +150,9 @@ public class Mensajes {
         
     }
     
-    public void MenuInteraccion (int sala, boolean[] inventario){
+    public void MenuInteraccion (int sala, boolean[] inventario, String[] nombreObjetos){
+        
+        
         
         switch (sala){
             
@@ -173,10 +175,10 @@ public class Mensajes {
             case 1:
                 System.out.println("        ************COCINA************");
                 System.out.println("__________________________________________________");
-                System.out.println("Te acercas a la estanteria y ves:");
-                System.out.println("1. Unos restos de cables rotos.");
-                System.out.println("2. Una llave doblada con una M");
-                System.out.println("3. una clave de acceso medio quemada");
+                System.out.println("Decides investigar los objetos y te encuentras");
+                System.out.println("1. Un trozo de pan galactico que no se pudre en 5 años");
+                System.out.println("2. Una sarte de cobalto niquelado, vieja pero indestructible");
+                System.out.println("3. Cuchillos de madera");
                 System.out.println("");
                 System.out.println("Tambien puedes:");
                 System.out.println("4. Volver al centro de la sala");
@@ -220,10 +222,10 @@ public class Mensajes {
             case 4:
                 System.out.println("        *******SALA DE REUNIONES*******");
                 System.out.println("__________________________________________________");
-                System.out.println("Te acercas a la estanteria y ves:");
-                System.out.println("1. Unos restos de cables rotos.");
-                System.out.println("2. Una llave doblada con una M");
-                System.out.println("3. una clave de acceso medio quemada");
+                System.out.println("En la sala hay una mesa central con cajones mirando hacia cada silla pero todos estan cerrados menos el del comandante.");
+                System.out.println("1. Cajón del comandante");
+                System.out.println("2. Mirar encima de la mesa");
+                System.out.println("3. Mirar debajo de la mesa");
                 System.out.println("");
                 System.out.println("Tambien puedes:");
                 System.out.println("4. Volver al centro de la sala");
@@ -234,17 +236,19 @@ public class Mensajes {
             break;
             
             case 5:
-                System.out.println("        *********DROMITORIOS*********");
+                System.out.println("        *********DOMITORIOS*********");
                 System.out.println("__________________________________________________");
-                System.out.println("Te acercas a la estanteria y ves:");
-                System.out.println("1. Unos restos de cables rotos.");
-                System.out.println("2. Una llave doblada con una M");
-                System.out.println("3. una clave de acceso medio quemada");
+                System.out.println("Ves delante tuya 4 habitaciones");
+                System.out.println("1. Inspeccionar habitacion 1");
+                System.out.println("2. Inspeccionar habitacion 2");
+                System.out.println("3. Inspeccionar habitacion 3");
+                System.out.println("4. Inspeccionar habitacion 4");
                 System.out.println("");
+                
                 System.out.println("Tambien puedes:");
-                System.out.println("4. Volver al centro de la sala");
-                System.out.println("5. Estado de la partida");
-                System.out.println("6. Salir del juego");
+                System.out.println("5. Volver al centro de la sala");
+                System.out.println("6. Estado de la partida");
+                System.out.println("7. Salir del juego");
                 System.out.println("");
                 System.out.println("¿Qué vas a hacer?");
             break;
@@ -252,10 +256,10 @@ public class Mensajes {
             case 6:
                 System.out.println("        ********ZONA DE MOTORES********");
                 System.out.println("__________________________________________________");
-                System.out.println("Te acercas a la estanteria y ves:");
-                System.out.println("1. Unos restos de cables rotos.");
-                System.out.println("2. Una llave doblada con una M");
-                System.out.println("3. una clave de acceso medio quemada");
+                System.out.println("Esas cosas son:");
+                System.out.println("1. Bidon de gasolina");
+                System.out.println("2. Sierra mecanica");
+                System.out.println("3. Dirigirte a la X del mapa encontrado");
                 System.out.println("");
                 System.out.println("Tambien puedes:");
                 System.out.println("4. Volver al centro de la sala");
