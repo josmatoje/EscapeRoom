@@ -95,7 +95,7 @@ public class EscapeRoom {
             
             do{//repeticion salas-Menu principal salas
                 
-                mensaje.Sala(sala,nuevaSala);
+                mensaje.Sala(sala,nuevaSala, objetosObtenidos);
                 mensaje.Menu(sala);//Mensajes del menu en funcion de la sala en la que estes
                 
                 eleccion=comp.eleccionMenuPrincipal(sala);//Valora si la eleccion es valida y la almacena
