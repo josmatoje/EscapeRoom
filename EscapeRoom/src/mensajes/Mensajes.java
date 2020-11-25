@@ -40,7 +40,115 @@ public class Mensajes {
         System.out.println(".");
         System.out.println(".");
     }
+    
+    public void Sala(int sala, boolean nuevaSala, boolean objetosObtenidos[]) {
 
+        if (nuevaSala) { //si la sala no esta visitada, primer Mensaje 
+
+            switch (sala) {
+
+                case 0:
+                    System.out.println("Al abrir los ojos observas muchos escombros y objetos destrozados,"
+                            + "\n decides levantarte para observar un poco mejor la situación.");
+
+                case 1:
+                    System.out.println("Entras en la cocina, sin fuerza ninguna pero el olor a salsa barbacoa te hace olvidar que estás perdiendo sangre con cada paso que das."
+                            + "\n  Ese olor te lleva a un pobre gato quemándose en las tuberías.");
+
+                case 2:
+                    System.out.println("La cantina parece mucho mejor que la cocina,"
+                            + "\n aunque también tengan sus zonas de quema por fuga de gas.");
+
+                case 3:
+                    System.out.println("Enoncontraste la enfermeria y parece que las maquinas de mantenimiento de"
+                            + "\n vida parecen intactas. Aunque no se recomienda su uso sin el personal autorizado,"
+                            + "\nesta ocasion de vida o muerte no te deja otra opcion. Con tu mirada nublada tardas unos minutos"
+                            + "\nen entender el funcionamiento y como ponerla en analisis corporal completo. Al finalizar el"
+                            + "\nanalisis la maquina encuentra todos tus problemas e te inivta a entrar en ella abriendo la puerta."
+                            + "\nYa dentro, tras curar tus neuronas recuerdas que el comandante fuiste tu y que toda la flota"
+                            + "\nfue a la muerte por tu decision suicida de ir a por todas. Finalmente tu corazon no resiste el "
+                            + "\nimpacto emocional y se para. La maquina te lo vuelve a curar, mandandote al mismo pensamiento, lo "
+                            + "\nque te causa otra muerte dolorosa y emocional y asi indefinidas veces, sin poder morir, sintiendo"
+                            + "\nla angustia infinita de matarlos a todos.");
+
+                case 4:
+                    System.out.println("  Dentro de la sala todo parece como si no hubiera pasado nada y es que las paredes blindadas"
+                            + "\n y la protección contra los rayos ionizantes dan su fruto");
+
+                case 5:
+                    System.out.println("Todo parece tranquilo, como si no hubiera pasado nada."
+                            + "\n Ves varias habitaciones cerradas pero la mayoría están abiertas.");
+
+                case 6:
+                    System.out.println("Es la primera vez que entras aquí, ves muchas puertas cerradas"
+                            + "\n de lo que entiendes son cosas de motores");
+
+            }
+
+        }//fin if
+
+        switch (sala) { //Se mostrará siempre, una breve descripcion de la sala para no perderse
+
+            case 0:
+                System.out.println(
+                        " Delante tuya se abre el camino a tres puertas distintas, tus recuerdos te indican que a tu izquierda tienes la cocina con muchos alimentos y"
+                        + "\n utensilios que te podrían ayudar en tu supervivencia y a tu derecha la sala de reuniones que tanto odiabas pero tanto poder directivo tenía. La puerta central  nunca la habías visto antes,"
+                        + "\n te parece muy llamativa y surrealista, llena de colores que no pega nada con el interior de la nave."
+                        + "\n además de eso localizas una estantería caída con algunos objetos pero no ves a la distancia que estas");
+                break;
+
+            case 1:
+                System.out.println(
+                        " Al fondo de la cocina localizas varios objetos aun sin quemarse,"
+                        + "\n aun así no parecen de mucha utilidad");
+                break;
+
+            case 2:
+                System.out.print(
+                        "\n Inspeccionas la cantina y ves una silla de madera en la que se solían sentar los jefes a almorzar, ");
+
+                if (objetosObtenidos[6]) {
+
+                    System.out.print(
+                            "restos de comida de algún soldado que estaría comiendo durante el ataque");
+
+                }
+
+                if (objetosObtenidos[7]) {
+
+                    System.out.print(
+                            "y algo parecido a las instrucciones de la nave en una mesa");
+
+                }
+
+                break;
+
+            case 3:
+                System.out.println("");//No hay nada sobre la cocina
+                break;
+
+            case 4:
+                System.out.println(
+                        "  Algo te huele mal al ver que no hay ningún documento importante."
+                        + "\n Al parecer los jefes ejecutivos sabían de antes como iba a terminar todo esto y"
+                        + "\n decidieron dejar la nave sin avisar a nadie y limpiar la zona de cualquier material útil,"
+                        + "\n típico de comandantes del imperio que solo piensan en ellos mismos.");
+                break;
+
+            case 5:
+                System.out.println(""); //Nada sobre lo dormitorios
+                break;
+
+            case 6:
+                System.out.println(
+                        "No hay mucho que hacer por aquí ya que está todo destrozados"
+                        + "\n del impacto aunque si ves algunas cosas que puedes usar:");
+                break;
+
+        }// Fin switch        
+
+    }//Fin clase Sala
+    
     public void Menu(int sala) {
 
         switch (sala) {
@@ -365,8 +473,9 @@ public class Mensajes {
 
     }
 
-    public void Estado(int vida, int movimientos) {
-
+    public void Estado(int vida, int movimientos,int [] inventario, String [] objetos) {
+        
+        System.out.println("______________________________________________________");
         System.out.println("Tienes ");
 
         for (int i = 0; i < vida; i++) {
@@ -376,7 +485,27 @@ public class Mensajes {
         System.out.print(" vidas");
 
         System.out.println(" y sangre para " + movimientos + " moviemientos");
-
+        System.out.println("______________________________________________________");
+        System.out.println("");
+        System.out.println("");
+        System.out.println("");
+        Inventario(inventario,objetos);
+        System.out.println("");
+        System.out.println("");
+        System.out.println("");
+        
+    }
+    
+    public void Inventario (int [] inventario, String [] objetos){
+        
+        
+        System.out.println("En tu inventario tienes:");
+        for(int i:inventario){
+            if(i>=0){
+                System.out.println("\t"+(i+1)+". "+objetos[i]);
+            }
+        }
+        
     }
 
     public void Salida() {
@@ -387,113 +516,5 @@ public class Mensajes {
         System.out.println("¡Que la fuerza te acompañe!");
 
     }
-
-    public void Sala(int sala, boolean nuevaSala, boolean objetosObtenidos[]) {
-
-        if (nuevaSala) { //si la sala no esta visitada, primer Mensaje 
-
-            switch (sala) {
-
-                case 0:
-                    System.out.println("Al abrir los ojos observas muchos escombros y objetos destrozados,"
-                            + "\n decides levantarte para observar un poco mejor la situación.");
-
-                case 1:
-                    System.out.println("Entras en la cocina, sin fuerza ninguna pero el olor a salsa barbacoa te hace olvidar que estás perdiendo sangre con cada paso que das."
-                            + "\n  Ese olor te lleva a un pobre gato quemándose en las tuberías.");
-
-                case 2:
-                    System.out.println("La cantina parece mucho mejor que la cocina,"
-                            + "\n aunque también tengan sus zonas de quema por fuga de gas.");
-
-                case 3:
-                    System.out.println("Enoncontraste la enfermeria y parece que las maquinas de mantenimiento de"
-                            + "\n vida parecen intactas. Aunque no se recomienda su uso sin el personal autorizado,"
-                            + "\nesta ocasion de vida o muerte no te deja otra opcion. Con tu mirada nublada tardas unos minutos"
-                            + "\nen entender el funcionamiento y como ponerla en analisis corporal completo. Al finalizar el"
-                            + "\nanalisis la maquina encuentra todos tus problemas e te inivta a entrar en ella abriendo la puerta."
-                            + "\nYa dentro, tras curar tus neuronas recuerdas que el comandante fuiste tu y que toda la flota"
-                            + "\nfue a la muerte por tu decision suicida de ir a por todas. Finalmente tu corazon no resiste el "
-                            + "\nimpacto emocional y se para. La maquina te lo vuelve a curar, mandandote al mismo pensamiento, lo "
-                            + "\nque te causa otra muerte dolorosa y emocional y asi indefinidas veces, sin poder morir, sintiendo"
-                            + "\nla angustia infinita de matarlos a todos.");
-
-                case 4:
-                    System.out.println("  Dentro de la sala todo parece como si no hubiera pasado nada y es que las paredes blindadas"
-                            + "\n y la protección contra los rayos ionizantes dan su fruto");
-
-                case 5:
-                    System.out.println("Todo parece tranquilo, como si no hubiera pasado nada."
-                            + "\n Ves varias habitaciones cerradas pero la mayoría están abiertas.");
-
-                case 6:
-                    System.out.println("Es la primera vez que entras aquí, ves muchas puertas cerradas"
-                            + "\n de lo que entiendes son cosas de motores");
-
-            }
-
-        }//fin if
-
-        switch (sala) { //Se mostrará siempre, una breve descripcion de la sala para no perderse
-
-            case 0:
-                System.out.println(
-                        " Delante tuya se abre el camino a tres puertas distintas, tus recuerdos te indican que a tu izquierda tienes la cocina con muchos alimentos y"
-                        + "\n utensilios que te podrían ayudar en tu supervivencia y a tu derecha la sala de reuniones que tanto odiabas pero tanto poder directivo tenía. La puerta central  nunca la habías visto antes,"
-                        + "\n te parece muy llamativa y surrealista, llena de colores que no pega nada con el interior de la nave."
-                        + "\n además de eso localizas una estantería caída con algunos objetos pero no ves a la distancia que estas");
-                break;
-
-            case 1:
-                System.out.println(
-                        " Al fondo de la cocina localizas varios objetos aun sin quemarse,"
-                        + "\n aun así no parecen de mucha utilidad");
-                break;
-
-            case 2:
-                System.out.print(
-                        "\n Inspeccionas la cantina y ves una silla de madera en la que se solían sentar los jefes a almorzar, ");
-
-                if (objetosObtenidos[6]) {
-
-                    System.out.print(
-                            "restos de comida de algún soldado que estaría comiendo durante el ataque");
-
-                }
-
-                if (objetosObtenidos[7]) {
-
-                    System.out.print(
-                            "y algo parecido a las instrucciones de la nave en una mesa");
-
-                }
-
-                break;
-
-            case 3:
-                System.out.println("");//No hay nada sobre la cocina
-                break;
-
-            case 4:
-                System.out.println(
-                        "  Algo te huele mal al ver que no hay ningún documento importante."
-                        + "\n Al parecer los jefes ejecutivos sabían de antes como iba a terminar todo esto y"
-                        + "\n decidieron dejar la nave sin avisar a nadie y limpiar la zona de cualquier material útil,"
-                        + "\n típico de comandantes del imperio que solo piensan en ellos mismos.");
-                break;
-
-            case 5:
-                System.out.println(""); //Nada sobre lo dormitorios
-                break;
-
-            case 6:
-                System.out.println(
-                        "No hay mucho que hacer por aquí ya que está todo destrozados"
-                        + "\n del impacto aunque si ves algunas cosas que puedes usar:");
-                break;
-
-        }// Fin switch        
-
-    }//Fin clase Sala
 
 }

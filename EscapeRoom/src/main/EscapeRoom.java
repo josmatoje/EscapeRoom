@@ -1,20 +1,27 @@
 package main;
 
-import comprobaciones.*;
+import comprobaciones.Comprobaciones;
+import inventario.Inventario;
 import java.util.Scanner;
-import mensajes.*;
+import mensajes.Mensajes;
 
 public class EscapeRoom {
     
     public static void main(String[] args) {
+                
+        Scanner teclado = new Scanner(System.in);
+        
+        Comprobaciones comp = new Comprobaciones();
+        Mensajes mensaje = new Mensajes();
+        Inventario inven = new Inventario();
         
         //Declaracion de variables
-        boolean respuestaSiNo, dificil, ganado, salirJuego;
+        boolean respuestaSiNo, dificil, acabarInspeccion, ganado, salirJuego;
         int sala, eleccion, vida, movimientos;
         
         int[] inventario;
         
-        boolean[] objetosObtenidos = new boolean[16]; //Todos los objetos con la informacion de si han sido cogidos, para que no vuelvan a aparecer en la habitacion
+        boolean[] objetosObtenidos = new boolean[15]; //Todos los objetos con la informacion de si han sido cogidos, para que no vuelvan a aparecer en la habitacion
         
         boolean[] nuevaSala = new boolean [7];//Indica si salas visitadas
         
@@ -58,49 +65,49 @@ public class EscapeRoom {
        
         */
         
-        Scanner teclado = new Scanner(System.in);
-        
-        Comprobaciones comp = new Comprobaciones();
-        Mensajes mensaje = new Mensajes();
-        
         mensaje.Bienvenida();
         
         //do-while del escape room completo
         do{
             //Inicializacion de variables
             sala=0; eleccion=0;
-            ganado=false; salirJuego=false;
+            acabarInspeccion=false; ganado=false; salirJuego=false;
+            
+            for(boolean i:objetosObtenidos){
+                i=false;
+            }
+            
+            for(boolean i:nuevaSala){
+                i=true;
+            }
             
             dificil=comp.dificultad(teclado);
             if (dificil){
                 vida = 3; movimientos = 80;  //movimiento = un minuto
                 inventario = new int[4];
             }else{
-                vida = 5; movimientos = 120;  //movimiento = un minuto
+                vida = 5; movimientos = 100;  //movimiento = un minuto
                 inventario = new int[7];
             }
             
             for(int i:inventario){
                 i=-1;
             }
-            for(boolean i:objetosObtenidos){
-                i=false;
-            }
-            for(boolean i:nuevaSala){
-                i=false;
-            }
             
             mensaje.Inicio();
-            //Vida inicial y movimientos
-            //System.out.println("Comienzas con ");
-            mensaje.Estado(vida, movimientos);
+            mensaje.Estado(vida, movimientos, inventario, nombreObjetos);
             
-            do{//repeticion salas-Menu principal salas
+            //repeticion salas-Menu principal salas
+            do{
+                
+                eleccion=0;
+                acabarInspeccion=false;
                 
                 mensaje.Sala(sala,nuevaSala[sala], objetosObtenidos);
+                nuevaSala[sala]=false;
                 mensaje.Menu(sala);//Mensajes del menu en funcion de la sala en la que estes
                 
-                eleccion=comp.eleccionMenuPrincipal(sala);//Valora si la eleccion es valida y la almacena
+                eleccion=comp.eleccionMenuPrincipal(sala, teclado);//Valora si la eleccion es valida y la almacena
                 //switch de acciones segun la eleccion tomada en la sala en la que se encuentre
                 switch (eleccion){
                     
@@ -148,16 +155,16 @@ public class EscapeRoom {
                             case 2: sala=1;
                             break;
                             
-                            case 3: mensaje.Estado(vida, movimientos);
+                            case 3: mensaje.Estado(vida, movimientos, inventario, nombreObjetos);
                             break;
                             
                             case 4: sala=6;
                             break;
                             
-                            case 5: mensaje.Estado(vida, movimientos);
+                            case 5: mensaje.Estado(vida, movimientos, inventario, nombreObjetos);
                             break;
                             
-                            case 6: mensaje.Estado(vida, movimientos);
+                            case 6: mensaje.Estado(vida, movimientos, inventario, nombreObjetos);
                             break;
                             
                             default: System.out.println("Algo ha salido mal");
@@ -173,12 +180,13 @@ public class EscapeRoom {
                                 System.out.println("");
                                 System.out.println("PIERDES UNO DE VIDA");
                                 vida--;
+                                mensaje.Estado(vida, movimientos, inventario, nombreObjetos);
                             break;
                             
-                            case 1: mensaje.Estado(vida, movimientos);
+                            case 1: mensaje.Estado(vida, movimientos, inventario, nombreObjetos);
                             break;
                             
-                            case 2: mensaje.Estado(vida, movimientos);
+                            case 2: mensaje.Estado(vida, movimientos, inventario, nombreObjetos);
                             break;
                             
                             case 3: 
@@ -206,7 +214,7 @@ public class EscapeRoom {
                     case 5:
                         switch (sala){
                             
-                            case 0: mensaje.Estado(vida, movimientos);
+                            case 0: mensaje.Estado(vida, movimientos, inventario, nombreObjetos);
                             break;
                             
                             case 1: 
@@ -222,7 +230,7 @@ public class EscapeRoom {
                             case 3: System.out.println("Algo ha salido mal");
                             break;
                             
-                            case 4: mensaje.Estado(vida, movimientos);
+                            case 4: mensaje.Estado(vida, movimientos, inventario, nombreObjetos);
                             break;
                             
                             case 5: System.out.println("Algo ha salido mal");
@@ -237,7 +245,6 @@ public class EscapeRoom {
                     
                     case 6:
                         switch (sala){
-                            
                             case 0: 
                                 System.out.println("¿Estás seguro de que deseas salir?");
                                 salirJuego=comp.validacionSiNo(teclado);
@@ -269,19 +276,22 @@ public class EscapeRoom {
                         }                        
                     break;
                         
-                    default:
+                    default: System.out.println("Algo ha salido mal");
                 }
                 movimientos--;
                 
                 if(eleccion==1){//Si eleccion del menu es 1 (podria ir en el switch case 1:)
                     
-                    mensaje.MenuInteraccion(sala, objetosObtenidos);//Mensaje de los menus internos de cada sala
-                    
-                    eleccion=comp.eleccionMenuInteraccion(sala);
-                    
                     //Repeticion menu interno (de la sala) hasta que no "salga" de esta
                     do{
+                        //Devolvemos las variables al estado neutro
+                        eleccion=0;
+                        acabarInspeccion=false;//No necesario pero nos asegurames de que esté en falso hasta que se desee salir
                         
+                        mensaje.MenuInteraccion(sala, objetosObtenidos, nombreObjetos);//Mensaje de los menus internos de cada sala
+
+                        eleccion=comp.eleccionMenuInteraccion(sala, teclado);
+                    
                         switch (sala){
                             
                             case 0:
@@ -289,18 +299,42 @@ public class EscapeRoom {
                                 switch (eleccion){
                                     
                                     case 1: 
-                                        if(!objetosObtenidos[1]){
+                                        if(!objetosObtenidos[0]){
                                             System.out.println("Parecen unos cables que han sido arrancados de un procesador.");
                                             System.out.println("Parece que funcionan... puede que te sirvan de algo en un futuro.");
                                             System.out.println("¿Deseas guardarlo en tu inventario?");
                                             if(comp.validacionSiNo(teclado)){
-                                                
+                                                inventario=inven.insertarObjeto(1, inventario, teclado, nombreObjetos);
                                             }else{
                                                 
                                             }
                                         }else{
                                             System.out.println("Ya tienes el objeto.");
                                         }
+                                        
+                                    break;
+                                    
+                                    case 2:
+                                        
+                                    break;
+                                    
+                                    case 3:
+                                        
+                                    break;
+                                    
+                                    case 4:
+                                        
+                                    break;
+                                    
+                                    case 5:
+                                        
+                                    break;
+                                    
+                                    case 6:
+                                        
+                                    break;
+                                    
+                                    default: System.out.println("Algo ha salido mal");
                                     
                                 }
                                 
@@ -333,7 +367,7 @@ public class EscapeRoom {
                             default: System.out.println("Algo ha salido mal");
                         }
                         
-                    }while(eleccion!=1);//declarar otra variable en caso de estar en el switch del menu (case 1:)
+                    }while(!acabarInspeccion && vida>0 && movimientos>0 && !ganado && !salirJuego);//declarar otra variable en caso de estar en el switch del menu (case 1:)
                 }
                 
                 

@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class Comprobaciones {
     
-    
     /*
     Metodo que pregunta Si o No y devuelve true en caso de seleccionar si o false en caso contrario
         Signatura: public boolean validacionSiNo () 
@@ -42,13 +41,17 @@ public class Comprobaciones {
         return validacionSiNo(teclado);
     }
     
-    public int eleccionMenuPrincipal(int sala){
+    public int eleccionMenuPrincipal(int sala, Scanner teclado){
         
         int eleccion=0;
-        Scanner teclado = new Scanner(System.in);
         
         eleccion=teclado.nextInt();
         
+        /*
+        Usamos if-else porque con un switch se repetiria más codigo
+        Solucion subprogramas que sean while(eleccion<a || eleccion>b) y se llamen en funcion del 
+        numero de elecciones que tenga el menu
+        */
         if (sala==0 || sala ==4){
             while(eleccion<1 || eleccion>6){
                 System.out.println("Introduzca un valor válido (de 1 a 6): ");
@@ -71,16 +74,29 @@ public class Comprobaciones {
         return eleccion;
     }
     
-    public int eleccionMenuInteraccion(int sala){
+    public int eleccionMenuInteraccion(int sala, Scanner teclado){
         
         int eleccion=0;
-        Scanner teclado = new Scanner(System.in);
         
         eleccion=teclado.nextInt();
         
-        //Valorar cada menu
+        /*
+        Usamos if-else porque con un switch se repetiria más codigo
+        Solucion subprogramas que sean while(eleccion<a || eleccion>b) y se llamen en funcion del 
+        numero de elecciones que tenga el menu
+        */
+        if (sala!=5){
+            while(eleccion<1 || eleccion>6){
+                System.out.println("Introduzca un valor válido (de 1 a 6): ");
+                teclado.nextInt();
+            }
+        }else{
+            while(eleccion<1 || eleccion>7){
+                System.out.println("Introduzca un valor válido (de 1 a 7): ");
+                teclado.nextInt();
+            }
+        }
         
-        teclado.close();
         
         return eleccion;
     }
