@@ -283,9 +283,27 @@ public class EscapeRoom {
                     //Repeticion menu interno (de la sala) hasta que no "salga" de esta
                     do{
                         
-                        switch (eleccion){
+                        switch (sala){
                             
                             case 0:
+                                
+                                switch (eleccion){
+                                    
+                                    case 1: 
+                                        if(!objetosObtenidos[1]){
+                                            System.out.println("Parecen unos cables que han sido arrancados de un procesador.");
+                                            System.out.println("Parece que funcionan... puede que te sirvan de algo en un futuro.");
+                                            System.out.println("¿Deseas guardarlo en tu inventario?");
+                                            if(comp.validacionSiNo(teclado)){
+                                                
+                                            }else{
+                                                
+                                            }
+                                        }else{
+                                            System.out.println("Ya tienes el objeto.");
+                                        }
+                                    
+                                }
                                 
                             break;
                             
