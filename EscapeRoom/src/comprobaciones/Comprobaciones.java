@@ -13,12 +13,11 @@ public class Comprobaciones {
         Salida: boleano 
         Postcondiciones:--
     */
-    public boolean validacionSiNo () {
+    public boolean validacionSiNo (Scanner teclado) {
     
         char respuesta;
         boolean afirmativo;
         
-        Scanner teclado = new Scanner(System.in);
         
         System.out.println("Introduzca S (si)/ N (no)");
         respuesta=teclado.next().toLowerCase().charAt(0);
@@ -30,17 +29,17 @@ public class Comprobaciones {
         
         afirmativo = respuesta=='s'; //Si respuesta=='s' afirmativo es true, en caso contrario es false
         
-        teclado.close();
+        
         
         return afirmativo;
     }
     
-    public boolean dificultad(){
+    public boolean dificultad(Scanner teclado){
         
         System.out.println("Por defecto el juego está en dificultad media.");
         System.out.println("¿Desea jugar en modo dificl (menos vida y menos turnos)?");
         
-        return validacionSiNo();
+        return validacionSiNo(teclado);
     }
     
     public int eleccionMenuPrincipal(int sala){
@@ -69,7 +68,6 @@ public class Comprobaciones {
             }
         }
         
-        teclado.close();
         
         return eleccion;
     }

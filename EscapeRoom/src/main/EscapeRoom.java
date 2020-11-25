@@ -1,6 +1,7 @@
 package main;
 
 import comprobaciones.*;
+import java.util.Scanner;
 import mensajes.*;
 
 public class EscapeRoom {
@@ -58,6 +59,8 @@ public class EscapeRoom {
        
         */
         
+        Scanner teclado = new Scanner(System.in);
+        
         Comprobaciones comp = new Comprobaciones();
         Mensajes mensaje = new Mensajes();
         
@@ -69,7 +72,7 @@ public class EscapeRoom {
             sala=0; eleccion=0;
             ganado=false; salirJuego=false;
             
-            dificil=comp.dificultad();
+            dificil=comp.dificultad(teclado);
             if (dificil){
                 vida = 3; movimientos = 80;  //movimiento = un minuto
                 inventario = new int[4];
@@ -95,8 +98,7 @@ public class EscapeRoom {
             
             do{//repeticion salas-Menu principal salas
                 
-                
-                mensaje.Sala(sala, nuevaSala[sala], objetosObtenidos);
+                mensaje.Sala(sala,nuevaSala[sala], objetosObtenidos);
                 mensaje.Menu(sala);//Mensajes del menu en funcion de la sala en la que estes
                 
                 eleccion=comp.eleccionMenuPrincipal(sala);//Valora si la eleccion es valida y la almacena
@@ -182,7 +184,7 @@ public class EscapeRoom {
                             
                             case 3: 
                                 System.out.println("¿Estás seguro de que deseas salir?");
-                                salirJuego=comp.validacionSiNo();
+                                salirJuego=comp.validacionSiNo(teclado);
                             break;
                             
                             case 4: sala=0;
@@ -190,12 +192,12 @@ public class EscapeRoom {
                             
                             case 5:
                                 System.out.println("¿Estás seguro de que deseas salir?");
-                                salirJuego=comp.validacionSiNo();
+                                salirJuego=comp.validacionSiNo(teclado);
                             break;
                             
                             case 6:
                                 System.out.println("¿Estás seguro de que deseas salir?");
-                                salirJuego=comp.validacionSiNo();
+                                salirJuego=comp.validacionSiNo(teclado);
                             break;
                             
                             default: System.out.println("Algo ha salido mal");
@@ -210,12 +212,12 @@ public class EscapeRoom {
                             
                             case 1: 
                                 System.out.println("¿Estás seguro de que deseas salir?");
-                                salirJuego=comp.validacionSiNo();
+                                salirJuego=comp.validacionSiNo(teclado);
                             break;
                             
                             case 2: 
                                 System.out.println("¿Estás seguro de que deseas salir?");
-                                salirJuego=comp.validacionSiNo();
+                                salirJuego=comp.validacionSiNo(teclado);
                             break;
                             
                             case 3: System.out.println("Algo ha salido mal");
@@ -239,12 +241,12 @@ public class EscapeRoom {
                             
                             case 0: 
                                 System.out.println("¿Estás seguro de que deseas salir?");
-                                salirJuego=comp.validacionSiNo();
+                                salirJuego=comp.validacionSiNo(teclado);
                             break;
                             
                             case 1: 
                                 System.out.println("¿Estás seguro de que deseas salir?");
-                                salirJuego=comp.validacionSiNo();
+                                salirJuego=comp.validacionSiNo(teclado);
                             break;
                             
                             case 2: System.out.println("Algo ha salido mal");
@@ -255,7 +257,7 @@ public class EscapeRoom {
                             
                             case 4: 
                                 System.out.println("¿Estás seguro de que deseas salir?");
-                                salirJuego=comp.validacionSiNo();
+                                salirJuego=comp.validacionSiNo(teclado);
                             break;
                             
                             case 5:System.out.println("Algo ha salido mal");
@@ -323,12 +325,14 @@ public class EscapeRoom {
             
             
             System.out.println("Desea volver a intentarlo?");
-            respuestaSiNo = comp.validacionSiNo();
+            respuestaSiNo = comp.validacionSiNo(teclado);
             
         }while(respuestaSiNo);
         
         mensaje.Salida();
         
+        
+        teclado.close();
         
     }
     
