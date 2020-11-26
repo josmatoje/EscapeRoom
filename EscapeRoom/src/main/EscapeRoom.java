@@ -1,8 +1,8 @@
 package main;
 
+import java.util.Scanner;
 import comprobaciones.Comprobaciones;
 import inventario.Inventario;
-import java.util.Scanner;
 import mensajes.Mensajes;
 
 public class EscapeRoom {
@@ -299,14 +299,16 @@ public class EscapeRoom {
                                 switch (eleccion){
                                     
                                     case 1: 
+                                        
                                         if(!objetosObtenidos[0]){
                                             System.out.println("Parecen unos cables que han sido arrancados de un procesador.");
                                             System.out.println("Parece que funcionan... puede que te sirvan de algo en un futuro.");
                                             System.out.println("¿Deseas guardarlo en tu inventario?");
                                             if(comp.validacionSiNo(teclado)){
-                                                inventario=inven.insertarObjeto(1, inventario, teclado, nombreObjetos);
+                                                System.out.println("Guardando en el inventario...");
+                                                inventario=inven.insertarObjeto(0, inventario, teclado, nombreObjetos);
                                             }else{
-                                                
+                                                System.out.println("Estaba claro. ¿Para que iba a querer unos cables rotos?");
                                             }
                                         }else{
                                             System.out.println("Ya tienes el objeto.");
@@ -316,22 +318,51 @@ public class EscapeRoom {
                                     
                                     case 2:
                                         
+                                        if(!objetosObtenidos[1]){
+                                            System.out.println("Está un poco doblada pero creo que la podría arreglar sin gran dificultad.");
+                                            System.out.println("Puedo probar a encajarla en alguna cerradura o buscar alguna M.");
+                                            System.out.println("¿Deseas guardarlo en tu inventario?");
+                                            if(comp.validacionSiNo(teclado)){
+                                                System.out.println("Guardando en el inventario...");
+                                                inventario=inven.insertarObjeto(1, inventario, teclado, nombreObjetos);
+                                            }else{
+                                                System.out.println("Da igual, estoy demasiado cansado para arreglar esta maldita llave.");
+                                            }
+                                        }else{
+                                            System.out.println("Ya tienes el objeto.");
+                                        }
+                                        
                                     break;
                                     
                                     case 3:
                                         
+                                        if(!objetosObtenidos[2]){
+                                            System.out.println("Me suena mucha esta clave, pero ahora mismo no logro recordar nada.");
+                                            System.out.println("Hay una parte quemada y no se consigue ver toda la clave, podría recordarla más adelante.");
+                                            System.out.println("¿Deseas guardarlo en tu inventario?");
+                                            if(comp.validacionSiNo(teclado)){
+                                                System.out.println("Guardando en el inventario...");
+                                                inventario=inven.insertarObjeto(2, inventario, teclado, nombreObjetos);
+                                            }else{
+                                                System.out.println("Ojalá fuera yo esa clave y me hubiera calcinado medio cuerpo en el accidente...");
+                                            }
+                                        }else{
+                                            System.out.println("Ya tienes el objeto.");
+                                        }
+                                        
                                     break;
                                     
                                     case 4:
-                                        
+                                        acabarInspeccion=true;
                                     break;
                                     
                                     case 5:
-                                        
+                                        mensaje.Estado(vida, movimientos, inventario, nombreObjetos);
+                                        movimientos++;
                                     break;
                                     
                                     case 6:
-                                        
+                                        salirJuego=true;
                                     break;
                                     
                                     default: System.out.println("Algo ha salido mal");
@@ -341,6 +372,79 @@ public class EscapeRoom {
                             break;
                             
                             case 1:
+                                
+                                switch (eleccion){
+                                    
+                                    case 1: 
+                                        
+                                        if(!objetosObtenidos[3]){
+                                            System.out.println("No parece especialmente apetecible, pero tampoc crees que esté malo.");
+                                            System.out.println("¿Deseas guardarlo en tu inventario?");
+                                            if(comp.validacionSiNo(teclado)){
+                                                System.out.println("Guardando en el inventario...");
+                                                inventario=inven.insertarObjeto(3, inventario, teclado, nombreObjetos);
+                                            }else{
+                                                System.out.println("Si no se ha puesto malo puede quedarse aqui unos cuantos años más.");
+                                            }
+                                        }else{
+                                            System.out.println("Ya tienes el objeto.");
+                                        }
+                                        
+                                    break;
+                                    
+                                    case 2:
+                                        
+                                        if(!objetosObtenidos[4]){
+                                            System.out.println("Desde luego esta sarten tiene más años que el mismo universo.");
+                                            System.out.println("No creo que vaya a cocinar nada pero podría usarla de protección... o algo");
+                                            System.out.println("¿Deseas guardarlo en tu inventario?");
+                                            if(comp.validacionSiNo(teclado)){
+                                                System.out.println("Guardando en el inventario...");
+                                                inventario=inven.insertarObjeto(1, inventario, teclado, nombreObjetos);
+                                            }else{
+                                                System.out.println("Dejemosla aquí, que siga viendo el paso del tiempo.");
+                                            }
+                                        }else{
+                                            System.out.println("Ya tienes el objeto.");
+                                        }
+                                        
+                                    break;
+                                    
+                                    case 3:
+                                        
+                                        if(!objetosObtenidos[5]){
+                                            System.out.println("Espera... ¿De madera? ¿No teniamos dinero para unos buenos cuchillos de titanio?");
+                                            System.out.println("Bueno, al menos no está astillado. Si era capaz de cortar la carne tan dura de la cantina");
+                                            System.out.println("podrá con cualquier cosa...");
+                                            System.out.println("¿Deseas guardarlo en tu inventario?");
+                                            if(comp.validacionSiNo(teclado)){
+                                                System.out.println("Guardando en el inventario...");
+                                                inventario=inven.insertarObjeto(5, inventario, teclado, nombreObjetos);
+                                            }else{
+                                                System.out.println("¿Pero desde cuando los cuchillos son de madera?");
+                                            }
+                                        }else{
+                                            System.out.println("Ya tienes el objeto.");
+                                        }
+                                        
+                                    break;
+                                    
+                                    case 4:
+                                        acabarInspeccion=true;
+                                    break;
+                                    
+                                    case 5:
+                                        mensaje.Estado(vida, movimientos, inventario, nombreObjetos);
+                                        movimientos++;
+                                    break;
+                                    
+                                    case 6:
+                                        salirJuego=true;
+                                    break;
+                                    
+                                    default: System.out.println("Algo ha salido mal");
+                                    
+                                }
                                 
                             break;
                             
@@ -366,6 +470,8 @@ public class EscapeRoom {
                             
                             default: System.out.println("Algo ha salido mal");
                         }
+                        
+                        movimientos--;
                         
                     }while(!acabarInspeccion && vida>0 && movimientos>0 && !ganado && !salirJuego);//declarar otra variable en caso de estar en el switch del menu (case 1:)
                 }

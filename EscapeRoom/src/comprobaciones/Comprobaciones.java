@@ -8,7 +8,7 @@ public class Comprobaciones {
     Metodo que pregunta Si o No y devuelve true en caso de seleccionar si o false en caso contrario
         Signatura: public boolean validacionSiNo () 
         Precondiciones: --
-        Entrada: --
+        Entrada: objeto de la clase Scanner
         Salida: boleano 
         Postcondiciones:--
     */
@@ -28,8 +28,6 @@ public class Comprobaciones {
         
         afirmativo = respuesta=='s'; //Si respuesta=='s' afirmativo es true, en caso contrario es false
         
-        
-        
         return afirmativo;
     }
     
@@ -47,28 +45,28 @@ public class Comprobaciones {
         
         eleccion=teclado.nextInt();
         
-        /*
-        Usamos if-else porque con un switch se repetiria más codigo
-        Solucion subprogramas que sean while(eleccion<a || eleccion>b) y se llamen en funcion del 
-        numero de elecciones que tenga el menu
-        */
-        if (sala==0 || sala ==4){
-            while(eleccion<1 || eleccion>6){
-                System.out.println("Introduzca un valor válido (de 1 a 6): ");
-                teclado.nextInt();
-            }
-        }else{
-            if(sala==1||sala==2){
-                while(eleccion<1 || eleccion>5){
-                    System.out.println("Introduzca un valor válido (de 1 a 5): ");
-                    teclado.nextInt();
-                }
-            }else{
-                while(eleccion<1 || eleccion>4){
-                    System.out.println("Introduzca un valor válido (de 1 a 4): ");
-                    teclado.nextInt();
-                }
-            }
+        switch(sala){
+            case 0: valorEntre1y6(eleccion, teclado);
+            break;
+            
+            case 1: valorEntre1y5(eleccion, teclado);
+            break;
+            
+            case 2: valorEntre1y5(eleccion, teclado);
+            break;
+            
+            case 3: valorEntre1y4(eleccion, teclado);
+            break;
+            
+            case 4: valorEntre1y6(eleccion, teclado);
+            break;
+            
+            case 5: valorEntre1y4(eleccion, teclado);
+            break;
+            
+            case 6: valorEntre1y4(eleccion, teclado);
+            break;
+            
         }
         
         return eleccion;
@@ -85,19 +83,51 @@ public class Comprobaciones {
         Solucion subprogramas que sean while(eleccion<a || eleccion>b) y se llamen en funcion del 
         numero de elecciones que tenga el menu
         */
-        if (sala!=5){
-            while(eleccion<1 || eleccion>6){
-                System.out.println("Introduzca un valor válido (de 1 a 6): ");
-                teclado.nextInt();
-            }
+        if (sala==5){
+            valorEntre1y7(eleccion, teclado);
         }else{
-            while(eleccion<1 || eleccion>7){
-                System.out.println("Introduzca un valor válido (de 1 a 7): ");
-                teclado.nextInt();
-            }
+            valorEntre1y6(eleccion, teclado);
         }
         
-        
+        return eleccion;
+    }
+    /*
+    Metodos que comprueban si el valor dado está entre uno y un valor 
+        Signatura: public int valorEntre1y... (int eleccion, Scanner teclado) 
+        Precondiciones: --
+        Entrada: objeto de la clase Scanner
+        Entrada/Salida: Entero que representa la eleccion (validada al salir) 
+        Postcondiciones: el numero debe ser >0 y menos o igual que el valor maximo
+    */
+    public int valorEntre1y4 (int eleccion, Scanner teclado){
+        while(eleccion<1 || eleccion>4){
+                System.out.println("Introduzca un valor válido (de 1 a 4): ");
+                eleccion=teclado.nextInt();
+            }
+        return eleccion;
+    }
+    
+    public int valorEntre1y5 (int eleccion, Scanner teclado){
+        while(eleccion<1 || eleccion>5){
+                System.out.println("Introduzca un valor válido (de 1 a 5): ");
+                eleccion=teclado.nextInt();
+            }
+        return eleccion;
+    }
+    
+    public int valorEntre1y6 (int eleccion, Scanner teclado){
+        while(eleccion<1 || eleccion>6){
+                System.out.println("Introduzca un valor válido (de 1 a 6): ");
+                eleccion=teclado.nextInt();
+            }
+        return eleccion;
+    }
+    
+    public int valorEntre1y7 (int eleccion, Scanner teclado){
+        while(eleccion<1 || eleccion>7){
+                System.out.println("Introduzca un valor válido (de 1 a 7): ");
+                eleccion=teclado.nextInt();
+            }
         return eleccion;
     }
     

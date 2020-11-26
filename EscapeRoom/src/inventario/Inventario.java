@@ -24,7 +24,8 @@ public class Inventario {
         Comprobaciones comp = new Comprobaciones();
         
         boolean insertado = false;
-        int longitud = inventario.length;
+        int longitud = inventario.length; 
+        int objetoDoble=14; //Objeto que ocupa dos posiciones se encuentra en la posicion 14;
         boolean mitadInsertada = false;
         int eliminar;
         
@@ -33,7 +34,7 @@ public class Inventario {
             if (inventario[i]<0){
                 
                 inventario[i]=objeto;
-                if(objeto==14 && !mitadInsertada)//Solo un objeto que ocupa dos huecos
+                if(objeto==objetoDoble && !mitadInsertada)//Solo un objeto que ocupa dos huecos
                     mitadInsertada=true;
                 else
                     insertado=true;
@@ -44,7 +45,7 @@ public class Inventario {
         if(!insertado){
             
             System.out.println("No hay espacio suficiente para insertar el objeto");
-            if(objeto==14 && !mitadInsertada){
+            if(objeto==objetoDoble && !mitadInsertada){
                 System.out.println("¿Desea eliminar DOS de sus objetos?");
             }else{
                 System.out.println("¿Desea eliminar UNO de sus objeto?");
@@ -64,7 +65,7 @@ public class Inventario {
                     if(inventario[eliminar-1]!=objeto){
                         
                         inventario[eliminar-1]=objeto;//asignacion del nuevo objeto
-                        if(objeto!=14 || mitadInsertada)//Si el objeto es distinto al objeto doble o ya se ha insertado una mitad
+                        if(objeto!=objetoDoble || mitadInsertada)//Si el objeto es distinto al objeto doble o ya se ha insertado una mitad
                             insertado=true;
                         else
                             mitadInsertada=true;
@@ -74,6 +75,14 @@ public class Inventario {
                     }
                     
                 }while(!insertado);
+            }else{//Caso de que no desee borrar ningún objeto, que borre la posible inserción de "medio" objeto que ocupe dos espacios
+                System.out.println("Eliminando restos de la sierra");
+                for(int i=0; i<longitud && mitadInsertada; i++){
+                    if(inventario[i]==objetoDoble){
+                        inventario[i]=-1;
+                        mitadInsertada=false;
+                    }
+                }
             }
             
         }

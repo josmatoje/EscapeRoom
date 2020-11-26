@@ -257,7 +257,7 @@ public class Mensajes {
 
     }
 
-    public void MenuInteraccion(int sala, boolean[] inventario, String[] nombreObjetos) {
+    public void MenuInteraccion(int sala, boolean[] objetosObtenidos, String[] nombreObjetos) {
 
         String todoCogido = "Ya has cogido todos los objetos de esta sala.";
         String objetoCogido = "Ya has obtenido este objeto";
@@ -268,18 +268,18 @@ public class Mensajes {
                 System.out.println("        ********SALA DE MANDOS********");
                 System.out.println("__________________________________________________");
                 System.out.println("Te acercas a la estanteria y ves:");
-                if (!inventario[0]) {
+                if (!objetosObtenidos[0]) {
                     System.out.println("1. Unos restos de cables rotos.");
                 } else {
                     System.out.println(objetoCogido);
                 }
 
-                if (!inventario[1]) {
-                    System.out.println("2. Una llave doblada con una M");
+                if (!objetosObtenidos[1]) {
+                    System.out.println("2. " + nombreObjetos[1]);
                 } else {
                     System.out.println(objetoCogido);
                 }
-                if (!inventario[2]) {
+                if (!objetosObtenidos[2]) {
                     System.out.println("3. Una clave de acceso medio quemada");
                 } else {
                     System.out.println(objetoCogido);
@@ -316,17 +316,17 @@ public class Mensajes {
                 System.out.println("        ************COCINA************");
                 System.out.println("__________________________________________________");
                 System.out.println("Decides investigar los objetos y te encuentras");
-                if (!inventario[3]) {
+                if (!objetosObtenidos[3]) {
                     System.out.println("1. Un trozo de pan galactico que no se pudre en 5 años");
                 } else {
                     System.out.println(objetoCogido);
                 }
-                if (!inventario[4]) {
+                if (!objetosObtenidos[4]) {
                     System.out.println("2. Una sarte de cobalto niquelado, vieja pero indestructible");
                 } else {
                     System.out.println(objetoCogido);
                 }
-                if (!inventario[5]) {
+                if (!objetosObtenidos[5]) {
                     System.out.println("3. Cuchillos de madera");
                 } else {
                     System.out.println(objetoCogido);
@@ -346,12 +346,12 @@ public class Mensajes {
                 System.out.println("Ves los siguientes objetos");
                 System.out.println("1. Una silla ergonomica vintage");
                 
-                if (!inventario[6]) {
+                if (!objetosObtenidos[6]) {
                     System.out.println("2. Comida enlatada ");
                 } else {
                     System.out.println(objetoCogido);
                 }
-                if (!inventario[7]) {
+                if (!objetosObtenidos[7]) {
                     System.out.println("3. Instrucciones de un jet antiguo");
                 } else {
                     System.out.println(objetoCogido);
@@ -386,7 +386,7 @@ public class Mensajes {
                 System.out.println("        *******SALA DE REUNIONES*******");
                 System.out.println("__________________________________________________");
                 System.out.println("En la sala hay una mesa central con cajones mirando hacia cada silla pero todos estan cerrados menos el del comandante.");
-                if (!inventario[9] || !inventario[8]) { // Casco y el boligrafo
+                if (!objetosObtenidos[9] || !objetosObtenidos[8]) { // Casco y el boligrafo
                     System.out.println("1. Cajón del comandante");
                 } else {
                     System.out.println(objetoCogido);
@@ -395,7 +395,7 @@ public class Mensajes {
                 System.out.println("2. Mirar encima de la mesa");
 
                 
-                if (!inventario[10]) {
+                if (!objetosObtenidos[10]) {
                     System.out.println("3. Mirar debajo de la mesa");
                 } else {
                     System.out.println(objetoCogido);
@@ -414,7 +414,7 @@ public class Mensajes {
                 System.out.println("        *********DOMITORIOS*********");
                 System.out.println("__________________________________________________");
                 System.out.println("Ves delante tuya 4 habitaciones");
-                if (!inventario[11]) {
+                if (!objetosObtenidos[11]) {
                     System.out.println("1. Inspeccionar habitacion 1");
                 } else {
                     System.out.println(objetoCogido);
@@ -431,7 +431,7 @@ public class Mensajes {
                                         System.out.println(objetoCogido);
                                     }
                 */
-                if (!inventario[13]) {
+                if (!objetosObtenidos[13]) {
                     System.out.println("4. Inspeccionar habitacion 4");
                 } else {
                     System.out.println(objetoCogido);
@@ -452,7 +452,7 @@ public class Mensajes {
                 System.out.println("__________________________________________________");
                 System.out.println("Esas cosas son:");
                 System.out.println("1. Bidon de gasolina");
-                if (!inventario[14]) {
+                if (!objetosObtenidos[14]) {
                     System.out.println("2. Sierra mecanica");
                 } else {
                     System.out.println(objetoCogido);
