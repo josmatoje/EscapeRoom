@@ -16,8 +16,8 @@ public class EscapeRoom {
         Inventario inven = new Inventario();
         
         //Declaracion de variables
-        boolean respuestaSiNo, dificil, acabarInspeccion, ganado, salirJuego;
-        int sala, eleccion, vida, movimientos;
+        boolean respuestaSiNo, dificil, acabarInspeccion, ganado, salirJuego, visitaLucia;
+        int sala, eleccion, vida, escudo, municion, movimientos;
         
         int[] inventario;
         
@@ -70,8 +70,8 @@ public class EscapeRoom {
         //do-while del escape room completo
         do{
             //Inicializacion de variables
-            sala=0; eleccion=0;
-            acabarInspeccion=false; ganado=false; salirJuego=false;
+            sala=0; eleccion=0; escudo=0; municion=0;
+            acabarInspeccion=false; ganado=false; salirJuego=false; visitaLucia=false;
             
             for(boolean i:objetosObtenidos){
                 i=false;
@@ -83,10 +83,11 @@ public class EscapeRoom {
             
             dificil=comp.dificultad(teclado);
             if (dificil){
-                vida = 3; movimientos = 80;  //movimiento = un minuto
+                vida = 3; movimientos = 80;
                 inventario = new int[4];
             }else{
-                vida = 5; movimientos = 100;  //movimiento = un minuto
+                vida = 4; movimientos = 100;
+                escudo=1;
                 inventario = new int[7];
             }
             
@@ -104,7 +105,7 @@ public class EscapeRoom {
                 acabarInspeccion=false;
                 
                 mensaje.Sala(sala,nuevaSala[sala], objetosObtenidos);
-                nuevaSala[sala]=false;
+                nuevaSala[sala]=false;//Si no se habia visitado aun se actualiza a 
                 mensaje.Menu(sala);//Mensajes del menu en funcion de la sala en la que estes
                 
                 eleccion=comp.eleccionMenuPrincipal(sala, teclado);//Valora si la eleccion es valida y la almacena
@@ -190,7 +191,8 @@ public class EscapeRoom {
                             break;
                             
                             case 3: 
-                                System.out.println("¿Estás seguro de que deseas salir?");
+                                        System.out.println("¿Estas seguro de querer abandonar la partida?");
+                                System.out.println("Tu progreso se perderá por completo");
                                 salirJuego=comp.validacionSiNo(teclado);
                             break;
                             
@@ -198,12 +200,14 @@ public class EscapeRoom {
                             break;
                             
                             case 5:
-                                System.out.println("¿Estás seguro de que deseas salir?");
+                                        System.out.println("¿Estas seguro de querer abandonar la partida?");
+                                System.out.println("Tu progreso se perderá por completo");
                                 salirJuego=comp.validacionSiNo(teclado);
                             break;
                             
                             case 6:
-                                System.out.println("¿Estás seguro de que deseas salir?");
+                                        System.out.println("¿Estas seguro de querer abandonar la partida?");
+                                System.out.println("Tu progreso se perderá por completo");
                                 salirJuego=comp.validacionSiNo(teclado);
                             break;
                             
@@ -218,12 +222,14 @@ public class EscapeRoom {
                             break;
                             
                             case 1: 
-                                System.out.println("¿Estás seguro de que deseas salir?");
+                                        System.out.println("¿Estas seguro de querer abandonar la partida?");
+                                System.out.println("Tu progreso se perderá por completo");
                                 salirJuego=comp.validacionSiNo(teclado);
                             break;
                             
                             case 2: 
-                                System.out.println("¿Estás seguro de que deseas salir?");
+                                        System.out.println("¿Estas seguro de querer abandonar la partida?");
+                                System.out.println("Tu progreso se perderá por completo");
                                 salirJuego=comp.validacionSiNo(teclado);
                             break;
                             
@@ -246,12 +252,14 @@ public class EscapeRoom {
                     case 6:
                         switch (sala){
                             case 0: 
-                                System.out.println("¿Estás seguro de que deseas salir?");
+                                        System.out.println("¿Estas seguro de querer abandonar la partida?");
+                                System.out.println("Tu progreso se perderá por completo");
                                 salirJuego=comp.validacionSiNo(teclado);
                             break;
                             
                             case 1: 
-                                System.out.println("¿Estás seguro de que deseas salir?");
+                                        System.out.println("¿Estas seguro de querer abandonar la partida?");
+                                System.out.println("Tu progreso se perderá por completo");
                                 salirJuego=comp.validacionSiNo(teclado);
                             break;
                             
@@ -262,7 +270,8 @@ public class EscapeRoom {
                             break;
                             
                             case 4: 
-                                System.out.println("¿Estás seguro de que deseas salir?");
+                                        System.out.println("¿Estas seguro de querer abandonar la partida?");
+                                System.out.println("Tu progreso se perderá por completo");
                                 salirJuego=comp.validacionSiNo(teclado);
                             break;
                             
@@ -288,7 +297,7 @@ public class EscapeRoom {
                         eleccion=0;
                         acabarInspeccion=false;//No necesario pero nos asegurames de que esté en falso hasta que se desee salir
                         
-                        mensaje.MenuInteraccion(sala, objetosObtenidos, nombreObjetos);//Mensaje de los menus internos de cada sala
+                        mensaje.MenuInteraccion(sala, objetosObtenidos, nombreObjetos, inventario);//Mensaje de los menus internos de cada sala
 
                         eleccion=comp.eleccionMenuInteraccion(sala, teclado);
                     
@@ -306,7 +315,10 @@ public class EscapeRoom {
                                             System.out.println("¿Deseas guardarlo en tu inventario?");
                                             if(comp.validacionSiNo(teclado)){
                                                 System.out.println("Guardando en el inventario...");
-                                                inventario=inven.insertarObjeto(0, inventario, teclado, nombreObjetos);
+                                                inventario=inven.insertarObjeto(0, inventario, teclado, nombreObjetos);//Con este metodo no sabemos si se ha insertado el objeto
+                                                //Comprobamos que se ha introducido finalmente el objeto en el inventario para realizar las acciones
+                                                if(inven.comprobarInventario(0, inventario))
+                                                        objetosObtenidos[0]=true;//No se le asigna el valor de comprobarInventario ya que el no estar en el inventario no implica que si esté en la habitación
                                             }else{
                                                 System.out.println("Estaba claro. ¿Para que iba a querer unos cables rotos?");
                                             }
@@ -324,7 +336,10 @@ public class EscapeRoom {
                                             System.out.println("¿Deseas guardarlo en tu inventario?");
                                             if(comp.validacionSiNo(teclado)){
                                                 System.out.println("Guardando en el inventario...");
-                                                inventario=inven.insertarObjeto(1, inventario, teclado, nombreObjetos);
+                                                inventario=inven.insertarObjeto(1, inventario, teclado, nombreObjetos);//Con este metodo no sabemos si se ha insertado el objeto
+                                                //Comprobamos que se ha introducido finalmente el objeto en el inventario para realizar las acciones
+                                                if(inven.comprobarInventario(1, inventario))
+                                                        objetosObtenidos[1]=true;//No se le asigna el valor de comprobarInventario ya que el no estar en el inventario no implica que si esté en la habitación
                                             }else{
                                                 System.out.println("Da igual, estoy demasiado cansado para arreglar esta maldita llave.");
                                             }
@@ -342,7 +357,10 @@ public class EscapeRoom {
                                             System.out.println("¿Deseas guardarlo en tu inventario?");
                                             if(comp.validacionSiNo(teclado)){
                                                 System.out.println("Guardando en el inventario...");
-                                                inventario=inven.insertarObjeto(2, inventario, teclado, nombreObjetos);
+                                                inventario=inven.insertarObjeto(2, inventario, teclado, nombreObjetos);//Con este metodo no sabemos si se ha insertado el objeto
+                                                //Comprobamos que se ha introducido finalmente el objeto en el inventario para realizar las acciones
+                                                if(inven.comprobarInventario(2, inventario))
+                                                        objetosObtenidos[2]=true;//No se le asigna el valor de comprobarInventario ya que el no estar en el inventario no implica que si esté en la habitación
                                             }else{
                                                 System.out.println("Ojalá fuera yo esa clave y me hubiera calcinado medio cuerpo en el accidente...");
                                             }
@@ -362,7 +380,11 @@ public class EscapeRoom {
                                     break;
                                     
                                     case 6:
-                                        salirJuego=true;
+                                        System.out.println("¿Estas seguro de querer abandonar la partida?");
+                                        System.out.println("Tu progreso se perderá por completo");
+                                        if(comp.validacionSiNo(teclado)){
+                                            salirJuego=true;
+                                        }
                                     break;
                                     
                                     default: System.out.println("Algo ha salido mal");
@@ -379,12 +401,24 @@ public class EscapeRoom {
                                         
                                         if(!objetosObtenidos[3]){
                                             System.out.println("No parece especialmente apetecible, pero tampoc crees que esté malo.");
-                                            System.out.println("¿Deseas guardarlo en tu inventario?");
+                                            System.out.println("¿Quieres comertelo? (usar)");
                                             if(comp.validacionSiNo(teclado)){
-                                                System.out.println("Guardando en el inventario...");
-                                                inventario=inven.insertarObjeto(3, inventario, teclado, nombreObjetos);
+                                                objetosObtenidos[3]=true;
+                                                vida++;
+                                                escudo++;
+                                                System.out.println("Sientes como es pequeño trozo de pan te revitaliza mucho más de lo que esperabas.");
+                                                System.out.println("Ganas uno de vida (+1) y un escudo (+1)");
                                             }else{
-                                                System.out.println("Si no se ha puesto malo puede quedarse aqui unos cuantos años más.");
+                                                System.out.println("¿Deseas guardarlo en tu inventario?");
+                                                if(comp.validacionSiNo(teclado)){
+                                                    System.out.println("Guardando en el inventario...");
+                                                    inventario=inven.insertarObjeto(3, inventario, teclado, nombreObjetos);//Con este metodo no sabemos si se ha insertado el objeto
+                                                    //Comprobamos que se ha introducido finalmente el objeto en el inventario para realizar las acciones
+                                                    if(inven.comprobarInventario(3, inventario))
+                                                        objetosObtenidos[3]=true;//No se le asigna el valor de comprobarInventario ya que el no estar en el inventario no implica que si esté en la habitación
+                                                }else{
+                                                    System.out.println("Si no se ha puesto malo puede quedarse aqui unos cuantos años más.");
+                                                }
                                             }
                                         }else{
                                             System.out.println("Ya tienes el objeto.");
@@ -400,7 +434,15 @@ public class EscapeRoom {
                                             System.out.println("¿Deseas guardarlo en tu inventario?");
                                             if(comp.validacionSiNo(teclado)){
                                                 System.out.println("Guardando en el inventario...");
-                                                inventario=inven.insertarObjeto(1, inventario, teclado, nombreObjetos);
+                                                inventario=inven.insertarObjeto(4, inventario, teclado, nombreObjetos);//Con este metodo no sabemos si se ha insertado el objeto
+                                                //Comprobamos que se ha introducido finalmente el objeto en el inventario para realizar las acciones
+                                                if(inven.comprobarInventario(4, inventario)){
+                                                        objetosObtenidos[4]=true;//No se le asigna el valor de comprobarInventario ya que el no estar en el inventario no implica que si esté en la habitación
+                                                        System.out.println("Te sientes más pesado, pero tambien más protegido.");
+                                                        System.out.println("Ganas un escudo (+1)");
+                                                        escudo++;
+                                                    }
+                                                
                                             }else{
                                                 System.out.println("Dejemosla aquí, que siga viendo el paso del tiempo.");
                                             }
@@ -419,7 +461,10 @@ public class EscapeRoom {
                                             System.out.println("¿Deseas guardarlo en tu inventario?");
                                             if(comp.validacionSiNo(teclado)){
                                                 System.out.println("Guardando en el inventario...");
-                                                inventario=inven.insertarObjeto(5, inventario, teclado, nombreObjetos);
+                                                inventario=inven.insertarObjeto(5, inventario, teclado, nombreObjetos);//Con este metodo no sabemos si se ha insertado el objeto
+                                                //Comprobamos que se ha introducido finalmente el objeto en el inventario para realizar las acciones
+                                                if(inven.comprobarInventario(5, inventario))
+                                                        objetosObtenidos[5]=true;//No se le asigna el valor de comprobarInventario ya que el no estar en el inventario no implica que si esté en la habitación
                                             }else{
                                                 System.out.println("¿Pero desde cuando los cuchillos son de madera?");
                                             }
@@ -439,7 +484,9 @@ public class EscapeRoom {
                                     break;
                                     
                                     case 6:
-                                        salirJuego=true;
+                                        System.out.println("¿Estás seguro de que deseas salir?");
+                                        System.out.println("Tu progreso se perderá por completo");
+                                        salirJuego=comp.validacionSiNo(teclado);
                                     break;
                                     
                                     default: System.out.println("Algo ha salido mal");
@@ -450,10 +497,166 @@ public class EscapeRoom {
                             
                             case 2:
                                 
+                                switch (eleccion){
+                                    
+                                    case 1: 
+                                        
+                                        System.out.println("A pesar de lo enclenque que parece esta silla podría aguantar hasta ");
+                                        System.out.println("diez veces tu peso, pero sin duda no llegarás muy lejos con ella.");
+                                        System.out.println("");
+                                        System.out.println("Se te ocurre que puedes moverla a algunos lugares...");
+                                        
+                                        do{
+                                            System.out.println("Mover silla a:");
+                                            System.out.println("1. Puerta con ventana");
+                                            System.out.println("2. Mesa central");
+                                            System.out.println("3. Altillo");
+                                            System.out.println("4. Dejar silla");
+                                            
+                                            //Asignamos valor introducido por teclado y validamos para la seleccion de mover silla
+                                            eleccion=comp.valorEntre1y4(teclado.nextInt(), teclado);//GUAU como funke esta vaina
+                                            
+                                            switch(eleccion){
+                                                
+                                                case 1:
+                                                    System.out.println("Te acercas a la puerta y ves que la enfermera yace muerta en el interior.");
+                                                    if(visitaLucia){
+                                                        System.out.println("vete olvidando de poder abrir esa caja del dormitorio con la llave...");
+                                                        System.out.println("alcanzas a ver como reluce en su cuello.");
+                                                    }
+                                                break;
+                                                
+                                                case 2:
+                                                    System.out.println("¿Quieres subir a la mesa?");
+                                                    if(comp.validacionSiNo(teclado)){
+                                                        System.out.println("Te crees el rey de la nave y empiezas a bailar, nadie puede pararte, eres tú");
+                                                        System.out.println("y la música que no para de sonar en tu cabeza. Ves que el mundo se paraliza a tu");
+                                                        System.out.println("alrededor mientras tu no dejas de bailar. La mesa es tuya y nadie puede bajarte de ahi");
+                                                        System.out.println(".");
+                                                        System.out.println(".");
+                                                        System.out.println(".");
+                                                        System.out.println("Después de perder 10 movimientos te replanteas tus metas y aspiraciones y continuas");
+                                                        System.out.println("buscando la forma de salvar tu vida (-10 movimientos)");
+                                                        movimientos-=10;
+                                                    }
+                                                break;
+                                                
+                                                case 3://Bug intencionado, si repites esta accion puedes conseguir más munición
+                                                    System.out.println("¿Quieres subir al altillo?");
+                                                    if(comp.validacionSiNo(teclado)){
+                                                        System.out.print("Ves una caja de munición");
+                                                        if(objetosObtenidos[11])
+                                                            System.out.print(" que parece que le vale a tu arma.");
+                                                        System.out.println("");
+                                                        System.out.println("Que lastima solo queda una bala... (+1 municion)");
+                                                        municion++;
+                                                        if(municion>5)
+                                                            System.out.println("Efectivamente, has encontrado un bug. Puedes aprovecharlo si crees que será util, pero te recuerdo que estás perdiendo turnos............................................................................... xD");
+                                                    }
+                                                break;
+                                               
+                                                case 4:
+                                                    System.out.println("Dejas la silla exactamente donde estaba porque recuerdas que al jefe no le gustaba que le");
+                                                    System.out.println("su silla... cierto, no crees que te vaya a ver pero quien sabe.");
+                                                break;
+                                                
+                                                default: System.out.println("Algo ha salido mal");
+                                                
+                                            }
+                                            //Se resta movimientos cada vez que se haga algo con la silla
+                                            movimientos--;
+                                            
+                                        }while(eleccion!=4 && movimientos>0 && vida>0);
+                                        
+                                    break;
+                                    
+                                    case 2:
+                                        
+                                        if(!objetosObtenidos[6]){
+                                            System.out.println("Es una de tus comidas favoritas, que lastima que no puedas abrirla para comertela...");
+                                            if(objetosObtenidos[5]){//si ha visto el cuchillo
+                                                System.out.println("¡¡¡EEEEEEHH!!! Ese cuchillo de madera podría abrirla");
+                                                for(int i=1; i<inventario.length; i++){
+                                                    if(inventario[i]==5){//si tiene el cuchillo
+                                                        System.out.println("¿Quieres usar el cuchillo para comerte la lata? (probabilidad baja de romper cuchillo)");
+                                                        if(comp.validacionSiNo(teclado)){
+                                                            objetosObtenidos[6]=true;
+                                                            vida++;
+                                                            movimientos+=5;
+                                                            System.out.println("La comida de tus sueños no es especialmente nutritiva pero te da la sensacion de ser");
+                                                            System.out.println("mucho más agil");
+                                                            System.out.println("Ganas uno de vida (+1) y cinco movimientos (+5)");
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            //Si no se ha comido el objeto
+                                            if(!objetosObtenidos[6]){
+                                                System.out.println("¿Deseas guardarlo en tu inventario?");
+                                                if(comp.validacionSiNo(teclado)){
+                                                    System.out.println("Guardando en el inventario...");
+                                                    inventario=inven.insertarObjeto(3, inventario, teclado, nombreObjetos);//Con este metodo no sabemos si se ha insertado el objeto
+                                                    //Comprobamos que se ha introducido finalmente el objeto en el inventario para realizar las acciones
+                                                    if(inven.comprobarInventario(6, inventario))
+                                                        objetosObtenidos[6]=true;//No se le asigna el valor de comprobarInventario ya que el no estar en el inventario no implica que si esté en la habitación
+                                                }else{
+                                                    System.out.println("Con todo el dolor de mi corazón te dejo aquí. Pero cuando me recupere volveré a por ti.");
+                                                }
+                                            }
+                                        }else{
+                                            System.out.println("Ya tienes el objeto.");
+                                        }
+                                        
+                                    break;
+                                    
+                                    case 3:
+                                        
+                                        if(!objetosObtenidos[7]){
+                                            System.out.println("Ves un esquema de la zona de motores de lo que sin duda es tu nave.");
+                                            System.out.println(" Hay marcado una señal con una X… Eso suele significar algo.");
+                                            System.out.println("¿Deseas guardarlo en tu inventario?");
+                                            if(comp.validacionSiNo(teclado)){
+                                                System.out.println("Guardando en el inventario...");
+                                                inventario=inven.insertarObjeto(7, inventario, teclado, nombreObjetos);//Con este metodo no sabemos si se ha insertado el objeto
+                                                //Comprobamos que se ha introducido finalmente el objeto en el inventario para realizar las acciones
+                                                if(inven.comprobarInventario(7, inventario))
+                                                        objetosObtenidos[7]=true;//No se le asigna el valor de comprobarInventario ya que el no estar en el inventario no implica que si esté en la habitación
+                                            }else{
+                                                System.out.println("Esto no es una pelicula de piratas, no tengo tiempo de buscar tesoros.7");
+                                            }
+                                        }else{
+                                            System.out.println("Ya tienes el objeto.");
+                                        }
+                                        
+                                    break;
+                                    
+                                    case 4:
+                                        acabarInspeccion=true;
+                                    break;
+                                    
+                                    case 5:
+                                        mensaje.Estado(vida, movimientos, inventario, nombreObjetos);
+                                        movimientos++;
+                                    break;
+                                    
+                                    case 6:
+                                        System.out.println("¿Estás seguro de que deseas salir?");
+                                        System.out.println("Tu progreso se perderá por completo");
+                                        salirJuego=comp.validacionSiNo(teclado);
+                                    break;
+                                    
+                                    default: System.out.println("Algo ha salido mal");
+                                    
+                                }
+                                
                             break;
                             
                             case 3:
-                                
+                                System.out.println("¡HAS GANADO!");
+                                ganado=true;
+                                /*
+                                    Desarrollar
+                                */
                             break;
                             
                             case 4:

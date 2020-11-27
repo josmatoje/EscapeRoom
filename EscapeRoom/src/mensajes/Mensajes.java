@@ -1,5 +1,7 @@
 package mensajes;
 
+import inventario.Inventario;
+
 public class Mensajes {
 
     public void Bienvenida() {
@@ -257,8 +259,10 @@ public class Mensajes {
 
     }
 
-    public void MenuInteraccion(int sala, boolean[] objetosObtenidos, String[] nombreObjetos) {
+    public void MenuInteraccion(int sala, boolean[] objetosObtenidos, String[] nombreObjetos, int [] inventario) {
 
+        Inventario inv = new Inventario();
+        
         String todoCogido = "Ya has cogido todos los objetos de esta sala.";
         String objetoCogido = "Ya has obtenido este objeto";
 
@@ -457,13 +461,17 @@ public class Mensajes {
                 } else {
                     System.out.println(objetoCogido);
                 }
-                System.out.println("3. Dirigirte a la X del mapa encontrado");
                 System.out.println("");
                 System.out.println("Tambien puedes:");
-                System.out.println("4. Volver al centro de la sala");
-                System.out.println("5. Estado de la partida");
-                System.out.println("6. Salir del juego");
+                System.out.println("3. Volver al centro de la sala");
+                System.out.println("4. Estado de la partida");
+                System.out.println("5. Salir del juego");
                 System.out.println("");
+                if(inv.comprobarInventario(7, inventario)){
+                    System.out.println("6. Dirigirte a la X del mapa encontrado");
+                    System.out.println("");
+                }
+                
                 System.out.println("¿Qué vas a hacer?");
                 break;
 

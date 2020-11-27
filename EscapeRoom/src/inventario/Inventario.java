@@ -41,7 +41,7 @@ public class Inventario {
             }
         }
         
-        //
+        //Si no se ha insertado significa que no hay espacio en el inventario
         if(!insertado){
             
             System.out.println("No hay espacio suficiente para insertar el objeto");
@@ -88,6 +88,31 @@ public class Inventario {
         }
         
         return inventario;
+    }
+    
+    /*
+    Signatura: public boolean comprobarInventario (int objeto, int [] inventario)
+    Descripción: comprueba si un objeto está en el inventario y devuelve true en caso afirmativo y false
+            en caso contrario
+    Precondiciones: se debe introducir valores del programa EscapeRoom para garantizar un resultado optimo
+    Entradas: entero que identifica al objeto, array de enteros que identifica al inventario con sus objetos
+            correspondientes
+    Salida: booleano indicando el resultado
+    Postcondiciones: si se introducen objetos que no existen o el array inventario contiene otros datos al no
+            encontrar similutedes por defecto devolverá false
+    */
+    public boolean comprobarInventario (int objeto, int [] inventario){
+        
+        boolean guardado=false;
+        
+        for(int i=0; i<inventario.length;i++){
+            if(inventario[i]==objeto){
+                guardado=true;
+                i=inventario.length;
+            }
+        }
+        
+        return guardado;
     }
     
     
