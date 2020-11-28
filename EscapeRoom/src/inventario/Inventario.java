@@ -202,5 +202,24 @@ public class Inventario {
         
         return mensaje;
     }
+    /*
+    Signatura: public int[] eliminarObjeto (int objeto, int [] inventario)
+    Descripcion: este metodo elimina un objeto del array inventario y lo devuelve sin este
+    Precondiciones: deben usarse valores correspondientes a un inventario del juego EscapeRoom
+    Entrada:  un objeto de tipo entero que representa el objeto a eliminar
+    Entrada/Salida: un array de enteros que representa el inventario y sale sin el objeto pasado por parametros
+    Postcondiciones: --
+    */
+    public int[] eliminarObjeto (int objeto, int [] inventario){
+        
+        for(int i=0; i<inventario.length; i++){
+            if(inventario[i]==objeto){
+                inventario[i]=-1;
+                i=inventario.length;
+            }
+        }
+        
+        return inventario;
+    }
     
 }

@@ -19,6 +19,7 @@ public class EscapeRoom {
 
         //Declaracion de variables
         boolean respuestaSiNo, dificil, acabarInspeccion, ganado, salirJuego, visitaLucia, candadoRoto, revistaX, llaveRecta;
+        boolean respuestaSiNo, dificil, acabarInspeccion, ganado, salirJuego, visitaLucia, candadoRoto, revistaX, saberEnfermeria, enfermeriaRota;
         int sala, eleccionMenu, eleccion, vida, escudo, municion, movimientos;
         String clave, claveEnfermeria;
 
@@ -49,27 +50,19 @@ public class EscapeRoom {
         //do-while del escape room completo
         do {
             //Inicializacion de variables
-            sala = 0;
-            eleccionMenu = 0;
-            eleccion = 0;
-            escudo = 0;
-            municion = 0;
-            acabarInspeccion = false;
-            ganado = false;
-            salirJuego = false;
-            visitaLucia = false;
-            candadoRoto = false;
-            revistaX = false;
-            clave = "     ";
-            claveEnfermeria = "g34rd9j4r439r34fi44z";//Podemos hacer un subprograma que genere claves
-            nombreObjetos[10] = "Papel";
-
-            for (boolean i : objetosObtenidos) {
-                i = false;
+            sala=0; eleccionMenu=0; eleccion=0; escudo=0; municion=0;
+            acabarInspeccion=false; ganado=false; salirJuego=false; visitaLucia=false;
+            candadoRoto=false; revistaX=false; saberEnfermeria=false; enfermeriaRota=false;
+            clave="     ";
+            claveEnfermeria="g34rd9j4r439r34fi44z";//Podemos hacer un subprograma que genere claves
+            nombreObjetos[10]="Papel";
+            
+            for(int i=0; i<objetosObtenidos.length; i++){
+                objetosObtenidos[i]=false;
             }
-
-            for (boolean i : nuevaSala) {
-                i = true;
+            
+            for(int i=0; i<nuevaSala.length; i++){
+                nuevaSala[i]=true;
             }
 
             dificil = comp.dificultad(teclado);
@@ -83,9 +76,9 @@ public class EscapeRoom {
                 escudo = 1;
                 inventario = new int[7];
             }
-
-            for (int i : inventario) {
-                i = -1;
+            
+            for(int i=0; i<inventario.length; i++){
+                inventario[i]=-1;
             }
 
             mensaje.Inicio();
@@ -100,538 +93,501 @@ public class EscapeRoom {
                 mensaje.Sala(sala, nuevaSala[sala], objetosObtenidos);
                 nuevaSala[sala] = false;//Si no se habia visitado aun se actualiza a 
                 mensaje.Menu(sala);//Mensajes del menu en funcion de la sala en la que estes
+                
+                if(sala==3){
+                    ganado=true;
+                }else{
+                    eleccionMenu=comp.eleccionMenuPrincipal(sala, teclado);//Valora si la eleccion es valida y la almacena
+                
+                    //switch de acciones segun la eleccion tomada en la sala en la que se encuentre
+                    switch (eleccionMenu){
 
-                eleccionMenu = comp.eleccionMenuPrincipal(sala, teclado);//Valora si la eleccion es valida y la almacena
-                //switch de acciones segun la eleccion tomada en la sala en la que se encuentre
-                switch (eleccionMenu) {
-
-                    case 1:
-                        System.out.println("Investigando sala...");
+                        case 1:
+                            System.out.println("Investigando sala...");
                         break;
 
-                    case 2:
-                        switch (sala) { //En cada sala habra diferentes funciones para el mismo numero
+                        case 2:
+                            switch (sala){
 
-                            case 0:
-                                sala = 1;
+                                case 0: 
+                                    sala=1;
                                 break;
 
-                            case 1:
-                                sala = 2;
+                                case 1: 
+                                    sala=2;
                                 break;
 
-                            case 2:
-                                sala = 3;
-                                break;
-
-                            case 3:
-                                sala = 2;
-                                break;
-
-                            case 4:
-                                sala = 5;
-                                break;
-
-                            case 5:
-                                sala = 4;
-                                break;
-
-                            case 6:
-                                sala = 4;
-                                break;
-
-                            default:
-                                System.out.println("Algo ha salido mal");
-                        }
-                        break;
-
-                    case 3:
-                        switch (sala) {
-
-                            case 0:
-                                sala = 4;
-                                break;
-
-                            case 1:
-                                sala = 0;
-                                break;
-
-                            case 2:
-                                sala = 1;
-                                break;
-
-                            case 3: //NO seria el case 5?
-
-                                eleccion = mensaje.Estado(vida, movimientos, inventario, nombreObjetos, teclado);
-                                if (eleccion != -1) {
-
-                                    switch (inventario[eleccion]) {
-
-                                        case 3:
-                                            vida++;
-                                            escudo++;
-                                            System.out.println("Sientes como es pequeño trozo de pan te revitaliza mucho más de lo que esperabas.");
-                                            System.out.println("Ganas uno de vida (+1) y un escudo (+1)");
-                                            inventario[eleccion] = -1;
-                                            break;
-
-                                        case 6:
-                                            if (inven.usarLata(inventario, teclado)) {
-                                                vida++;
-                                                movimientos += 5;
-                                                inventario[eleccion] = -1;
-                                                /*if(Math.random()<0.2){
-                                                    //buscar cuchillo y romper
-                                                }*/
+                                case 2: 
+                                    
+                                    if(enfermeriaRota){
+                                        System.out.println("Te has cargado computadora de claves, menos mal que no rompiste la sierra mecanica.");
+                                        System.out.println("Vas a tener que arreglarla para poder pasar.");
+                                        if(inven.comprobarInventario(0, inventario)){
+                                            System.out.println("Parece que tienes unos restos de cables que podrían ser utiles.");
+                                            System.out.println("¿Quieres usar los cables e intentar arreglarlo?");
+                                            if(comp.validacionSiNo(teclado)){
+                                                System.out.println("Te lleva un buen rato pero consigues que funcione tras un buen rato");
+                                                System.out.println("Pierdes diez movimientos (-10)");
+                                                inventario=inven.eliminarObjeto(0, inventario);
+                                                movimientos -= 15;
+                                            }else{
+                                                System.out.println("Que le den a esa puerta, ni que la salvación esté detrás de esa puerta... oh wait");
                                             }
-                                            break;
-
-                                        case 10:
-                                            nombreObjetos[10] = inven.usarPapel(teclado);
-                                            break;
-
-                                        case 13:
-                                            movimientos += 10;
-                                            System.out.println("Te la inyectas sin pensarlo demasiado y esperas unos segundos. No notas nada pero te");
-                                            System.out.println("fijas en que tus heridas ya no sangran como antes. Digamos que estas más espeso de lo normal.");
-                                            System.out.println("Ganas diez movimientos (+10)");
-                                            inventario[eleccion] = -1;
-                                            break;
-
+                                        }
+                                    }else{
+                                        //Sala (enfermeria) bloqueada (desde cantina) mientras no introduzcas el codigo
+                                        if(nuevaSala[3]){
+                                            if(!saberEnfermeria){
+                                                System.out.println("¡¡¡Oh dios santo!!! ¿Pero que ven mis ojos?");
+                                                System.out.println("¿Es eso la enfermeria o estoy soñando?");
+                                                saberEnfermeria=true;
+                                            }
+                                            System.out.println("Pero no tan rápido, parece que necesitas un codigo de acceso para abrir la puerta");
+                                            System.out.println("Ese código que solo sabía la enfermera... ");
+                                            System.out.println("¿Quieres probar a introducirla? (20 digitos)");
+                                            do{
+                                                respuestaSiNo=comp.validacionSiNo(teclado);
+                                                if(respuestaSiNo){
+                                                    System.out.println("Introduzca clave de acceso: ");
+                                                    clave=teclado.nextLine();
+                                                    if(clave.equals(claveEnfermeria)){
+                                                        System.out.println("¡¡¡¡Ha funcionado!!!!");
+                                                        System.out.println("Se abre la puerta y cruzas...");
+                                                        System.out.println("");
+                                                        sala=3;
+                                                    }else{
+                                                        System.out.println("      ----ERROR***");
+                                                        System.out.println("¿Probar otra vez?");
+                                                    }
+                                                }else{
+                                                    System.out.println("Ya volveré en otro momento...");
+                                                }
+                                                movimientos--;
+                                            }while(respuestaSiNo);
+                                            //Si tiene sierra mecanica
+                                            if(inven.comprobarInventario(14, inventario)){
+                                                System.out.println("¿Quieres usar la sierra mecanica");
+                                                if(comp.validacionSiNo(teclado)){
+                                                    System.out.println("Vamos a ver si podemos abrir esto.");
+                                                    enfermeriaRota=true;
+                                                    System.out.println("Parece que ese humillo no es muy buena señal.");
+                                                    System.out.println("Bueno, parece que vamos a tener que arreglar esto para poder entrar");
+                                                    System.out.println("Al menos no se ha roto la sierra mecanica :D");
+                                                }else{
+                                                    System.out.println("Mejor vamos a no hacer locuras");
+                                                }
+                                            }
+                                        }else{//No será necesario
+                                            sala=3;
+                                        }
                                     }
-                                }
-
                                 break;
 
-                            case 4:
-                                if (nuevaSala[sala]) {//SI nunca has entrado tienes que hacer el juego
+                                case 4: 
+                                    sala=5;
+                                break;
 
-                                    System.out.println("Vaya, la puerta se encuentra cerrada, pero tiene una m Gigante pintada. Te acuerdas que todas las puertas importantes con letras");
-                                    System.out.println("se abrian con su respectiva llave y con la misma letra.");
-                                    if (inven.comprobarInventario(1, inventario)) { // Si tienes la llave doblada
+                                case 5: 
+                                    sala=4;
+                                break;
 
-                                        System.out.println("Menos mal que tenias una llave guardada, aunque no estuviera muy bien, se puede arreglar dandole golpes");
-                                        System.out.println("Quieres intentar ponerla bien? Te va a cansar, pero la recompensa es incierta");
-                                        if (comp.validacionSiNo(teclado)) {
+                                case 6: 
+                                    sala=4;
+                                break;
 
-                                            do {
+                                default: System.out.println("Algo ha salido mal");
+                            }
+                        break;
 
-                                                llaveRecta = juego.Llave(teclado);
-                                                if (llaveRecta) {
+                        case 3:
+                            switch (sala){
 
-                                                    System.out.println("De los mejores momentos de tu vida, te has sentido un verdadero troglodita de la prehistoria descubriendo las herramientas");
-                                                    sala = 6;
-                                                } else {
-                                                    System.out.println("No lo has conseguido y has perdido tres movimientos,deseas volver a repetirlo?");
-  
+                                case 0: 
+                                    sala=4;
+                                break;
+
+                                case 1: 
+                                    sala=0;
+                                break;
+
+                                case 2: 
+                                    sala=1;
+                                break;
+
+                                case 4: 
+                                    sala=6;
+                                break;
+
+                                case 5:
+
+                                    eleccion=mensaje.Estado(vida, movimientos, inventario, nombreObjetos, teclado);
+                                    if(eleccion!=-1){
+
+                                        switch (inventario[eleccion]){
+
+                                            case 3:
+                                                vida++;
+                                                escudo++;
+                                                System.out.println("Sientes como es pequeño trozo de pan te revitaliza mucho más de lo que esperabas.");
+                                                System.out.println("Ganas uno de vida (+1) y un escudo (+1)");
+                                                inventario[eleccion]=-1;
+                                            break;
+
+                                            case 6:
+                                                if(inven.usarLata(inventario, teclado)){
+                                                    vida++;
+                                                    movimientos+=5;
+                                                    inventario[eleccion]=-1;
+                                                    /*if(Math.random()<0.2){
+                                                        //buscar cuchillo y romper
+                                                    }*/                                                  
                                                 }
+                                            break;
 
-                                            } while (!llaveRecta && comp.validacionSiNo(teclado));
+                                            case 10:
+                                                nombreObjetos[10]=inven.usarPapel(teclado);
+                                            break;
 
-
+                                            case 13:
+                                                movimientos+=10;
+                                                System.out.println("Te la inyectas sin pensarlo demasiado y esperas unos segundos. No notas nada pero te");
+                                                System.out.println("fijas en que tus heridas ya no sangran como antes. Digamos que estas más espeso de lo normal.");
+                                                System.out.println("Ganas diez movimientos (+10)");
+                                                inventario[eleccion]=-1;
+                                            break;
 
                                         }
-
-                                    } else {
-                                        System.out.println(" Una pena que no tengas una parecida, no puedes abrirla");
                                     }
-
-                                } else {
-
-                                    sala = 6;
-
-                                }
 
                                 break;
 
-                            case 5:
+                                case 6:
 
-                                eleccion = mensaje.Estado(vida, movimientos, inventario, nombreObjetos, teclado);
-                                if (eleccion != -1) {
+                                    eleccion=mensaje.Estado(vida, movimientos, inventario, nombreObjetos, teclado);
+                                    if(eleccion!=-1){
 
-                                    switch (inventario[eleccion]) {
+                                        switch (inventario[eleccion]){
 
-                                        case 3:
-                                            vida++;
-                                            escudo++;
-                                            System.out.println("Sientes como es pequeño trozo de pan te revitaliza mucho más de lo que esperabas.");
-                                            System.out.println("Ganas uno de vida (+1) y un escudo (+1)");
-                                            inventario[eleccion] = -1;
-                                            break;
-
-                                        case 6:
-                                            if (inven.usarLata(inventario, teclado)) {
+                                            case 3:
                                                 vida++;
-                                                movimientos += 5;
-                                                inventario[eleccion] = -1;
-                                                /*if(Math.random()<0.2){
-                                                    //buscar cuchillo y romper
-                                                }*/
-                                            }
+                                                escudo++;
+                                                System.out.println("Sientes como es pequeño trozo de pan te revitaliza mucho más de lo que esperabas.");
+                                                System.out.println("Ganas uno de vida (+1) y un escudo (+1)");
+                                                inventario[eleccion]=-1;
                                             break;
 
-                                        case 10:
-                                            nombreObjetos[10] = inven.usarPapel(teclado);
+                                            case 6:
+                                                if(inven.usarLata(inventario, teclado)){
+                                                    vida++;
+                                                    movimientos+=5;
+                                                    inventario[eleccion]=-1;
+                                                    /*if(Math.random()<0.2){
+                                                        //buscar cuchillo y romper
+                                                    }*/                                                  
+                                                }
                                             break;
 
-                                        case 13:
-                                            movimientos += 10;
-                                            System.out.println("Te la inyectas sin pensarlo demasiado y esperas unos segundos. No notas nada pero te");
-                                            System.out.println("fijas en que tus heridas ya no sangran como antes. Digamos que estas más espeso de lo normal.");
-                                            System.out.println("Ganas diez movimientos (+10)");
-                                            inventario[eleccion] = -1;
+                                            case 10:
+                                                nombreObjetos[10]=inven.usarPapel(teclado);
                                             break;
 
+                                            case 13:
+                                                movimientos+=10;
+                                                System.out.println("Te la inyectas sin pensarlo demasiado y esperas unos segundos. No notas nada pero te");
+                                                System.out.println("fijas en que tus heridas ya no sangran como antes. Digamos que estas más espeso de lo normal.");
+                                                System.out.println("Ganas diez movimientos (+10)");
+                                                inventario[eleccion]=-1;
+                                            break;
+
+                                        }
                                     }
-                                }
 
                                 break;
 
-                            case 6:
-
-                                eleccion = mensaje.Estado(vida, movimientos, inventario, nombreObjetos, teclado);
-                                if (eleccion != -1) {
-
-                                    switch (inventario[eleccion]) {
-
-                                        case 3:
-                                            vida++;
-                                            escudo++;
-                                            System.out.println("Sientes como es pequeño trozo de pan te revitaliza mucho más de lo que esperabas.");
-                                            System.out.println("Ganas uno de vida (+1) y un escudo (+1)");
-                                            inventario[eleccion] = -1;
-                                            break;
-
-                                        case 6:
-                                            if (inven.usarLata(inventario, teclado)) {
-                                                vida++;
-                                                movimientos += 5;
-                                                inventario[eleccion] = -1;
-                                                /*if(Math.random()<0.2){
-                                                    //buscar cuchillo y romper
-                                                }*/
-                                            }
-                                            break;
-
-                                        case 10:
-                                            nombreObjetos[10] = inven.usarPapel(teclado);
-                                            break;
-
-                                        case 13:
-                                            movimientos += 10;
-                                            System.out.println("Te la inyectas sin pensarlo demasiado y esperas unos segundos. No notas nada pero te");
-                                            System.out.println("fijas en que tus heridas ya no sangran como antes. Digamos que estas más espeso de lo normal.");
-                                            System.out.println("Ganas diez movimientos (+10)");
-                                            inventario[eleccion] = -1;
-                                            break;
-
-                                    }
-                                }
-
-                                break;
-
-                            default:
-                                System.out.println("Algo ha salido mal");
-                        }
+                                default: System.out.println("Algo ha salido mal");
+                            }
                         break;
 
-                    case 4:
-                        switch (sala) {
+                        case 4:
+                            switch (sala){
 
-                            case 0:
-                                System.out.println("Te das un golpe muy fuerte que te despierta de la contusión y ");
-                                System.out.println("te das cuenta de no era una puerta si no una simple alucinación");
-                                System.out.println("");
-                                System.out.println("Pierdes uno de vida (-1)");
-                                vida--;
+                                case 0: 
+                                    System.out.println("Te das un golpe muy fuerte que te despierta de la contusión y ");
+                                    System.out.println("te das cuenta de no era una puerta si no una simple alucinación");
+                                    System.out.println("");
+                                    System.out.println("Pierdes uno de vida (-1)");
+                                    vida--;
                                 break;
 
-                            case 1:
+                                case 1:
 
-                                eleccion = mensaje.Estado(vida, movimientos, inventario, nombreObjetos, teclado);
-                                if (eleccion != -1) {
+                                    eleccion=mensaje.Estado(vida, movimientos, inventario, nombreObjetos, teclado);
+                                    if(eleccion!=-1){
 
-                                    switch (inventario[eleccion]) {
+                                        switch (inventario[eleccion]){
 
-                                        case 3:
-                                            vida++;
-                                            escudo++;
-                                            System.out.println("Sientes como es pequeño trozo de pan te revitaliza mucho más de lo que esperabas.");
-                                            System.out.println("Ganas uno de vida (+1) y un escudo (+1)");
-                                            inventario[eleccion] = -1;
-                                            break;
-
-                                        case 6:
-
-                                            if (inven.usarLata(inventario, teclado)) {
+                                            case 3:
                                                 vida++;
-                                                movimientos += 5;
-                                                inventario[eleccion] = -1;
-                                                //if(Math.random()<0.2){
-                                                //buscar cuchillo y romper
-                                                //}                                                 
-                                            }
+                                                escudo++;
+                                                System.out.println("Sientes como es pequeño trozo de pan te revitaliza mucho más de lo que esperabas.");
+                                                System.out.println("Ganas uno de vida (+1) y un escudo (+1)");
+                                                inventario[eleccion]=-1;
+                                            break;
+
+                                            case 6:
+
+                                                if(inven.usarLata(inventario, teclado)){
+                                                    vida++;
+                                                    movimientos+=5;
+                                                    inventario[eleccion]=-1;
+                                                    //if(Math.random()<0.2){
+                                                        //buscar cuchillo y romper
+                                                    //}                                                 
+                                                }
 
                                             break;
 
-                                        case 10:
-                                            nombreObjetos[10] = inven.usarPapel(teclado);
+                                            case 10:
+                                                nombreObjetos[10]=inven.usarPapel(teclado);
                                             break;
 
-                                        case 13:
+                                            case 13:
 
-                                            movimientos += 10;
-                                            System.out.println("Te la inyectas sin pensarlo demasiado y esperas unos segundos. No notas nada pero te");
-                                            System.out.println("fijas en que tus heridas ya no sangran como antes. Digamos que estas más espeso de lo normal.");
-                                            System.out.println("Ganas diez movimientos (+10)");
-                                            inventario[eleccion] = -1;
+                                                movimientos+=10;
+                                                System.out.println("Te la inyectas sin pensarlo demasiado y esperas unos segundos. No notas nada pero te");
+                                                System.out.println("fijas en que tus heridas ya no sangran como antes. Digamos que estas más espeso de lo normal.");
+                                                System.out.println("Ganas diez movimientos (+10)");
+                                                inventario[eleccion]=-1;
 
                                             break;
+                                        }
                                     }
-                                }
 
                                 break;
 
-                            case 2:
+                                case 2:
 
-                                eleccion = mensaje.Estado(vida, movimientos, inventario, nombreObjetos, teclado);
-                                if (eleccion != -1) {
+                                    eleccion=mensaje.Estado(vida, movimientos, inventario, nombreObjetos, teclado);
+                                    if(eleccion!=-1){
 
-                                    switch (inventario[eleccion]) {
+                                        switch (inventario[eleccion]){
 
-                                        case 3:
-                                            vida++;
-                                            escudo++;
-                                            System.out.println("Sientes como es pequeño trozo de pan te revitaliza mucho más de lo que esperabas.");
-                                            System.out.println("Ganas uno de vida (+1) y un escudo (+1)");
-                                            inventario[eleccion] = -1;
-                                            break;
-
-                                        case 6:
-
-                                            if (inven.usarLata(inventario, teclado)) {
+                                            case 3:
                                                 vida++;
-                                                movimientos += 5;
-                                                inventario[eleccion] = -1;
-                                                //if(Math.random()<0.2){
-                                                //buscar cuchillo y romper
-                                                //}                                                 
-                                            }
+                                                escudo++;
+                                                System.out.println("Sientes como es pequeño trozo de pan te revitaliza mucho más de lo que esperabas.");
+                                                System.out.println("Ganas uno de vida (+1) y un escudo (+1)");
+                                                inventario[eleccion]=-1;
+                                            break;
+
+                                            case 6:
+
+                                                if(inven.usarLata(inventario, teclado)){
+                                                    vida++;
+                                                    movimientos+=5;
+                                                    inventario[eleccion]=-1;
+                                                    //if(Math.random()<0.2){
+                                                        //buscar cuchillo y romper
+                                                    //}                                                 
+                                                }
 
                                             break;
 
-                                        case 10:
-                                            nombreObjetos[10] = inven.usarPapel(teclado);
+                                            case 10:
+                                                nombreObjetos[10]=inven.usarPapel(teclado);
                                             break;
 
-                                        case 13:
+                                            case 13:
 
-                                            movimientos += 10;
-                                            System.out.println("Te la inyectas sin pensarlo demasiado y esperas unos segundos. No notas nada pero te");
-                                            System.out.println("fijas en que tus heridas ya no sangran como antes. Digamos que estas más espeso de lo normal.");
-                                            System.out.println("Ganas diez movimientos (+10)");
-                                            inventario[eleccion] = -1;
+                                                movimientos+=10;
+                                                System.out.println("Te la inyectas sin pensarlo demasiado y esperas unos segundos. No notas nada pero te");
+                                                System.out.println("fijas en que tus heridas ya no sangran como antes. Digamos que estas más espeso de lo normal.");
+                                                System.out.println("Ganas diez movimientos (+10)");
+                                                inventario[eleccion]=-1;
 
                                             break;
+                                        }
                                     }
-                                }
 
                                 break;
 
-                            case 3:
-                                System.out.println("¿Estas seguro de querer abandonar la partida?");
-                                System.out.println("Tu progreso se perderá por completo");
-                                salirJuego = comp.validacionSiNo(teclado);
+                                case 4:
+                                    sala=0;
                                 break;
 
-                            case 4:
-                                sala = 0;
+                                case 5:
+                                    System.out.println("¿Estas seguro de querer abandonar la partida?");
+                                    System.out.println("Tu progreso se perderá por completo");
+                                    salirJuego=comp.validacionSiNo(teclado);
                                 break;
 
-                            case 5:
-                                System.out.println("¿Estas seguro de querer abandonar la partida?");
-                                System.out.println("Tu progreso se perderá por completo");
-                                salirJuego = comp.validacionSiNo(teclado);
+                                case 6:
+                                    System.out.println("¿Estas seguro de querer abandonar la partida?");
+                                    System.out.println("Tu progreso se perderá por completo");
+                                    salirJuego=comp.validacionSiNo(teclado);
                                 break;
 
-                            case 6:
-                                System.out.println("¿Estas seguro de querer abandonar la partida?");
-                                System.out.println("Tu progreso se perderá por completo");
-                                salirJuego = comp.validacionSiNo(teclado);
-                                break;
-
-                            default:
-                                System.out.println("Algo ha salido mal");
-                        }
+                                default: System.out.println("Algo ha salido mal");
+                            }
                         break;
 
-                    case 5:
-                        switch (sala) {
+                        case 5:
+                            switch (sala){
 
-                            case 0:
+                                case 0:
 
-                                eleccion = mensaje.Estado(vida, movimientos, inventario, nombreObjetos, teclado);
-                                if (eleccion != -1) {
+                                    eleccion=mensaje.Estado(vida, movimientos, inventario, nombreObjetos, teclado);
+                                    if(eleccion!=-1){
 
-                                    switch (inventario[eleccion]) {
+                                        switch (inventario[eleccion]){
 
-                                        case 3:
-                                            vida++;
-                                            escudo++;
-                                            System.out.println("Sientes como es pequeño trozo de pan te revitaliza mucho más de lo que esperabas.");
-                                            System.out.println("Ganas uno de vida (+1) y un escudo (+1)");
-                                            inventario[eleccion] = -1;
-                                            break;
-
-                                        case 6:
-
-                                            if (inven.usarLata(inventario, teclado)) {
+                                            case 3:
                                                 vida++;
-                                                movimientos += 5;
-                                                inventario[eleccion] = -1;
-                                                //if(Math.random()<0.2){
-                                                //buscar cuchillo y romper
-                                                //}                                                 
-                                            }
+                                                escudo++;
+                                                System.out.println("Sientes como es pequeño trozo de pan te revitaliza mucho más de lo que esperabas.");
+                                                System.out.println("Ganas uno de vida (+1) y un escudo (+1)");
+                                                inventario[eleccion]=-1;
+                                            break;
+
+                                            case 6:
+
+                                                if(inven.usarLata(inventario, teclado)){
+                                                    vida++;
+                                                    movimientos+=5;
+                                                    inventario[eleccion]=-1;
+                                                    //if(Math.random()<0.2){
+                                                        //buscar cuchillo y romper
+                                                    //}                                                 
+                                                }
 
                                             break;
 
-                                        case 10:
-                                            nombreObjetos[10] = inven.usarPapel(teclado);
+                                            case 10:
+                                                nombreObjetos[10]=inven.usarPapel(teclado);
                                             break;
 
-                                        case 13:
+                                            case 13:
 
-                                            movimientos += 10;
-                                            System.out.println("Te la inyectas sin pensarlo demasiado y esperas unos segundos. No notas nada pero te");
-                                            System.out.println("fijas en que tus heridas ya no sangran como antes. Digamos que estas más espeso de lo normal.");
-                                            System.out.println("Ganas diez movimientos (+10)");
-                                            inventario[eleccion] = -1;
+                                                movimientos+=10;
+                                                System.out.println("Te la inyectas sin pensarlo demasiado y esperas unos segundos. No notas nada pero te");
+                                                System.out.println("fijas en que tus heridas ya no sangran como antes. Digamos que estas más espeso de lo normal.");
+                                                System.out.println("Ganas diez movimientos (+10)");
+                                                inventario[eleccion]=-1;
 
                                             break;
+                                        }
                                     }
-                                }
 
                                 break;
 
-                            case 1:
-                                System.out.println("¿Estas seguro de querer abandonar la partida?");
-                                System.out.println("Tu progreso se perderá por completo");
-                                salirJuego = comp.validacionSiNo(teclado);
+                                case 1: 
+                                    System.out.println("¿Estas seguro de querer abandonar la partida?");
+                                    System.out.println("Tu progreso se perderá por completo");
+                                    salirJuego=comp.validacionSiNo(teclado);
                                 break;
 
-                            case 2:
-                                System.out.println("¿Estas seguro de querer abandonar la partida?");
-                                System.out.println("Tu progreso se perderá por completo");
-                                salirJuego = comp.validacionSiNo(teclado);
+                                case 2: 
+                                    System.out.println("¿Estas seguro de querer abandonar la partida?");
+                                    System.out.println("Tu progreso se perderá por completo");
+                                    salirJuego=comp.validacionSiNo(teclado);
                                 break;
 
-                            case 3:
-                                System.out.println("Algo ha salido mal");
-                                break;
+                                case 4: 
 
-                            case 4:
+                                    eleccion=mensaje.Estado(vida, movimientos, inventario, nombreObjetos, teclado);
+                                    if(eleccion!=-1){
 
-                                eleccion = mensaje.Estado(vida, movimientos, inventario, nombreObjetos, teclado);
-                                if (eleccion != -1) {
+                                        switch (inventario[eleccion]){
 
-                                    switch (inventario[eleccion]) {
-
-                                        case 3:
-                                            vida++;
-                                            escudo++;
-                                            System.out.println("Sientes como es pequeño trozo de pan te revitaliza mucho más de lo que esperabas.");
-                                            System.out.println("Ganas uno de vida (+1) y un escudo (+1)");
-                                            inventario[eleccion] = -1;
-                                            break;
-
-                                        case 6:
-
-                                            if (inven.usarLata(inventario, teclado)) {
+                                            case 3:
                                                 vida++;
-                                                movimientos += 5;
-                                                inventario[eleccion] = -1;
-                                                //if(Math.random()<0.2){
-                                                //buscar cuchillo y romper
-                                                //}                                                 
-                                            }
+                                                escudo++;
+                                                System.out.println("Sientes como es pequeño trozo de pan te revitaliza mucho más de lo que esperabas.");
+                                                System.out.println("Ganas uno de vida (+1) y un escudo (+1)");
+                                                inventario[eleccion]=-1;
+                                            break;
+
+                                            case 6:
+
+                                                if(inven.usarLata(inventario, teclado)){
+                                                    vida++;
+                                                    movimientos+=5;
+                                                    inventario[eleccion]=-1;
+                                                    //if(Math.random()<0.2){
+                                                        //buscar cuchillo y romper
+                                                    //}                                                 
+                                                }
 
                                             break;
 
-                                        case 10:
-                                            nombreObjetos[10] = inven.usarPapel(teclado);
+                                            case 10:
+                                                nombreObjetos[10]=inven.usarPapel(teclado);
                                             break;
 
-                                        case 13:
+                                            case 13:
 
-                                            movimientos += 10;
-                                            System.out.println("Te la inyectas sin pensarlo demasiado y esperas unos segundos. No notas nada pero te");
-                                            System.out.println("fijas en que tus heridas ya no sangran como antes. Digamos que estas más espeso de lo normal.");
-                                            System.out.println("Ganas diez movimientos (+10)");
-                                            inventario[eleccion] = -1;
+                                                movimientos+=10;
+                                                System.out.println("Te la inyectas sin pensarlo demasiado y esperas unos segundos. No notas nada pero te");
+                                                System.out.println("fijas en que tus heridas ya no sangran como antes. Digamos que estas más espeso de lo normal.");
+                                                System.out.println("Ganas diez movimientos (+10)");
+                                                inventario[eleccion]=-1;
 
                                             break;
+                                        }
                                     }
-                                }
 
                                 break;
 
-                            case 5:
-                                System.out.println("Algo ha salido mal");
+                                case 5: 
+                                    System.out.println("Algo ha salido mal");
                                 break;
 
-                            case 6:
-                                System.out.println("Algo ha salido mal");
+                                case 6: 
+                                    System.out.println("Algo ha salido mal");
                                 break;
 
-                            default:
-                                System.out.println("Algo ha salido mal");
-                        }
+                                default: System.out.println("Algo ha salido mal");
+                            }
                         break;
 
-                    case 6:
-                        switch (sala) {
-                            case 0:
-                                System.out.println("¿Estas seguro de querer abandonar la partida?");
-                                System.out.println("Tu progreso se perderá por completo");
-                                salirJuego = comp.validacionSiNo(teclado);
+                        case 6:
+                            switch (sala){
+                                case 0: 
+                                    System.out.println("¿Estas seguro de querer abandonar la partida?");
+                                    System.out.println("Tu progreso se perderá por completo");
+                                    salirJuego=comp.validacionSiNo(teclado);
                                 break;
 
-                            case 1:
-                                System.out.println("¿Estas seguro de querer abandonar la partida?");
-                                System.out.println("Tu progreso se perderá por completo");
-                                salirJuego = comp.validacionSiNo(teclado);
+                                case 1: 
+                                    System.out.println("¿Estas seguro de querer abandonar la partida?");
+                                    System.out.println("Tu progreso se perderá por completo");
+                                    salirJuego=comp.validacionSiNo(teclado);
                                 break;
 
-                            case 2:
-                                System.out.println("Algo ha salido mal");
+                                case 2: 
+                                    System.out.println("Algo ha salido mal");
                                 break;
 
-                            case 3:
-                                System.out.println("Algo ha salido mal");
+                                case 4: 
+                                    System.out.println("¿Estas seguro de querer abandonar la partida?");
+                                    System.out.println("Tu progreso se perderá por completo");
+                                    salirJuego=comp.validacionSiNo(teclado);
                                 break;
 
-                            case 4:
-                                System.out.println("¿Estas seguro de querer abandonar la partida?");
-                                System.out.println("Tu progreso se perderá por completo");
-                                salirJuego = comp.validacionSiNo(teclado);
+                                case 5:
+                                    System.out.println("Algo ha salido mal");
                                 break;
 
-                            case 5:
-                                System.out.println("Algo ha salido mal");
+                                case 6:
+                                    System.out.println("Algo ha salido mal");
                                 break;
 
-                            case 6:
-                                System.out.println("Algo ha salido mal");
-                                break;
-
-                            default:
-                                System.out.println("Algo ha salido mal");
-                        }
+                                default: System.out.println("Algo ha salido mal");
+                            }                        
                         break;
 
-                    default:
-                        System.out.println("Algo ha salido mal");
+                        default: System.out.println("Algo ha salido mal");
+                    }
                 }
                 movimientos--;
 
