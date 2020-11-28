@@ -55,7 +55,8 @@ public class Comprobaciones {
             case 2: valorEntre1y5(eleccion, teclado);
             break;
             
-            case 3: valorEntre1y4(eleccion, teclado);
+            case 3: 
+                System.out.println("Enfermeria - No action");
             break;
             
             case 4: valorEntre1y6(eleccion, teclado);

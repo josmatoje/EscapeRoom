@@ -128,7 +128,7 @@ public class Mensajes {
                 break;
 
             case 3:
-                System.out.println("");//No hay nada sobre la cocina
+                System.out.println("");//No hay nada sobre la enfermeria
                 break;
 
             case 4:
@@ -155,6 +155,9 @@ public class Mensajes {
     
     public void Menu(int sala) {
 
+    System.out.println("");
+    System.out.println("__________________________________________________");
+        
         switch (sala) {
 
             case 0:
@@ -191,7 +194,7 @@ public class Mensajes {
                 System.out.println("__________________________________________________");
                 System.out.println("Cada acción que elijas es un paso que gastas...");
                 System.out.println("1. Inspeccionar cantina");
-                System.out.println("2. Avanzar hasta la enfermeria");//O poner otra cosa para que no se sepa
+                System.out.println("2. Avanzar hasta la puerta con Ventana");
                 System.out.println("3. Retroceder a la cocina");
                 System.out.println("");
                 System.out.println("Tambien puedes:");
@@ -267,7 +270,10 @@ public class Mensajes {
         
         String todoCogido = "Ya has cogido todos los objetos de esta sala.";
         String objetoCogido = "Ya has obtenido este objeto";
-
+        
+        System.out.println("");
+        System.out.println("__________________________________________________");
+        
         switch (sala) {
 
             case 0:
@@ -419,29 +425,6 @@ public class Mensajes {
                 System.out.println("        *********DOMITORIOS*********");
                 System.out.println("__________________________________________________");
                 System.out.println("Ves delante tuya 4 habitaciones.");
-                /*if (!objetosObtenidos[11]) {
-                    System.out.println("1. Inspeccionar habitacion 1");
-                } else {
-                    System.out.println(objetoCogido);
-                }
-                
-                                    if (!inventario[12]) { ////////////////////////////////////duda
-                                        System.out.println("2. Inspeccionar habitacion 2");
-                                    } else {
-                                        System.out.println(objetoCogido);
-                                    }
-                                    if (!inventario[13]) {
-                                        System.out.println("3. Inspeccionar habitacion 3");
-                                    } else {
-                                        System.out.println(objetoCogido);
-                                    }
-                
-                if (!objetosObtenidos[13]) {
-                    System.out.println("4. Inspeccionar habitacion 4");
-                } else {
-                    System.out.println(objetoCogido);
-                }
-                */
                 System.out.println("1. Ir a habitación 1");
                 System.out.println("2. Ir a habitación 2");
                 System.out.println("3. Ir a habitación 3");
@@ -583,8 +566,8 @@ public class Mensajes {
         
         System.out.println("En tu inventario tienes:");
         for(int i:inventario){
-            if(i>=0){
-                System.out.println("\t"+(i+1)+". "+objetos[i]);
+            if(inventario[i]>=0){
+                System.out.println("\t"+(i+1)+". " + objetos[inventario[i]]);
                 if(inventario[i]==3 || inventario[i]==6 || inventario[i]==10 || inventario[i]==13){
                     existeUsable=true;
                 }
