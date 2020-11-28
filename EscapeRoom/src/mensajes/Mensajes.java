@@ -12,6 +12,11 @@ public class Mensajes {
         System.out.println("Esta usted antes el escape room más espectacular habido en la faz de la tierra.");
         System.out.println("Podrá usted repetirlo tantas veces como quiera realizando runs totalmente independientes una de la otra.");
         System.out.println("Tambien al salir puede volver a este programa si lo desea, eso es evidente.");
+        System.out.println("Tendrá un inventario y una vida dependiendo de la dificultad qeu elija. Durante el juego ira encontrando objetos"
+                + " inventario objetos usables cada eleccion un movimiento, perdrer vida y ganar, no todo será util");
+        System.out.println("que le podrán ser utiles o incluso perjudiciales. Si te quedas sin espacio puedes sustituir el objeto deseado, eliminando");
+        System.out.println("para siempre el objeto que elija, lo que podrá resultar en consecuencias catrostróficas incluso no pudiendo terminar la scape room.");
+        System.out.println("Piensa en cada paso y pasatelo bien");
         System.out.println("Pues empecemos...");
     }
 
@@ -457,6 +462,7 @@ public class Mensajes {
                 System.out.println("");
                 if(inv.comprobarInventario(7, inventario)){
                     System.out.println("6. Dirigirte a la X del mapa encontrado");
+         
                     System.out.println("");
                 }
                 
