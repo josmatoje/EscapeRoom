@@ -18,8 +18,7 @@ public class EscapeRoom {
         Juego juego = new Juego();
 
         //Declaracion de variables
-        boolean respuestaSiNo, dificil, acabarInspeccion, ganado, salirJuego, visitaLucia, candadoRoto, revistaX, llaveRecta;
-        boolean respuestaSiNo, dificil, acabarInspeccion, ganado, salirJuego, visitaLucia, candadoRoto, revistaX, saberEnfermeria, enfermeriaRota;
+        boolean respuestaSiNo, dificil, acabarInspeccion, ganado, salirJuego, visitaLucia, candadoRoto, revistaX, llaveRecta, saberEnfermeria, enfermeriaRota;
         int sala, eleccionMenu, eleccion, vida, escudo, municion, movimientos;
         String clave, claveEnfermeria;
 
@@ -215,7 +214,45 @@ public class EscapeRoom {
                                 break;
 
                                 case 4: 
-                                    sala=6;
+                                    
+                                    if (nuevaSala[sala]) {//SI nunca has entrado tienes que hacer el juego
+
+                                        System.out.println("Vaya, la puerta se encuentra cerrada, pero tiene una m Gigante pintada. Te acuerdas que todas las puertas importantes con letras");
+                                        System.out.println("se abrian con su respectiva llave y con la misma letra.");
+                                        if (inven.comprobarInventario(1, inventario)) { // Si tienes la llave doblada
+
+                                            System.out.println("Menos mal que tenias una llave guardada, aunque no estuviera muy bien, se puede arreglar dandole golpes");
+                                            System.out.println("Quieres intentar ponerla bien? Te va a cansar, pero la recompensa es incierta");
+                                            if (comp.validacionSiNo(teclado)) {
+
+                                                do {
+
+                                                    llaveRecta = juego.Llave(teclado);
+                                                    if (llaveRecta) {
+
+                                                        System.out.println("De los mejores momentos de tu vida, te has sentido un verdadero troglodita de la prehistoria descubriendo las herramientas");
+                                                        sala = 6;
+                                                    } else {
+                                                        System.out.println("No lo has conseguido y has perdido tres movimientos,deseas volver a repetirlo?");
+
+                                                    }
+
+                                                } while (!llaveRecta && comp.validacionSiNo(teclado));
+
+
+
+                                            }
+
+                                        } else {
+                                            System.out.println(" Una pena que no tengas una parecida, no puedes abrirla");
+                                        }
+
+                                    } else {
+
+                                        sala = 6;
+
+                                    }
+
                                 break;
 
                                 case 5:
