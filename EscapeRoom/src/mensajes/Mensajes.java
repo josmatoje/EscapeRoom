@@ -1,6 +1,8 @@
 package mensajes;
 
+import comprobaciones.Comprobaciones;
 import inventario.Inventario;
+import java.util.Scanner;
 
 public class Mensajes {
 
@@ -398,7 +400,6 @@ public class Mensajes {
                 
                 System.out.println("2. Mirar encima de la mesa");
 
-                
                 if (!objetosObtenidos[10]) {
                     System.out.println("3. Mirar debajo de la mesa");
                 } else {
@@ -417,13 +418,13 @@ public class Mensajes {
             case 5:
                 System.out.println("        *********DOMITORIOS*********");
                 System.out.println("__________________________________________________");
-                System.out.println("Ves delante tuya 4 habitaciones");
-                if (!objetosObtenidos[11]) {
+                System.out.println("Ves delante tuya 4 habitaciones.");
+                /*if (!objetosObtenidos[11]) {
                     System.out.println("1. Inspeccionar habitacion 1");
                 } else {
                     System.out.println(objetoCogido);
                 }
-                /*
+                
                                     if (!inventario[12]) { ////////////////////////////////////duda
                                         System.out.println("2. Inspeccionar habitacion 2");
                                     } else {
@@ -434,13 +435,17 @@ public class Mensajes {
                                     } else {
                                         System.out.println(objetoCogido);
                                     }
-                */
+                
                 if (!objetosObtenidos[13]) {
                     System.out.println("4. Inspeccionar habitacion 4");
                 } else {
                     System.out.println(objetoCogido);
                 }
-
+                */
+                System.out.println("1. Ir a habitación 1");
+                System.out.println("2. Ir a habitación 2");
+                System.out.println("3. Ir a habitación 3");
+                System.out.println("4. Ir a habitación 4");
                 System.out.println("");
 
                 System.out.println("Tambien puedes:");
@@ -480,8 +485,67 @@ public class Mensajes {
         }
 
     }
+    
+    /*
+    Signatura: public int Estado(int vida, int movimientos,int [] inventario, String [] objetos, Scanner teclado)
+    Descripcion: Imprime la vida, los movimientos restantes y los objetos que se encuentren en el inventario 
+            y en caso de haber un objeto usable y querer usarlo devuelve un entero con la posicion de este en el inventario.
+                En caso contrario devuelve -1.
+    Precondiciones: el array de cadena introducido debe ser el existente en el programa de escape room
+    Entradas: entero que define la vida, entero con los movimientos, array de enteros de objetos que hay en el inventario, 
+                array de cadenas con los nombres de cada objeto y un objeto del tipo Scanner
+    Salida: entero con la posicion en el inventario del objeto que se quiere usar
+    Postcondiciones: el valor devuelto se corresponde con alguna posicion del inventario
+    */
+    /*
+        SWITCH DE ELECCION DESPUES DEL MENU DE ESTADO
+            es necesario que esté en el main por la multitud de datos diferentes que existen
+    
+    
+        eleccion=mensaje.Estado(vida, movimientos, inventario, nombreObjetos, teclado);
+        if(eleccion!=-1){
 
-    public void Estado(int vida, int movimientos,int [] inventario, String [] objetos) {
+            switch (inventario[eleccion]){
+
+                case 3:
+                    vida++;
+                    escudo++;
+                    System.out.println("Sientes como es pequeño trozo de pan te revitaliza mucho más de lo que esperabas.");
+                    System.out.println("Ganas uno de vida (+1) y un escudo (+1)");
+                    inventario[eleccion]=-1;
+                break;
+
+                case 6:
+                    if(inven.usarLata(inventario, teclado)){
+                        vida++;
+                        movimientos+=5;
+                        inventario[eleccion]=-1;
+                        //if(Math.random()<0.2){
+                            //buscar cuchillo y romper
+                        //}                                                 
+                    }
+                break;
+
+                case 10:
+                    nombreObjetos[10]=inven.usarPapel(teclado);
+                break;
+
+                case 13:
+                    movimientos+=10;
+                    System.out.println("Te la inyectas sin pensarlo demasiado y esperas unos segundos. No notas nada pero te");
+                    System.out.println("fijas en que tus heridas ya no sangran como antes. Digamos que estas más espeso de lo normal.");
+                    System.out.println("Ganas diez movimientos (+10)");
+                    inventario[eleccion]=-1;
+                break;
+
+            }
+        }
+    */
+    public int Estado(int vida, int movimientos,int [] inventario, String [] objetos, Scanner teclado) {
+        
+        Inventario inv = new Inventario();
+        
+        int usar=-1;
         
         System.out.println("______________________________________________________");
         System.out.println("Tienes ");
@@ -497,25 +561,55 @@ public class Mensajes {
         System.out.println("");
         System.out.println("");
         System.out.println("");
-        Inventario(inventario,objetos);
-        System.out.println("");
+        if(Inventario(inventario,objetos)){
+            usar=inv.seleccionarUsable(inventario, objetos, teclado);
+        }
         System.out.println("");
         System.out.println("");
         
+        return usar;
     }
     
-    public void Inventario (int [] inventario, String [] objetos){
+    /*
+    Signatura: public boolean Inventario (int [] inventario, String [] objetos)
+    Descripcion: Imprime los objetos que se encuentren en el inventario y devuelve true en caso de haber objetos usables
+    Precondiciones: el array de cadena introducido debe ser el existente en el programa de escape room
+    Entradas: array de enteros de objetos que hay en el inventario y array de cadenas con los nombres de cada objeto
+    Salida: boleano que es true en caso de existir un objeto usable en tu inventario
+    */
+    public boolean Inventario (int [] inventario, String [] objetos){
         
+        boolean existeUsable=false;
         
         System.out.println("En tu inventario tienes:");
         for(int i:inventario){
             if(i>=0){
                 System.out.println("\t"+(i+1)+". "+objetos[i]);
+                if(inventario[i]==3 || inventario[i]==6 || inventario[i]==10 || inventario[i]==13){
+                    existeUsable=true;
+                }
             }
         }
         
+        return existeUsable;
     }
 
+    public void FinPartida(int vida, int movimientos,boolean dificil, boolean ganado, boolean salirJuego){
+        if(ganado){
+            System.out.println("Enhorabuena, lo has logrado. Parece increible que lo hayas conseguido.");
+        }else{
+            System.out.println("No esperabamos que ganaras pero tampoco que quedaras así...");
+            if (vida<0)
+                System.out.println("Agotaste toda tu vida en el juego y en la vida real.");
+            if (movimientos<0)
+                System.out.println("Agotaste todos tus movimientos, más rápido la proxima vez.");
+            if(salirJuego)
+                System.out.println("Entendemos que te hayas desesperado.");
+            if (dificil)
+                System.out.println("Puedes probar a jugar en modo normal.");
+        }
+    }
+    
     public void Salida() {
 
         System.out.println("El camino más corto era...");//Completar

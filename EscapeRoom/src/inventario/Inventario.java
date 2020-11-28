@@ -64,17 +64,19 @@ public class Inventario {
                     eliminar = teclado.nextInt();
 
                     //Comprobamos que no se va a sustituir por el mismo objeto (especialmente valido para objetos que ocupen doble)
-                    if (inventario[eliminar - 1] != objeto) {
-
-                        inventario[eliminar - 1] = objeto;//asignacion del nuevo objeto
-                        if (objeto != objetoDoble || mitadInsertada)//Si el objeto es distinto al objeto doble o ya se ha insertado una mitad
-                        {
-                            insertado = true;
-                        } else {
-                            mitadInsertada = true;
+                    if(inventario[eliminar-1]!=objeto){
+                        
+                        if(inventario[eliminar-1]!=8){//casco no se puede desequipar
+                            inventario[eliminar-1]=objeto;//asignacion del nuevo objeto
+                            if(objeto!=objetoDoble || mitadInsertada)//Si el objeto es distinto al objeto doble o ya se ha insertado una mitad
+                                insertado=true;
+                            else
+                                mitadInsertada=true;
+                        }else{
+                            System.out.println("No consigues quitarte el casco, tendrás que dejar atrás otro objeto.");
                         }
-
-                    } else {
+                        
+                    }else{
                         System.out.println("Estas sutituyendo el objeto por si mismo. Seriedad por favor.");
                     }
 
@@ -121,5 +123,84 @@ public class Inventario {
 
         return guardado;
     }
-
+    
+    /*
+    Signatura: public int usarObjeto (int [] inventario, String [] objetos, Scanner teclado)
+    Descripción: el metodo pregunta si se quiere usar un objeto y en caso afirmativo selecciona un objeto del 
+            inventario del jugador (validado) y devuelve la posicion donde se encuentra en el array
+    Precondiciones: se debe introducir valores del programa EscapeRoom para garantizar un resultado optimo.
+            Solo se puede llamar a este metodo si existe un objeto usable en el inventario (3, 6, 10, 13)
+    Entradas:  array de enteros que identifica al inventario con sus objetos correspondientes
+            y array de cadenas con los nombres de cada objeto
+    Salida: entero que indica que objeto del inventario se quiere usar
+    Postcondiciones: debe devolver un objeto usable, no puedes no seleccionar nigun objeto tras decidir usar alguno
+    */
+    public int seleccionarUsable (int [] inventario, String [] objetos, Scanner teclado){
+        
+        Comprobaciones comp = new Comprobaciones();
+        Mensajes mensaje = new Mensajes();
+        
+        int usar = -1;
+        
+        System.out.println("¿Desea usar algun objeto?");
+        if(comp.validacionSiNo(teclado)){
+            System.out.println("¿Que objeto desea usar?");
+            do{
+                mensaje.Inventario(inventario, objetos);
+                if(usar!=-1)
+                    System.out.println("Introduzca un objeto usable");
+                usar=teclado.nextInt();
+                if(inventario.length==5)
+                    usar=comp.valorEntre1y5(usar, teclado);
+                else//Modo normal --> longitud = 7
+                    usar=comp.valorEntre1y7(usar, teclado);
+                usar--;
+            }while((inventario[usar]!=3 || inventario[usar]!=6 || inventario[usar]!=10 || inventario[usar]!=13));
+            //Si usar <0 al comprobar bucle dara error en el array
+        }
+        
+        return usar;
+        
+    }
+    /*
+    Signatura: public boolean usarLata (int [] inventario, Scanner teclado)
+    Descripcion: este metodo comprueba que puedas abrir la lata de comida con los objetos de tu inventario
+    Precondiciones: deben usarse valores correspondientes a un inventario del juego EscapeRoom
+    Entrada: array de enteros que representan el inventario y un objeto del tpo Scanner
+    Salida: un boleano que será true en caso de tener un cuchillo en el inventario
+    Postcondiciones: este metodo no modifica valores en el programa principal
+    */
+    public boolean usarLata (int [] inventario, Scanner teclado){
+        
+        Comprobaciones comp = new Comprobaciones();
+        
+        boolean usado=false;
+        
+        if(comprobarInventario(5, inventario)){//si tiene el cuchillo
+            System.out.println("¿Quieres usar el cuchillo para comerte la lata?");//Implementar:(probabilidad baja de romper cuchillo)
+            if(comp.validacionSiNo(teclado)){
+                usado=true;
+                System.out.println("La comida de tus sueños no es especialmente nutritiva pero te da la sensacion de ser");
+                System.out.println("mucho más agil");
+                System.out.println("Ganas uno de vida (+1) y cinco movimientos (+5)");
+            }
+        }else{
+            System.out.println("No tienes nada para poder abrirla en tu inventario.");
+        }
+        
+        return usado;
+    }
+    
+    public String usarPapel (Scanner teclado){
+        
+        String mensaje = "Papel: \"";
+        
+        System.out.println("¿Que frase quiere apuntar?");
+        mensaje+=teclado.nextLine()+"\"";
+        System.out.println("Ahora en tu inventario aparecerá tu objeto seguido de una frase.");
+        System.out.println(mensaje);
+        
+        return mensaje;
+    }
+    
 }
