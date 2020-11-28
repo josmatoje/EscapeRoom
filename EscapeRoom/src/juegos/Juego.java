@@ -4,14 +4,27 @@ import comprobaciones.Comprobaciones;
 import java.util.Random;
 import java.util.Scanner;
 
+
+
 public class Juego {
+    /*
+    Signatura:  public boolean Llave(Scanner teclado)
+    Descripcion: Juego de la llave, se controlara mediante un bucle controlado por bandera o flag y contado. Si se consigue restar/sumar la cantidad exacta 
+    a al dobladez o se llega al maximo de 5 intentos
+    Precondiciones: 
+    Entradas:scanner
+    Salidas: si la llave sigue doblada o no 
+    
+    
+    */
+    
 
     public boolean Llave(Scanner teclado) {
 
         Random rd = new Random();
 
         int dobladez, signo, golpe, golpes = 5;
-        boolean doblada = true;
+        boolean firme = false;
         char lado;
         Comprobaciones comp = new Comprobaciones();
         String[] estado = new String[]{"totalmente a la izquierda", "mucho a la izquierda", "medio a la izquierda", " un poco a la izquierda", "casi nada a la izquierda", "perfectamente", "casi nada a la derecha", " un poco a la derecha", "medio a la derecha", "mucho a la derecha", "totalmente a la derecha"};
@@ -38,26 +51,36 @@ public class Juego {
 
             if (lado == 'I') {
 
+                
                 dobladez = dobladez - golpe;
-
+                    
+              
             } else {
 
                 dobladez = dobladez + golpe;
 
             }
+          
+            if (dobladez > 10 || dobladez < 0) { // Se se pasa con el golpe que lo ponga random
 
+                do {
+                    dobladez = rd.nextInt(10);
+                } while (dobladez == 5);
+
+            }
+            
             --golpes;
 
             if (dobladez == 5) {
 
-                doblada = false;
+                firme = true;
 
                 System.out.println("Lo has conseguido, menuda precision.");
 
             }
 
-        } while (doblada && golpes > 0);
+        } while (!firme && golpes > 0);
 
-        return doblada;
+        return firme;
     }
 }
