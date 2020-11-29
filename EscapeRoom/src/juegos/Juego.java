@@ -42,108 +42,138 @@ public class Juego {
         }
 
         return adivinado;
+     
     }
     
+    /*
+    Signatura:  public boolean Cables(Scanner teclado)
+    Descripcion: Mostrara en pantalla un array de strings que van a ser dividos por saltos de linea segun el numero de strings que se lleve * 2
+    El usuario debera de adivinar que el unico sitio unido al nucleo es el 1
+    Entradas: Scanner
+    Salidas: Si se ha comletado el juego
+    
+    */
     
     
     
-    public boolean Cables(Scanner){
+    public boolean Cables(Scanner teclado){
     
         boolean completado = false;
+        int camino;
+        Comprobaciones comp = new Comprobaciones();
         
         
-        System.out.println("Los cables se han roto y tienes que seguir la trazada hasta el nucle e indicarle a tu ordenador que numero de bateria es la indicada (1, 2 o 3)");
-        System.out.println("La señal no va muy bien  por lo que la imagen de la trazada va por partes");
+        System.out.println("Los cables se han roto y tienes que seguir la trazada del a camino de las letras hasta el nucle e indicarle a tu ordenador que numero de bateria es la indicada (3, 2, 1)");
+        System.out.println("La señal no va muy bien  por lo que la imagen de la trazada va por partes,");
+        System.out.println("");
+        System.out.println("Deseas empezar? Pulse S");
+        
+        if(comp.validacionSiNo(teclado)) //SI quiere empezar el juego
+       
+        System.out.println("");
+        System.out.println("");
+        System.out.println("");
+        
+        String[] imagen = new String[]{
+"dddddddddddddddddddddddxc.      .cxdddddddddddddddddddddddo'           .okkkkkkkkkkkkkkkkkkkkkkkkkkk\n" +
+"MMMMMMMMMMMMMMMMMMMMMMMMO.      '0MMMMMMMMMMMMMMMMMMMMMMMMN:           '0MMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+"MMMMMMMMMMMMMMMMMMMMMMMMO.      '0MMMMMMMMMMMMMMMMMMMMMMMMN:           '0MMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+"MMMMMMM   CAMINO  MMMMMMO.      '0MMMMMM   CAMINO   MMMMMMN:           '0MMMMMMMMM   CAMINO    MMMMM\n" +
+"MMMMMMN0ONMXOKWWKOXMMMMMO.      '0MMMMMNOdKMMMMMNkoxXMMMMMN:           '0MMMMMMMMMMMMMMWNWMMMMMMMMMM\n" +
+"MMMMMMO  kWo ;XX; dMMMMMO.      '0MMMMMX   MMMMM0   xMMMMMN:           '0MMMMMMMMMMMMMNo'xWMMMMMMMMM\n" +
+"MMMMMMO  kWo ;XK, oMMMMMO.      '0MMMMMX;  MMMMMO. .xMMMMMN:           '0MMMMMMMMMMMMMX; lWMMMMMMMMM\n" +
+"MMMMMMO  kWo ;XK; oMMMMMO.      '0MMMMMX;  MMMMMO. .xMMMMMN:           '0MMMMMMMMMMMMMX; lWMMMMMMMMM\n" +
+"MMMMMMO  kMo ;XK; oMMMMMO.      '0MMMMMX;  MMMMMO. .xMMMMMN:           '0MMMMMMMMMMMMMX; lWMMMMMMMMM\n" +
+"MMMMMM0  OMd  XX  dMMMMMO.      '0MMMMMX   MMMMMK   OMMMMMN:           '0MMMMMMMMMMMMMX; lWMMMMMMMMM\n" +
+"MMMMMMWKKNMN0XWWX0NMMMMMO.      '0MMMMMMWNWMMMMMWNNNWMMMMMN:           '0MMMMMMMMMMMMMWOd0MMMMMMMMMM\n" +
+"MMMMMMMMMMMMMMMMMMMMMMMMO.      '0MMMMMMMMMMMMMMMMMMMMMMMMN:           '0MMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+"MMMMMMMMMMMMMMMMMMMMMMMMO.      '0MMMMMMMMMMMMMMMMMMMMMMMMN:           '0MMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+"MMMMMMMMMMMMMMMMMMMMMMMMO.      '0MMMMMMMMMMMMMMMMMMMMMMMMN:           '0MMMMMMMMMMMMMMMMMMMMMMMMMMM\n" +
+"MMMW0xxxxxxxxxxxxxxxxxxxc.      .;ccccccllkWMMMMWkccccccccc.           .cooooooooooooxXMMMMKdooooooo\n", // coma
+"MMMN:                                     :NMMMMN:                                   '0MMMMx.       \n" +
+"MMMN:                                     :NMMMMNc .   ......   ....                 '0MMMMx.       \n" +
+"MMMN:                                     :NMMMMWX000000000000000000x'               '0MMMMx.       \n" +
+"MMMN:                                     :NMMMMMMMMMMMMMMMMMMMMMMMMK,               '0MMMMx.       \n" +
+"MMMN:                                     :XWWWWWWWWWWWWWWWWWWWWMMMMK,               '0MMMMx.       \n" +
+"MMMNl............                         .''''''''''''''''''''dWMMMX;               '0MMMMx.       \n" +
+"MMMMXKKKKKKKKKKKKo.                                            :NMMMX;               '0MMMMx.       \n" +
+"MMMMMMMMMMMMMMMMMx.                                            cNMMMX;               '0MMMMx.       \n" +
+"WWWWNNNNNNWMMMMMMx.      .,;;;;;;;;;;;;;;;;;;;;;;;,.           :NMMMX;               '0MMMMx.       \n" +
+"'''''..'.;OMMMMMMd       ;XMWMMMMMMMMMMWWMWWWMMMMNK:           cNMMMX;               '0MMMMx.       \n" +
+"         .xMMMMMMd       ;XMMMWWWWWWWWWWNNNWWWWMMNK:           cNMMMX;               '0MMMMx.       \n" +
+"         .xMMMMMMd       ;XMMNo'''''''''''''';OMMWN0xddxddddddx0WMMMX;               '0MMMMx.       \n" +
+"         .xMMMMMMd       ;XMMX;              .xMMMMMMMMMMMMMMMMMMMMMX;               '0MMMMx.       \n", // coma
+"         .xMMMMMMd       ;XMMX;               :xxxxxxxxxxxxxxxxxkkkkd'               '0MMMMx.       \n" +
+"         .xMMMMMMd       ;XMMX;                                                :kxkkxONMMMMx.       \n" +
+"         .xMMMMMMd       ;XMMX:                                               .xMMMMMMMMMMMx.       \n" +
+".'''''''';OMMMMMMd       ;XMMN:                                                dMMMMMMNXXXXo.       \n" +
+"kNNNNNNNNWWMMMMMMd       ;XMMX:                                                dMMMMMWo.....        \n" +
+"OMMMMMMMMMMMMMMMMd       ;XMMNo'''''''''''''''''.                              dMMMMMN:             \n" +
+"OMMMMMMMMMMMMMMMMd       ;XMMMWNNNNNNNNNNNNNNNNNd          .:lllllllllllllllllo0MMMMMN:             \n" +
+"lkxkkkkkxkXMMMMMMd       ;XMMMMMMMMMMMMMMMMMMMMMO;'''''.   ,KMMMMMMMMMMMMMMMMMMMMMMMMN:             \n" +
+"         .xMMMMMMd       ;XMMMMMMMMMMMMMMMMMMMMMWWWWWWX:   ,KMMMMMMMMMMMMMMMMMMMMMMMMN:             \n" +
+"         .xMMMMMMd       ;XMMMMMMMMMMMMMMMMMMMMMMMMMMMN:   .dOOOOOOOOOOOOOOOOOOXMMMMMN:             \n" +
+"         '0MMMMMMd       .:ccccccccccccccccccccdNMMMMMN:                      .dMMMMMN:             \n" +
+"         ,KMMMMMMd                             ,KMMMMMN:                       dMMMMMN:             \n" +
+"         ,KMMMMMMd        ....                 ,KMMMMMN:                       dMMMMMN:             \n" +
+"         ;KMMMMMMd      .oKKK0;                ,KMMMMMN:                       dMMMMMN:             \n", // coma 
+"     :OOOKWMWx:;:.      .xMMMWc                ,KMMMMMN:                       dMMMMMNc             \n" +
+"     oMMMMMMX;          .xMMMWc                ,KMMMMMNc                       dMMMMMW0xxxxxxxxxxxxx\n" +
+"     oMMMMMMX;          .xMMMWc                ,KMMMMMWKOOOOOOOOOOOOOc         dMMMMMMMMMMMMMMMMMMMM\n" +
+"     oMMMMMMX;          .xMMMWc                ,KMMMMMMMMMMMMMMMMMMMMd.        dMMMMMMMMMMMMMMMMMMMM\n" +
+"     oMMMMMMX;          .kMMMWo................:KMMMMMWXOOOOOOOOO00OOc         oNNNNNNXXXXXXXNMMMMMM\n" +
+"     oMMMMMMX;          .OMMMMX0000000000000000XWMMMMMNc                       ..............dMMMMMN\n" +
+"     oMMMMMMX;          .OMMMMMMMMMMMMMMMMMMMMMMMMMMMMN:                                     lWMMMMN\n" +
+"     oMMMMMMX;          .OMMMMMMMMMMMMMMMMMMMMMMMMMMMMN:                                     lWMMMMN\n" +
+"     oMMMMMMX;           ,::::::::::::::::::::ckWMMMMMX;             .:llllll:.              lWMMMMN\n" +
+"     oWMMMMMX;                                 cWMMMMMK,             '0MMMMMM0'              lWMMMMN\n" +
+"     dMMMMMMWOooddoodxxxxxxxxxxxxxxxxxxxxc.    cWMMMMMK,             '0MMMMMM0'              lWMMMMN\n" +
+"    .xMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMO.    cWMMMMMK,             '0MMMMMM0'              lWMMMMN\n" +
+"     ;oooooooooooooodddddddddddddddddxXMMk.    cWMMMMMK,             '0MMMMMM0'              lWMMMMN\n",
+"                                     .xMMd     cWMMMMMK,      ;ddddddkNMMMMMMNkdddddddddddddd0MMMMMN\n" +
+"                                     .xMMd     cWMMMMMK,     .xMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMN\n" +
+"OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOl.  .xMMd     cWMMMMMK,     .xMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMN\n" +
+"MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMk.  .xMMd     ,xkkkXMNO:.   .xMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMN\n" +
+"MMMMMMMMMMN0kdolllodx0NWMMMMMMMMMk.  .xMMd         .dMMMk.    dMMMO:;;;;;;:;xNMMMOc;;;;;;;;;:kMMMMMN\n" +
+"MMMMMMMXx:..          .:dKWMMMMMMk.  .oKKl          dMMMk.    dMMMd         ;XMMMd           lWMMMMN\n" +
+"MMMMMXo.                 .lKMMMMMk.   ....          dMMMk.    dMMMo         ;XMMMd           lWMMMMN\n" +
+"MMMWO'                     'kWMMMk.                 oWWk'     ;kkk;         ;XMMM0c.         lWMMMMN\n" +
+"MMM0'                       .OMMMk.                 lWWc                    ;XMMMMWl         'lllllc\n" +
+"MMWo         NUCLEO          lWMMk.     ............oWWo...............     ;XMMMMWl                \n" +
+"MMWl                         cNMMk.   'x000000000000XMMX000000000000000o.   ;KWMMMWl                \n" +
+"MMMk.                       .xMMMk.   ,ONNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNx.    'oXMMWl                \n" +
+"MMMNo.                      lNMMMk.                                           ;KMMWl                \n" +
+"MMMMNk,                   'xNMMMM0c;;;;;;;;;;;;;,. ...........................:XMMWd... .cdddddl.   \n" +
+"MMMMMMXx;.             .;dXMMMMMMMWMMMMMMMMMMMMMWX0000000000000000000000000000XWMMMX0000KNMMMMMK,   \n" +
+"MMMMMMMMWKko:;''..',:oxKWMMMMMMMMXxoooooooodxxxkKWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM0'   \n" +
+"MMMMMMMMMMMMMWNXXXNWMMMMMMMMMMMMMk.                                                                    "};
         
         
         
         
         
-        
-        for (int i = 0; i < arr.length; i++) {
-            Object object = arr[i];
-            
+        for (int i = 0; i < imagen.length; i++) {
+            System.out.println(imagen[i]);
+            for (int j = 0; j < i*2; j++) {
+                System.out.println("");
+            }
         }
         
         
+        System.out.println("POr cual camino deberia de ir la electricidad? 3, 2 o 1");
+        camino = teclado.nextInt();
+        camino = comp.valorEntre1y3(camino, teclado);
+        if(camino == 1){
         
+            completado = true;
+            System.out.println("Lo has conseguido, aunque a tu cerebro le falten 3 litros de sangre sigue viendo minimamente");
         
+        }else{
         
+            System.out.println("Hay que ser muy malo para fallar en una cosa tan facil");
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        System.out.println(""
-                + " @@@@@@   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@          @@@@@@@@@@\n" +
-"    @@@@@@@@@@@@@@@@@@@@@   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@          @@@@@@@@@@\n" +
-"    @@@@@@@     @@@@                          @@@@@@@@@@@@@@@@@@@@                  @@@@@@\n" +
-"      @@                                            @@@      @@@@                      @@@@\n" +
-"     @@         @@@@@@    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@      @@@&         NUCLEO        @@@\n" +
-"    @@@         @@@@@@        @@@@@@@@@@@            @@      @@@                        @@@\n" +
-" @@@@@@         @@@@@@                               @@      @@@@                      @@@@\n" +
-" @@@@@@          @@@@@         @@@@     @@@@         @@      @@@@@                    @@@@@\n" +
-" @@@@@@          @@@@@         @@@@     @@@@        %@@@    @@@@@@@@              @@@@@@@@\n" +
-" @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@     @@@@        %@@@    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n" +
-" @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@      @@@@@@     %@@@    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n" +
-" @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@      @@@@@@     %@@@                                  \n" +
-" @@@@@@              @@@@@@@             @@@@@@     %@@@                                  \n" +
-" @@@@@@              @@@@@@@             @@@@@@     @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@     \n" +
-" @@@@@@              @@@@@@@             @@@@@@                               @@@@@@@     \n" +
-" @@@@@@              @@@@@@@             @@@@@@                               @@@@@@@     \n" +
-" @@@@@@                                  @@@@@@@@@@@@@@@@@@@@@@@@@@*          @@@@@@@     \n" +
-" @@@@@@                                  @@@@@@@@@@@@@@@@@@@@@@@@@@*          @@@@@@@     \n" +
-"@@@@@@@@@@@@@@@@@@@/        @@@@@@@@@@@@@@@@@@@                @@@@           @@@@@@@     \n" +
-"@@@@@@@@@@@@@@@@@@@/        @@@@@@@@@@@@@@@@@@@                @@@@           @@@@@@@     \n" +
-"@@@@@@@@@@@@@@@@@@@/                     @@@@@@                @@@@           @@@@@@@     \n" +
-"             @@@@@@/                     @@@@@@                @@@@           @@@@@@@     \n" +
-"             @@@@@@/                     @@@@@@                @@@@       @@@@@@@         \n" +
-"             @@@@@@/                     @@@@@@                           @@@@@@@         \n" +
-"             @@@@@@/                     @@@@@@@@@@@@@@@@@@@@@@@@@@       @@@@@@@         \n" +
-"             @@@@@@@@@@@@@@@@@@@@@@@@    @@@@@@@@@@@@@@@@@@@@@@@@@@       @@@@@@@         \n" +
-"             @@@@@@@@@@@@@@@@@@@@@@@@         @@@@@@@@@@@@@@@@@@@@@       @@@@@@@@@@@@@@@@\n" +
-"             @@@@@@/                          @@@@@@@@@@@@@@@@@@@@@       @@@@@@@@@@@@@@@@\n" +
-"             @@@@@@/                                           @@@@       @@@@@@@@@@@@@@@@\n" +
-"        @@@@@@@@@@@@                                           @@@@       @@@@@@@         \n" +
-"        @@@@@@@@@@@@                                           @@@@       @@@@@@@         \n" +
-"        @@@@@&               @@@@@@@@@@@@@@@@@@@               @@@@       @@@@@@@         \n" +
-"        @@@@@&               @@@@@@@@@@@@@@@@@@@               @@@@       @@@@@@@         \n" +
-"        @@@@@&               @@@@@           @@@@@@@@@@@@@@@@@@@@@@       @@@@@@@         \n" +
-"        @@@@@&               @@@@@           @@@@@@@@@@@@@@@@@@@@@@       @@@@@@@         \n" +
-"        @@@@@&               @@@@@                                        @@@@@@@@@@@@@@@@\n" +
-"        @@@@@&               @@@@@                                        @@@@@@@@@@@@@@@@\n" +
-"        @@@@@&               @@@@@                                                    @@@@\n" +
-"        @@@@@&               @@@@@@@@@@@@@@@@@@@@@@@                                  @@@@\n" +
-"        @@@@@&               @@@@@@@@@@@@@@@@@@@@@@@                                  @@@@\n" +
-"        @@@@@&                                @@@@@@                                  @@@@\n" +
-"        @@@@@&                                @@@@@@                                  @@@@\n" +
-"@@@@@@@@@@@@@@@@@@@@@@@@@@           %@@@@@@@@@@@@@@@@@@@@@@        @@@@@@@@@@@@@@@@@@@@@@\n" +
-"@@@@@@@@@@@@@@@@@@@@@@@@@@           %@@@@@@@@@@@@@@@@@@@@@@        @@@@@@@@@@@@@@@@@@@@@@\n" +
-"@@@@@@@@@@@@@@@@@@@@@@@@@@           %@@@@@@@@@@@@@@@@@@@@@@        @@@@@@@@@@@@@@@@@@@@@@\n" +
-"@@@@@@@@@@  @@@@@@@@@@@@@@           %@@@@@@  @@@@@@  @@@@@@        @@@@@  @@@  @@  @@@@@@\n" +
-"@@@@@@@@@@  @@@@@@@@@@@@@@           %@@@@@@  @@@@@@  @@@@@@        @@@@@  @@@  @@  @@@@@@\n" +
-"@@@@@@@@@@  @@@@@@@@@@@@@@           %@@@@@@  @@@@@@  @@@@@@        @@@@@  @@@  @@  @@@@@@\n" +
-"@@@@@@@@@@@@@@@@@@@@@@@@@@           %@@@@@@  @@@@@@  @@@@@@        @@@@@  @@@  @@  @@@@@@\n" +
-"@@@@@@@@@@@@@@@@@@@@@@@@@@           %@@@@@@@@@@@@@@@@@@@@@@        @@@@@@@@@@@@@@@@@@@@@@\n" +
-"@@@@@@@@@@@@@@@@@@@@@@@@@@           %@@@@@@@@@@@@@@@@@@@@@@        @@@@@@@@@@@@@@@@@@@@@@\n" +
-"@@@@@@@@@@@@@@@@@@@@@@@@@@           %@@@@@@@@@@@@@@@@@@@@@@        @@@@@@@@@@@@@@@@@@@@@@\n" +
-"                                                                                          \n" +
-"                                                                                          \n" +
-"                                                                                          \n" +
-"                                                                                          \n" +
-"                                                                                          \n" +
-"                                                                    ");
-        
-        
-        
-    
+        }
+          
     return completado;
     
     }

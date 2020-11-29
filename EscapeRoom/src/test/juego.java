@@ -4,21 +4,22 @@
  * and open the template in the editor.
  */
 package test;
-import juegos.Juego;
+
 import java.util.Scanner;
+import juegos.Juego;
 
 
 public class juego {
     
     public static void main(String[] args) {
         
-        Juego jg = new Juego();
-        Scanner teclado = new Scanner(System.in);
-        boolean f;
+      Juego jg = new Juego();
+      Scanner teclado = new Scanner(System.in);
+      
+      jg.Cables(teclado);
         
-        f = jg.Llave(teclado);
-        jg.Binario(teclado, 3);
         
+       
         
     }
     
