@@ -100,6 +100,16 @@ public class Comprobaciones {
         Entrada/Salida: Entero que representa la eleccion (validada al salir) 
         Postcondiciones: el numero debe ser >0 y menos o igual que el valor maximo
     */
+    
+    public int valorEntre1y3(int eleccion, Scanner teclado){
+        while(eleccion<1 || eleccion>3){
+                System.out.println("Introduzca un valor válido (de 1 a 3): ");
+                eleccion=teclado.nextInt();
+            }
+        return eleccion;
+    }
+    
+    
     public int valorEntre1y4 (int eleccion, Scanner teclado){
         while(eleccion<1 || eleccion>4){
                 System.out.println("Introduzca un valor válido (de 1 a 4): ");
