@@ -18,8 +18,7 @@ public class EscapeRoom {
         Juego juego = new Juego();
 
         //Declaracion de variables
-        boolean respuestaSiNo, dificil, acabarInspeccion, ganado, salirJuego, candadoRoto, revistaX, llaveRecta, saberEnfermeria, enfermeriaRota, enfermeriaArreglada, binarioSabido;
-        boolean respuestaSiNo, dificil, acabarInspeccion, ganado, salirJuego, visitaLucia, candadoRoto, revistaX, llaveRecta, saberEnfermeria, enfermeriaRota, pelea;
+        boolean respuestaSiNo, dificil, acabarInspeccion, ganado, salirJuego, candadoRoto, revistaX, llaveRecta, saberEnfermeria, enfermeriaRota, enfermeriaArreglada, binarioSabido, pelea;
         int sala, eleccionMenu, eleccion, vida, escudo, municion, movimientos, vidaMorador;
         String clave, CLAVEENFERMERIA;
 
