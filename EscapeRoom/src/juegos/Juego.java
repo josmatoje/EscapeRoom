@@ -18,7 +18,7 @@ public class Juego {
     public boolean Binario(Scanner teclado, int habitacion) {
 
         boolean adivinado = false;
-
+        
         String numeroEscrito;
 
         String[] NUM_ADIVINAR = new String[]{"000", "000", "010", "100"};// Segun habitacion, tiene un codigo.
@@ -32,7 +32,9 @@ public class Juego {
         System.out.println(NUMERO_ESCRITO[habitacion - 1]);
         System.out.println("Adivina los ultimo 3 digitos");
 
+        teclado.nextLine();//"Resetea el teclado" (reset no funciona)
         numeroEscrito = teclado.nextLine();
+        
         if (numeroEscrito.equals(NUM_ADIVINAR[habitacion - 1])) {
 
             adivinado = true;

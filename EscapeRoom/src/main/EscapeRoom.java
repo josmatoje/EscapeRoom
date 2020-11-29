@@ -101,6 +101,7 @@ public class EscapeRoom {
                 if(sala==3){
                     ganado=true;
                 }else{
+                    
                     eleccionMenu=comp.eleccionMenuPrincipal(sala, teclado);//Valora si la eleccion es valida y la almacena
                 
                     //switch de acciones segun la eleccion tomada en la sala en la que se encuentre
@@ -857,8 +858,6 @@ public class EscapeRoom {
                                                 if (inven.comprobarInventario(4, inventario)) {
                                                     objetosObtenidos[4] = true;//No se le asigna el valor de comprobarInventario ya que el no estar en el inventario no implica que si esté en la habitación
                                                     System.out.println("Te sientes más pesado, pero tambien más protegido.");
-                                                    System.out.println("Ganas un escudo (+1)");
-                                                    escudo++;
                                                 }
 
                                             } else {
@@ -1294,7 +1293,7 @@ public class EscapeRoom {
 
                             case 5:
 
-                                switch (eleccion) {// eleccion es el numero del dormitorio elegido
+                                switch (eleccionMenu) {// eleccion es el numero del dormitorio elegido
 
                                     case 1:
                                         if(nuevaHabitacion[eleccion]){ 
@@ -1438,7 +1437,9 @@ public class EscapeRoom {
                                                 movimientos -= 3;
                                             }while(!binarioSabido && comp.validacionSiNo(teclado));
                                             
-                                          }if(!nuevaHabitacion[eleccion]){ //habias entrado en la habitacion o has completado el juego
+                                        }
+                                        
+                                        if(!nuevaHabitacion[eleccion]){ //habias entrado en la habitacion o has completado el juego
                                                 System.out.println("Aquí descansaba nuestro gran amigo manu.");
                                                 if (!objetosObtenidos[13]) {
                                                     System.out.println("Lo das por muerto ya que era hemofílico y en un accidente como este no hay muchas");
@@ -1470,7 +1471,7 @@ public class EscapeRoom {
                                                 } else {
                                                     System.out.println("Ya has cogido todos los objetos de esta habitación.");
                                                 }
-                                          }
+                                            }
                                         break;
                                     case 5:
                                         acabarInspeccion = true;
@@ -1741,9 +1742,55 @@ public class EscapeRoom {
                                         switch (inventario[eleccion]){
                                             
                                             case 3:
+                                                
                                                 System.out.println("Coges el trozo de pan galactico y se lo lanzas");
                                                 System.out.println("Le da y cae al suelo, entonces el morador se para y lo cojo rapidamente.");
                                                 System.out.println("Sale corriendo con el pan entre sus fauces, parece que solo quería comida.");
+                                                inventario[eleccion]=-1;//Pierde el pan
+                                                vidaMorador=0;
+                                                
+                                            break;
+                                            
+                                            case 4:
+                                                
+                                                System.out.println("La sarten es demasiado grande y no eres capaz de levantarla, pero consigues");
+                                                System.out.println("esconderte detrás de ella y protegerte.");
+                                                System.out.println("Ganas dos escudos (+2)");
+                                                escudo+=2;
+                                                
+                                            break;
+                                            
+                                            case 5:
+                                                
+                                                System.out.println("Coges ese cuchillo de madera y rezas porque sirva de algo");
+                                                System.out.println("Justo cuando se te avalanza le clavas el cuchillo donde buenamente puedes.");
+                                                vidaMorador-=3;
+                                                if(vidaMorador<=0){
+                                                    System.out.println("Ves como el morador se retuerce desangrandose y cae al suelo");
+                                                }
+                                                
+                                            break;
+                                            
+                                            case 6:
+                                                
+                                                System.out.println("Coges la comida enlatada y la miras, no quieres tirarla, no quieres compartirla.");
+                                                System.out.println("¿Quieres tirarsela al morador?");
+                                                if(comp.validacionSiNo(teclado)){
+                                                    System.out.println("¿Estas seguro?");
+                                                    if(comp.validacionSiNo(teclado)){
+                                                        System.out.println("Sale corriendo con el pan entre sus fauces, parece que solo quería comida.");
+                                                        inventario[eleccion]=-1;//Pierde la comida enlatada
+                                                        vidaMorador=0;
+                                                    }else{
+                                                        System.out.println("No puedo deshacerme de él, me gusta demasiado T.T");
+                                                    }
+                                                }else{
+                                                    System.out.println("¡¡¡¡La comida es mia, me oyes, mia!!!!");
+                                                    System.out.println("");
+                                                    System.out.println("Al morador le da exactamente igual lo que le digas");
+                                                }
+                                                
+                                                
                                             break;
                                             
                                             case 11:
@@ -1782,6 +1829,10 @@ public class EscapeRoom {
                                             System.out.println("El morador de las arena te intenta atacar pero da con una de tus piezas protectoras.");
                                             System.out.println("Pierdes un escudo (-1)");
                                             escudo--;
+                                            if(escudo==0){
+                                                inventario=inven.eliminarObjeto(4, inventario);
+                                                inventario=inven.eliminarObjeto(8, inventario);
+                                            }
                                         }else{
                                             System.out.println("El morador de las arenas te arranca un cacho de carne y te quita uno de vida (-1)");
                                             vida--;
