@@ -18,7 +18,7 @@ public class EscapeRoom {
         Juego juego = new Juego();
 
         //Declaracion de variables
-        boolean respuestaSiNo, dificil, acabarInspeccion, ganado, salirJuego, candadoRoto, revistaX, llaveRecta, saberEnfermeria, enfermeriaRota, binarioSabido;
+        boolean respuestaSiNo, dificil, acabarInspeccion, ganado, salirJuego, candadoRoto, revistaX, llaveRecta, saberEnfermeria, enfermeriaRota, enfermeriaArreglada, binarioSabido;
         int sala, eleccionMenu, eleccion, vida, escudo, municion, movimientos;
         String clave, CLAVEENFERMERIA;
 
@@ -127,10 +127,26 @@ public class EscapeRoom {
                                             System.out.println("Parece que tienes unos restos de cables que podrían ser utiles.");
                                             System.out.println("¿Quieres usar los cables e intentar arreglarlo?");
                                             if(comp.validacionSiNo(teclado)){
-                                                System.out.println("Te lleva un buen rato pero consigues que funcione tras un buen rato");
-                                                System.out.println("Pierdes diez movimientos (-10)");
-                                                inventario=inven.eliminarObjeto(0, inventario);
-                                                movimientos -= 15;
+                                               
+                                                do{
+                                                    enfermeriaArreglada = juego.Cables(teclado);
+                                                    if (enfermeriaArreglada) {
+                                                        
+                                                        System.out.println("Puerta abiertda, todo correcto");
+                                                        inventario=inven.eliminarObjeto(0, inventario);
+                                                        enfermeriaRota = false;
+                                                        
+                                                    } else {
+                                                        
+                                                        System.out.println("Has fallado y pierdes uno de vida por la tension de la corriente. Ademas de eso te cansas y tus movimientos se reducen en 5");
+                                                        --vida;
+                                                    }
+                                                    
+                                                movimientos -= 5;
+                                                }while(!enfermeriaArreglada && comp.validacionSiNo(teclado)); // Si completas el juego, enfermeriArreglada
+                                                
+                                              
+                                                
                                             }else{
                                                 System.out.println("Que le den a esa puerta, ni que la salvación esté detrás de esa puerta... oh wait");
                                             }
