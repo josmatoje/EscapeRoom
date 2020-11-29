@@ -17,6 +17,7 @@ public class juego {
         boolean f;
         
         f = jg.Llave(teclado);
+        jg.Binario(teclado, 3);
         
         
     }
