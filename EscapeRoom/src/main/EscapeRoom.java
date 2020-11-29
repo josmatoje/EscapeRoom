@@ -20,7 +20,7 @@ public class EscapeRoom {
         //Declaracion de variables
         boolean respuestaSiNo, dificil, acabarInspeccion, ganado, salirJuego, visitaLucia, candadoRoto, revistaX, llaveRecta, saberEnfermeria, enfermeriaRota;
         int sala, eleccionMenu, eleccion, vida, escudo, municion, movimientos;
-        String clave, claveEnfermeria;
+        String clave, CLAVEENFERMERIA;
 
         int[] inventario;
 
@@ -53,7 +53,7 @@ public class EscapeRoom {
             acabarInspeccion=false; ganado=false; salirJuego=false; visitaLucia=false;
             candadoRoto=false; revistaX=false; saberEnfermeria=false; enfermeriaRota=false;
             clave="     ";
-            claveEnfermeria="g34rd9j4r439r34fi44z";//Podemos hacer un subprograma que genere claves
+            CLAVEENFERMERIA="g34rd9j4r439r34fi44z";//Podemos hacer un subprograma que genere claves
             nombreObjetos[10]="Papel";
             
             for(int i=0; i<objetosObtenidos.length; i++){
@@ -149,7 +149,7 @@ public class EscapeRoom {
                                                 if(respuestaSiNo){
                                                     System.out.println("Introduzca clave de acceso: ");
                                                     clave=teclado.nextLine();
-                                                    if(clave.equals(claveEnfermeria)){
+                                                    if(clave.equals(CLAVEENFERMERIA)){
                                                         System.out.println("¡¡¡¡Ha funcionado!!!!");
                                                         System.out.println("Se abre la puerta y cruzas...");
                                                         System.out.println("");
@@ -229,17 +229,13 @@ public class EscapeRoom {
 
                                                     llaveRecta = juego.Llave(teclado);
                                                     if (llaveRecta) {
-
                                                         System.out.println("De los mejores momentos de tu vida, te has sentido un verdadero troglodita de la prehistoria descubriendo las herramientas");
                                                         sala = 6;
                                                     } else {
                                                         System.out.println("No lo has conseguido y has perdido tres movimientos,deseas volver a repetirlo?");
-
                                                     }
 
                                                 } while (!llaveRecta && comp.validacionSiNo(teclado));
-
-
 
                                             }
 
@@ -1119,15 +1115,7 @@ public class EscapeRoom {
 
                                 }
 
-                                break;
-
-                            case 3:
-                                System.out.println("¡HAS GANADO!");
-                                ganado = true;
-                                /*
-                                    Desarrollar
-                                 */
-                                break;
+                            break;
 
                             case 4:
 
@@ -1316,7 +1304,7 @@ public class EscapeRoom {
                                         System.out.println("la enfermería no se abre con una llave común. Seguro que esa llave abre este candado. ");
 
                                         if (candadoRoto) {
-                                            System.out.println("Clave de la enfermeria: " + claveEnfermeria);//Podemos modificarla
+                                            System.out.println("Clave de la enfermeria: " + CLAVEENFERMERIA);//Podemos modificarla
                                         } else {
                                             if (inven.comprobarInventario(14, inventario)) {
                                                 System.out.println("Vaya, parece que este puede ser el momento de usar alguna de mis herramientas.");
@@ -1332,7 +1320,7 @@ public class EscapeRoom {
                                                     System.out.println("¡Funcionó! Veamos que hay dentro... Nada.");
                                                     System.out.println("Pero al sacar el cajón de la desesperación ves unos numeros y letras grabados");
                                                     System.out.println("donde pone claramente");
-                                                    System.out.println("Clave de la enfermeria: " + claveEnfermeria);//Podemos modificarla
+                                                    System.out.println("Clave de la enfermeria: " + CLAVEENFERMERIA);//Podemos modificarla
                                                 } else {
                                                     System.out.println("Tardaria mucho tiempo en cortar este candado... No será tan importate lo que haya dentro jajajaja");
                                                 }

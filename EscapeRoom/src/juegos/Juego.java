@@ -19,9 +19,9 @@ public class Juego {
 
         boolean adivinado = false;
 
-        int numeroEscrito;
+        String numeroEscrito;
 
-        int[] NUM_ADIVINAR = new int[]{000, 011, 101, 001};// Segun habitacion, tiene un codigo.
+        String[] NUM_ADIVINAR = new String[]{"000", "011", "101", "001"};// Segun habitacion, tiene un codigo.
 
         String[] NUMERO_ESCRITO = new String[]{"4369864 al  1100010001010000010*** ", "123123 al 11110000011110***", "5356437 al 10100011011101110010***", "535001 al 10000010100111011"};
 
@@ -32,8 +32,8 @@ public class Juego {
         System.out.println(NUMERO_ESCRITO[habitacion - 1]);
         System.out.println("Adivina los ultimo 3 digitos");
 
-        numeroEscrito = teclado.nextInt();
-        if (numeroEscrito == NUM_ADIVINAR[habitacion - 1]) {
+        numeroEscrito = teclado.nextLine();
+        if (numeroEscrito.equals(NUM_ADIVINAR[habitacion - 1])) {
 
             adivinado = true;
             System.out.println("Enhorabuena, has conseguido abrir la puerta");
