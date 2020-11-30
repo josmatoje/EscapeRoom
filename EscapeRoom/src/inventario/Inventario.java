@@ -215,7 +215,9 @@ public class Inventario {
         for(int i=0; i<inventario.length; i++){
             if(inventario[i]==objeto){
                 inventario[i]=-1;
-                i=inventario.length;
+                if(objeto!=14){
+                    i=inventario.length;
+                }
             }
         }
         

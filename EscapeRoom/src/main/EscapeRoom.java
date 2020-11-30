@@ -1,3 +1,25 @@
+/*
+Mapa salas
+
+    0.Sala de mandos (Llaves, cables, claves de acceso
+        (Abrir con fuerza)
+        1.cocina (comida, sartén grande, cuchillos)
+            2.Cantina (silla, restos de comida, instrucciones de una nave )
+                (Abrir con codigo habitacion enfermera)
+                3.Enfermería (FINAL)
+        4.Sala de reuniones (Casco, bolígrafo, papel
+            5.Dormitorios 
+                Juego binario (todas)
+                Habitación 1 (arma)
+                Habitación 2 (números pintados)
+                Habitación 3 (código de enfermeria)
+                Habitación 4 (medicina coagulante)
+            Juego llave doblada
+            6.Zona de motores (combustible, sierra mecánica ocupa 2 espacios, caja mapa X) 
+        Puerta cerrada
+
+*/
+
 package main;
 
 import java.util.Scanner;
@@ -1400,12 +1422,9 @@ public class EscapeRoom {
                                                         System.out.println("Vaya, parece que este puede ser el momento de usar alguna de mis herramientas.");
                                                         System.out.println("¿Quieres usar la sierra mecánica para abrir este candado?");
                                                         if (comp.validacionSiNo(teclado)) {
-                                                            for (int i = 0; i < inventario.length; i++) {
-                                                                if (inventario[i] == 14) {
-                                                                    inventario[i] = -1;
-                                                                    candadoRoto = true;
-                                                                    i = inventario.length;
-                                                                }
+                                                            if(inven.comprobarInventario(14, inventario)) {
+                                                                inven.eliminarObjeto(14, inventario);
+                                                                candadoRoto = true;
                                                             }
                                                             System.out.println("¡Funcionó! Veamos que hay dentro... Nada.");
                                                             System.out.println("Pero al sacar el cajón de la desesperación ves unos numeros y letras grabados");

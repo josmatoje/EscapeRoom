@@ -52,6 +52,8 @@ public class Mensajes {
     
     public void Sala(int sala, boolean nuevaSala, boolean objetosObtenidos[]) {
 
+        System.out.println("");
+        
         if (nuevaSala) { //si la sala no esta visitada, primer Mensaje 
 
             switch (sala) {
@@ -546,6 +548,7 @@ public class Mensajes {
         
         int usar=-1;
         
+        System.out.println("");
         System.out.println("______________________________________________________");
         System.out.println("Tienes ");
 
@@ -593,6 +596,7 @@ public class Mensajes {
     }
 
     public void FinPartida(int vida, int movimientos,boolean dificil, boolean ganado, boolean salirJuego){
+        System.out.println("");
         if(ganado){
             System.out.println("Enhorabuena, lo has logrado. Parece increible que lo hayas conseguido.");
         }else{
@@ -610,8 +614,15 @@ public class Mensajes {
     
     public void Salida() {
 
-        System.out.println("El camino más corto era...");//Completar
-
+        System.out.println("");
+        System.out.println("El camino más corto era:");
+        System.out.println("Inspeccionar sala de mandos/ coger llave doblada/ volver al centro de la sala/ ir a sala reuniones/");
+        System.out.println("ir a zona motores/ inspeccionar zona motores/ coger sierra mecanica/ volver al centro de la sala/");
+        System.out.println("volver a sala de reuniones/ ir a dormitorios/ir a habitacion 3/ romper candado comoda (sabemos codigo)/");
+        System.out.println("                                    (No es necesario papel pero facilita el paso de recordar el codigo)");
+        System.out.println("volver al centro de la sala/ volver a sala de reuniones/ volver a sala de mandos/ ir a cocina/");
+        System.out.println("volver a empujar puerta/ ir a cantina/ ir a enfermeria/ introducir codigo/ FIN");
+        System.out.println("");
         System.out.println("Esperamos que vuelva pronto.");
         System.out.println("¡Que la fuerza te acompañe!");
 
