@@ -809,7 +809,7 @@ public class EscapeRoom {
 
                                 }
 
-                                break;
+                            break;
 
                             case 1:
 
@@ -1340,32 +1340,34 @@ public class EscapeRoom {
                                     break;
 
                                     case 2:
-                                          if(nuevaHabitacion[eleccionMenu]){ // eleccion es el numero del dormitorio elegido
-                            
+                                        
+                                        if(nuevaHabitacion[eleccionMenu]){ // eleccion es el numero del dormitorio elegido
+
                                             do{
-                                            
+
                                                  binarioSabido = juego.Binario(teclado, eleccionMenu );
-                                            
+
                                                 if (binarioSabido) {
                                                     System.out.println("El codigo se ha desbloqueado, empujas la puerta pero no se abre. Te parece algo super extraño ya que todas las puertas son iguales");
                                                     System.out.println(" pero al parecer a esta le pasaba algo y cuando ya lo dabas todo por perdido te ascercas a la parte as parte izquierda, tiras del pomo ");
                                                     System.out.println("para arriba y eureca, se ha abierto, al parecer a este tio le gustaba hacer todas las cosas alreves y amargarle la vida a la gente normal");
                                                     nuevaHabitacion[eleccionMenu] = false; // Si completas el juego el habiacion se convierte en no nueva
                                                 } else {
-                                                    
+
                                                     System.out.println("Desea volver a repetirlo?");
                                                 }
                                                 movimientos -= 3;
                                             }while(!binarioSabido && comp.validacionSiNo(teclado));
-                                            
-                                          }if(!nuevaHabitacion[eleccionMenu])
-                                                System.out.println("Esta es la habitación de Josema, la reconoces porque es la habitación de un completo loco.");
-                                                System.out.println("No es que esté desorganizada, es que tiene el colchón en el suelo, las mantas hechas un gurruño, ");
-                                                System.out.println("botellas por el suelo e incluso pintadas en las paredes. De hecho todas las pintadas siguen un ");
-                                                System.out.println("patrón, 41020. No sabes que es, solo sabes que si no fuera el único ingeniero de motores de la");
-                                                System.out.println("nave lo habrían tirado por la borda en más de una ocasión. ");
-                                          }
-                                        break;
+
+                                        }if(!nuevaHabitacion[eleccionMenu]){
+                                              System.out.println("Esta es la habitación de Josema, la reconoces porque es la habitación de un completo loco.");
+                                              System.out.println("No es que esté desorganizada, es que tiene el colchón en el suelo, las mantas hechas un gurruño,");
+                                              System.out.println("botellas por el suelo e incluso pintadas en las paredes. De hecho todas las pintadas siguen un ");
+                                              System.out.println("patrón, 41020. No sabes que es, solo sabes que si no fuera el único ingeniero de motores de la");
+                                              System.out.println("nave lo habrían tirado por la borda en más de una ocasión. ");
+                                        }
+                                        
+                                    break;
 
                                     case 3:
                                         
