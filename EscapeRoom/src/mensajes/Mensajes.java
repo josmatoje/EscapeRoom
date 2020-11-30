@@ -63,13 +63,13 @@ public class Mensajes {
                 case 1:
                     System.out.println("Entras en la cocina, sin fuerza ninguna pero el olor a salsa barbacoa te hace olvidar que estás perdiendo sangre con cada paso que das."
                             + "\n  Ese olor te lleva a un pobre gato quemándose en las tuberías.");
-                     break;
-
+                break;
+                
                 case 2:
                     System.out.println("La cantina parece mucho mejor que la cocina,"
                             + "\n aunque también tengan sus zonas de quema por fuga de gas.");
-                    break;
-                    
+                break;
+                
                 case 3:
                     System.out.println("Enoncontraste la enfermeria y parece que las maquinas de mantenimiento de"
                             + "\n vida parecen intactas. Aunque no se recomienda su uso sin el personal autorizado,"
@@ -81,24 +81,24 @@ public class Mensajes {
                             + "\nimpacto emocional y se para. La maquina te lo vuelve a curar, mandandote al mismo pensamiento, lo "
                             + "\nque te causa otra muerte dolorosa y emocional y asi indefinidas veces, sin poder morir, sintiendo"
                             + "\nla angustia infinita de matarlos a todos.");
-                    
-                     break;
-
+                break;
+                
                 case 4:
                     System.out.println("  Dentro de la sala todo parece como si no hubiera pasado nada y es que las paredes blindadas"
                             + "\n y la protección contra los rayos ionizantes dan su fruto");
-                     break;
-
+                break;
+                
                 case 5:
                     System.out.println("Todo parece tranquilo, como si no hubiera pasado nada."
                             + "\n Ves varias habitaciones cerradas pero la mayoría están abiertas.");
-                     break;
-
+                break;
+                
                 case 6:
                     System.out.println("Es la primera vez que entras aquí, ves muchas puertas cerradas"
                             + "\n de lo que entiendes son cosas de motores");
-                     break;
-
+                break;
+                default:
+                    System.out.println("Algo ha salido mal");
             }
 
         }//fin if
