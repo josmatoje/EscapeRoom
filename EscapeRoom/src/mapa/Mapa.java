@@ -746,6 +746,7 @@ public class Mapa {
             break;
             
             default:
+                System.out.println("@#~~#€¬~#@EL MAPA ESTÁ CORRUPTO#@~#@~~€¬");
         }
         
     }
