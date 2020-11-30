@@ -21,9 +21,9 @@ public class Juego {
         
         String numeroEscrito;
 
-        String[] NUM_ADIVINAR = new String[]{"000", "000", "010", "100"};// Segun habitacion, tiene un codigo.
+        String[] NUM_ADIVINAR = new String[]{"001", "000", "010", "100"};// Segun habitacion, tiene un codigo.
 
-        String[] NUMERO_ESCRITO = new String[]{"129 a 10000***", "96 a 1100***", "98 a 1100***", "260 al 10000010100111***"};
+        String[] NUMERO_ESCRITO = new String[]{"129 a 10000***", "96 a 100***", "98 a 1100***", "260 100000***"};
 
         System.out.println("El ordenador ha perdido lo ultimo 3 bits de los numeros de las habitaciones en binario. ");
         System.out.println("Si lo recuperas se te dará acceso a esa habitacion, si no de te bloqueará por 2 minutos lo que te hará perder 3 movimientos");

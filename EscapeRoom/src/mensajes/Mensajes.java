@@ -58,6 +58,7 @@ public class Mensajes {
                 case 0:
                     System.out.println("Al abrir los ojos observas muchos escombros y objetos destrozados,"
                             + "\n decides levantarte para observar un poco mejor la situación.");
+                    break;
 
                 case 1:
                     System.out.println("Entras en la cocina, sin fuerza ninguna pero el olor a salsa barbacoa te hace olvidar que estás perdiendo sangre con cada paso que das."
@@ -362,6 +363,7 @@ public class Mensajes {
                 System.out.println("6. Salir del juego");
                 System.out.println("");
                 System.out.println("¿Qué vas a hacer?");
+                break;
 
             case 2:
                 System.out.println("        ************CANTINA************");

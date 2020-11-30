@@ -159,7 +159,7 @@ public class EscapeRoom {
                                                         --vida;
                                                     }
                                                     
-                                                movimientos -= 5;
+                                                    movimientos -= 5;
                                                 }while(!enfermeriaArreglada && comp.validacionSiNo(teclado)); // Si completas el juego, enfermeriArreglada
                                                 
                                               
@@ -1369,15 +1369,15 @@ public class EscapeRoom {
 
                                     case 3:
                                         
-                                        if(nuevaHabitacion[eleccion]){ // eleccion es el numero del dormitorio elegido
+                                        if(nuevaHabitacion[eleccionMenu]){ // eleccion es el numero del dormitorio elegido
                             
                                             do{
                                             
-                                                 binarioSabido = juego.Binario(teclado, eleccion ); 
+                                                 binarioSabido = juego.Binario(teclado, eleccionMenu ); 
                                             
                                                 if (binarioSabido) {
                                                    
-                                                    nuevaHabitacion[eleccion] = false; // Si completas el juego el habiacion se convierte en no nueva
+                                                    nuevaHabitacion[eleccionMenu] = false; // Si completas el juego el habiacion se convierte en no nueva
                                                 } else {
                                                     
                                                     System.out.println("Desea volver a repetirlo?");
@@ -1385,7 +1385,7 @@ public class EscapeRoom {
                                                 movimientos -= 3;
                                             }while(!binarioSabido && comp.validacionSiNo(teclado));
                                             
-                                          }if(!nuevaHabitacion[eleccion]){
+                                          }if(!nuevaHabitacion[eleccionMenu]){
                                                 System.out.println("La habitación de Lucia,la enfermera, médica y todo lo relacionado con la salud en esta nave.");
                                                 System.out.println("Todo está tan ordenado como siempre, aunque te llama la atención que el cajón de la cómoda ");
                                                 System.out.println("tiene un candado. Recuerdas que llevaba siempre una llave al cuello, lo cual es raro porque");
@@ -1420,16 +1420,16 @@ public class EscapeRoom {
 
                                     case 4: // eleccion es el numero del dormitorio elegido
                                       
-                                        if(nuevaHabitacion[eleccion]){
+                                        if(nuevaHabitacion[eleccionMenu]){
                             
                                             do{
                                             
-                                                 binarioSabido = juego.Binario(teclado, eleccion );
+                                                 binarioSabido = juego.Binario(teclado, eleccionMenu );
                                             
                                                 if (binarioSabido) {
                                                     System.out.println(" todo perfecto pero cada paso que das en la habitacio te cuesta x1000. Te agachas para saber porque y es que el suelo esta muy pegadizo y lleno de vasos");
                                                     System.out.println("con guantes y esponjas, que tio tan raro piensas tu.");
-                                                    nuevaHabitacion[eleccion] = false; // Si completas el juego el habiacion se convierte en no nueva
+                                                    nuevaHabitacion[eleccionMenu] = false; // Si completas el juego el habiacion se convierte en no nueva
                                                 } else {
                                                     
                                                     System.out.println("Desea volver a repetirlo?");
@@ -1437,9 +1437,7 @@ public class EscapeRoom {
                                                 movimientos -= 3;
                                             }while(!binarioSabido && comp.validacionSiNo(teclado));
                                             
-                                        }
-                                        
-                                        if(!nuevaHabitacion[eleccion]){ //habias entrado en la habitacion o has completado el juego
+                                          }if(!nuevaHabitacion[eleccionMenu]){ //habias entrado en la habitacion o has completado el juego
                                                 System.out.println("Aquí descansaba nuestro gran amigo manu.");
                                                 if (!objetosObtenidos[13]) {
                                                     System.out.println("Lo das por muerto ya que era hemofílico y en un accidente como este no hay muchas");
