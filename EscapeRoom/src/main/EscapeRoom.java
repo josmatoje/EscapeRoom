@@ -205,6 +205,7 @@ public class EscapeRoom {
                                                 respuestaSiNo=comp.validacionSiNo(teclado);
                                                 if(respuestaSiNo){
                                                     System.out.println("Introduzca clave de acceso: ");
+                                                    teclado.nextLine();
                                                     clave=teclado.nextLine();
                                                     if(clave.equals(CLAVEENFERMERIA)){
                                                         System.out.println("¡¡¡¡Ha funcionado!!!!");
@@ -1676,6 +1677,7 @@ public class EscapeRoom {
                                                     respuestaSiNo = comp.validacionSiNo(teclado);
                                                     if (respuestaSiNo) {
                                                         System.out.println("Venga, probemos suerte:");
+                                                        teclado.nextLine();
                                                         clave = teclado.nextLine();
 
                                                         if (clave.equals("41020")) {

@@ -742,12 +742,16 @@ public class Mapa {
                                     "                     &@@@@@@         "+estar0+"        @@@@@@                            \n" +
                                     "                   @@@@@@@@@  SALA DE MANDOS  @@@@@@@@                          \n" +
                                     "                  @@@@@@@@@@                  @@@@@@@@@                         \n" +
-                                    "                  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@                         ");                
+                                    "                  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@                         ");  
+                System.out.println( "                                                        Usted se encuentra en: X");              
             break;
             
             default:
                 System.out.println("@#~~#€¬~#@EL MAPA ESTÁ CORRUPTO#@~#@~~€¬");
         }
+        
+        System.out.println("");
+        System.out.println("                                                        Usted se encuentra en: X");  
         
     }
     
