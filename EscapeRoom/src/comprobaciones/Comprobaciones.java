@@ -93,64 +93,22 @@ public class Comprobaciones {
         return eleccion;
     }
     /*
-    Metodos que comprueban si el valor dado está entre uno y un valor 
-        Signatura: public int valorEntre1y... (int eleccion, Scanner teclado) 
+    Metodos que comprueban si el valor dado está entre un valor n y otro m
+        Signatura:public int valorEntrenym(int eleccion, int valorInicial, int valorFinal, Scanner teclado)
         Precondiciones: --
-        Entrada: objeto de la clase Scanner
+        Entrada: enteros maximo y minimo entre los que se quiere acotar la eleccion, objeto de la clase Scanner
         Entrada/Salida: Entero que representa la eleccion (validada al salir) 
-        Postcondiciones: el numero debe ser >0 y menos o igual que el valor maximo
+        Postcondiciones: el numero debe ser >= el valor inicial y menor o igual que el valor maximo
     */
 
     public int valorEntrenym(int eleccion, int valorInicial, int valorFinal, Scanner teclado){
         
-        while(eleccion<=valorInicial || eleccion>=valorFinal){
+        while(eleccion<valorInicial || eleccion>valorFinal){
             System.out.println("Introduzca un valor válido (de " + valorInicial + " a " + valorFinal + "): ");
             eleccion=teclado.nextInt();
         }
         
         return eleccion;
     }
-/*
-    public int valorEntre1y3(int eleccion, Scanner teclado){
-        while(eleccion<1 || eleccion>3){
-            System.out.println("Introduzca un valor válido (de 1 a 3): ");
-            eleccion=teclado.nextInt();
-        }
-        return eleccion;
-    }
-    
-    
-    public int valorEntre1y4 (int eleccion, Scanner teclado){
-        while(eleccion<1 || eleccion>4){
-                System.out.println("Introduzca un valor válido (de 1 a 4): ");
-                eleccion=teclado.nextInt();
-            }
-        return eleccion;
-    }
-    
-    public int valorEntre1y5 (int eleccion, Scanner teclado){
-        while(eleccion<1 || eleccion>5){
-                System.out.println("Introduzca un valor válido (de 1 a 5): ");
-                eleccion=teclado.nextInt();
-            }
-        return eleccion;
-    }
-    
-    public int valorEntre1y6 (int eleccion, Scanner teclado){
-        while(eleccion<1 || eleccion>6){
-                System.out.println("Introduzca un valor válido (de 1 a 6): ");
-                eleccion=teclado.nextInt();
-            }
-        return eleccion;
-    }
-    
-    public int valorEntre1y7 (int eleccion, Scanner teclado){
-        while(eleccion<1 || eleccion>7){
-                System.out.println("Introduzca un valor válido (de 1 a 7): ");
-                eleccion=teclado.nextInt();
-            }
-        return eleccion;
-    }
-    
-*/
+
 }
