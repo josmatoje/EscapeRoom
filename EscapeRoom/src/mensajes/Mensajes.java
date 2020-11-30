@@ -1,6 +1,5 @@
 package mensajes;
 
-import comprobaciones.Comprobaciones;
 import inventario.Inventario;
 import java.util.Scanner;
 
@@ -571,7 +570,7 @@ public class Mensajes {
         boolean existeUsable=false;
         
         System.out.println("En tu inventario tienes:");
-        for(int i:inventario){
+        for(int i=0; i<inventario.length; i++){
             if(inventario[i]>=0){
                 System.out.println("\t"+(i+1)+". " + objetos[inventario[i]]);
                 if(inventario[i]==3 || inventario[i]==6 || inventario[i]==10 || inventario[i]==13){

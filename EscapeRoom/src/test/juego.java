@@ -15,8 +15,10 @@ public class juego {
         
       Juego jg = new Juego();
       Scanner teclado = new Scanner(System.in);
+        System.out.println("El entero:");
+      teclado.nextInt();
       
-      jg.Cables(teclado);
+      jg.Binario(teclado, 2);
         
         
        
