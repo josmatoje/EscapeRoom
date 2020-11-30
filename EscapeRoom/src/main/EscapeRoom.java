@@ -1296,11 +1296,11 @@ public class EscapeRoom {
                                 switch (eleccionMenu) {// eleccion es el numero del dormitorio elegido
 
                                     case 1:
-                                        if(nuevaHabitacion[eleccion]){ 
+                                        if(nuevaHabitacion[eleccionMenu]){ 
                             
                                             do{
                                             
-                                                 binarioSabido = juego.Binario(teclado, eleccion);
+                                                 binarioSabido = juego.Binario(teclado, eleccionMenu);
                                             
                                                 if (binarioSabido) {
                                                     System.out.println("la habitacion se abre lentamente mientras a la vez  vas oliendo un hudor a calcetines.");
@@ -1312,7 +1312,7 @@ public class EscapeRoom {
                                                 movimientos -= 3;
                                             }while(!binarioSabido && comp.validacionSiNo(teclado));
                              
-                                        } if(!nuevaHabitacion[eleccion]){
+                                        } if(!nuevaHabitacion[eleccionMenu]){
                                         
                                                 System.out.print("La habitación de George, la reconoces por su caos organizado");
                                                 if (!objetosObtenidos[11]) {
@@ -1340,17 +1340,17 @@ public class EscapeRoom {
                                     break;
 
                                     case 2:
-                                          if(nuevaHabitacion[eleccion]){ // eleccion es el numero del dormitorio elegido
+                                          if(nuevaHabitacion[eleccionMenu]){ // eleccion es el numero del dormitorio elegido
                             
                                             do{
                                             
-                                                 binarioSabido = juego.Binario(teclado, eleccion );
+                                                 binarioSabido = juego.Binario(teclado, eleccionMenu );
                                             
                                                 if (binarioSabido) {
                                                     System.out.println("El codigo se ha desbloqueado, empujas la puerta pero no se abre. Te parece algo super extraño ya que todas las puertas son iguales");
                                                     System.out.println(" pero al parecer a esta le pasaba algo y cuando ya lo dabas todo por perdido te ascercas a la parte as parte izquierda, tiras del pomo ");
                                                     System.out.println("para arriba y eureca, se ha abierto, al parecer a este tio le gustaba hacer todas las cosas alreves y amargarle la vida a la gente normal");
-                                                    nuevaHabitacion[eleccion] = false; // Si completas el juego el habiacion se convierte en no nueva
+                                                    nuevaHabitacion[eleccionMenu] = false; // Si completas el juego el habiacion se convierte en no nueva
                                                 } else {
                                                     
                                                     System.out.println("Desea volver a repetirlo?");
@@ -1358,7 +1358,7 @@ public class EscapeRoom {
                                                 movimientos -= 3;
                                             }while(!binarioSabido && comp.validacionSiNo(teclado));
                                             
-                                          }if(!nuevaHabitacion[eleccion]){
+                                          }if(!nuevaHabitacion[eleccionMenu])
                                                 System.out.println("Esta es la habitación de Josema, la reconoces porque es la habitación de un completo loco.");
                                                 System.out.println("No es que esté desorganizada, es que tiene el colchón en el suelo, las mantas hechas un gurruño, ");
                                                 System.out.println("botellas por el suelo e incluso pintadas en las paredes. De hecho todas las pintadas siguen un ");
