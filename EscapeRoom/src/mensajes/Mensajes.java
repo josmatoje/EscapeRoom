@@ -2,6 +2,7 @@ package mensajes;
 
 import inventario.Inventario;
 import java.util.Scanner;
+import mapa.Mapa;
 
 public class Mensajes {
 
@@ -538,9 +539,10 @@ public class Mensajes {
             }
         }
     */
-    public int Estado(int vida, int movimientos,int [] inventario, String [] objetos, Scanner teclado) {
+    public int Estado(int vida, int movimientos,int [] inventario, String [] objetos, int sala, boolean [] nuevaSala, Scanner teclado) {
         
         Inventario inv = new Inventario();
+        Mapa mapa = new Mapa();
         
         int usar=-1;
         
@@ -556,12 +558,11 @@ public class Mensajes {
         System.out.println(" y sangre para " + movimientos + " moviemientos");
         System.out.println("______________________________________________________");
         System.out.println("");
-        System.out.println("");
+        mapa.imprimirMapa(sala, nuevaSala);
         System.out.println("");
         if(Inventario(inventario,objetos)){
             usar=inv.seleccionarUsable(inventario, objetos, teclado);
         }
-        System.out.println("");
         System.out.println("");
         
         return usar;
