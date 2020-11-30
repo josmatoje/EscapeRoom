@@ -164,7 +164,7 @@ public class Juego {
         
         System.out.println("POr cual camino deberia de ir la electricidad? 3, 2 o 1");
         camino = teclado.nextInt();
-        camino = comp.valorEntre1y3(camino, teclado);
+        camino = comp.valorEntrenym (camino, 1, 3, teclado);
         if(camino == 1){
         
             completado = true;
@@ -214,7 +214,7 @@ public class Juego {
 
             System.out.println("La llave se encuentra " + estado[dobladez] + ". De cuanta potencia quieres que sea tu proximo golpe(maximo 5)? Ten en cuenta que solo te quedan " + golpes + " golpes");
             golpe = teclado.nextInt();
-            golpe = comp.valorEntre1y5(golpe, teclado);
+            golpe = comp.valorEntrenym (golpe, 1, 5, teclado);
 
             do {
                 System.out.println("Hacia que lado? d)derecha o i)izquierda?");
