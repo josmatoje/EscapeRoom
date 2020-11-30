@@ -541,7 +541,7 @@ public class Mensajes {
             }
         }
     */
-    public int Estado(int vida, int movimientos,int [] inventario, String [] objetos, int sala, boolean [] nuevaSala, Scanner teclado) {
+    public int Estado(int vida, int escudos, int movimientos,int [] inventario, String [] objetos, int sala, boolean [] nuevaSala, Scanner teclado) {
         
         Inventario inv = new Inventario();
         Mapa mapa = new Mapa();
@@ -554,6 +554,10 @@ public class Mensajes {
 
         for (int i = 0; i < vida; i++) {
             System.out.print("[-]");
+        }
+        
+        for (int i = 0; i < escudos; i++) {
+            System.out.print("[+]");
         }
 
         System.out.print(" vidas");

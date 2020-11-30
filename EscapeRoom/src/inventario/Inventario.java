@@ -196,6 +196,7 @@ public class Inventario {
         String mensaje = "Papel: \"";
         
         System.out.println("¿Que frase quiere apuntar?");
+        teclado.nextLine();
         mensaje+=teclado.nextLine()+"\"";
         System.out.println("Ahora en tu inventario aparecerá tu objeto seguido de una frase.");
         System.out.println(mensaje);
