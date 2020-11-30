@@ -108,7 +108,7 @@ public class EscapeRoom {
             }
 
             mensaje.Inicio();
-            mensaje.Estado(vida, movimientos, inventario, nombreObjetos, sala, nuevaSala, teclado);
+            mensaje.Estado(vida, escudo, movimientos, inventario, nombreObjetos, sala, nuevaSala, teclado);
 
             //repeticion salas-Menu principal salas
             do {
@@ -312,7 +312,7 @@ public class EscapeRoom {
 
                                 case 5:
 
-                                    eleccion=mensaje.Estado(vida, movimientos, inventario, nombreObjetos, sala, nuevaSala, teclado);
+                                    eleccion=mensaje.Estado(vida, escudo, movimientos, inventario, nombreObjetos, sala, nuevaSala, teclado);
                                     if(eleccion!=-1){
 
                                         switch (inventario[eleccion]){
@@ -355,7 +355,7 @@ public class EscapeRoom {
 
                                 case 6:
 
-                                    eleccion=mensaje.Estado(vida, movimientos, inventario, nombreObjetos, sala, nuevaSala, teclado);
+                                    eleccion=mensaje.Estado(vida, escudo, movimientos, inventario, nombreObjetos, sala, nuevaSala, teclado);
                                     if(eleccion!=-1){
 
                                         switch (inventario[eleccion]){
@@ -413,7 +413,7 @@ public class EscapeRoom {
 
                                 case 1:
 
-                                    eleccion=mensaje.Estado(vida, movimientos, inventario, nombreObjetos, sala, nuevaSala, teclado);
+                                    eleccion=mensaje.Estado(vida, escudo, movimientos, inventario, nombreObjetos, sala, nuevaSala, teclado);
                                     if(eleccion!=-1){
 
                                         switch (inventario[eleccion]){
@@ -459,7 +459,7 @@ public class EscapeRoom {
 
                                 case 2:
 
-                                    eleccion=mensaje.Estado(vida, movimientos, inventario, nombreObjetos, sala, nuevaSala, teclado);
+                                    eleccion=mensaje.Estado(vida, escudo, movimientos, inventario, nombreObjetos, sala, nuevaSala, teclado);
                                     if(eleccion!=-1){
 
                                         switch (inventario[eleccion]){
@@ -528,7 +528,7 @@ public class EscapeRoom {
 
                                 case 0:
 
-                                    eleccion=mensaje.Estado(vida, movimientos, inventario, nombreObjetos, sala, nuevaSala, teclado);
+                                    eleccion=mensaje.Estado(vida, escudo, movimientos, inventario, nombreObjetos, sala, nuevaSala, teclado);
                                     if(eleccion!=-1){
 
                                         switch (inventario[eleccion]){
@@ -586,7 +586,7 @@ public class EscapeRoom {
 
                                 case 4: 
 
-                                    eleccion=mensaje.Estado(vida, movimientos, inventario, nombreObjetos, sala, nuevaSala, teclado);
+                                    eleccion=mensaje.Estado(vida, escudo, movimientos, inventario, nombreObjetos, sala, nuevaSala, teclado);
                                     if(eleccion!=-1){
 
                                         switch (inventario[eleccion]){
@@ -774,7 +774,7 @@ public class EscapeRoom {
 
                                     case 5:
 
-                                        eleccion = mensaje.Estado(vida, movimientos, inventario, nombreObjetos, sala, nuevaSala, teclado);
+                                        eleccion = mensaje.Estado(vida, escudo, movimientos, inventario, nombreObjetos, sala, nuevaSala, teclado);
                                         if (eleccion != -1) {
 
                                             switch (inventario[eleccion]) {
@@ -920,7 +920,7 @@ public class EscapeRoom {
 
                                     case 5:
 
-                                        eleccion = mensaje.Estado(vida, movimientos, inventario, nombreObjetos, sala, nuevaSala, teclado);
+                                        eleccion = mensaje.Estado(vida, escudo, movimientos, inventario, nombreObjetos, sala, nuevaSala, teclado);
                                         if (eleccion != -1) {
 
                                             switch (inventario[eleccion]) {
@@ -1117,7 +1117,7 @@ public class EscapeRoom {
 
                                     case 5:
 
-                                        eleccion = mensaje.Estado(vida, movimientos, inventario, nombreObjetos, sala, nuevaSala, teclado);
+                                        eleccion = mensaje.Estado(vida, escudo, movimientos, inventario, nombreObjetos, sala, nuevaSala, teclado);
                                         if (eleccion != -1) {
 
                                             switch (inventario[eleccion]) {
@@ -1254,7 +1254,7 @@ public class EscapeRoom {
 
                                     case 5:
 
-                                        eleccion = mensaje.Estado(vida, movimientos, inventario, nombreObjetos, sala, nuevaSala, teclado);
+                                        eleccion = mensaje.Estado(vida, escudo, movimientos, inventario, nombreObjetos, sala, nuevaSala, teclado);
                                         if (eleccion != -1) {
 
                                             switch (inventario[eleccion]) {
@@ -1498,7 +1498,7 @@ public class EscapeRoom {
 
                                     case 6:
 
-                                        eleccion = mensaje.Estado(vida, movimientos, inventario, nombreObjetos, sala, nuevaSala, teclado);
+                                        eleccion = mensaje.Estado(vida, escudo, movimientos, inventario, nombreObjetos, sala, nuevaSala, teclado);
                                         if (eleccion != -1) {
 
                                             switch (inventario[eleccion]) {
@@ -1608,7 +1608,7 @@ public class EscapeRoom {
 
                                     case 4:
 
-                                        eleccion = mensaje.Estado(vida, movimientos, inventario, nombreObjetos, sala, nuevaSala, teclado);
+                                        eleccion = mensaje.Estado(vida, escudo, movimientos, inventario, nombreObjetos, sala, nuevaSala, teclado);
                                         if (eleccion != -1) {
 
                                             switch (inventario[eleccion]) {
