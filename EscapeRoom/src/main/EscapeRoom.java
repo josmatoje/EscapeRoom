@@ -220,7 +220,7 @@ public class EscapeRoom {
                                                     System.out.println("Ya volveré en otro momento...");
                                                 }
                                                 movimientos--;
-                                            }while(respuestaSiNo);
+                                            }while(respuestaSiNo && sala!=3);
                                             //Si tiene sierra mecanica
                                             if(inven.comprobarInventario(14, inventario)){
                                                 System.out.println("¿Quieres usar la sierra mecanica");
