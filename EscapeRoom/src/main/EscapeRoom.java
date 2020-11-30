@@ -974,7 +974,7 @@ public class EscapeRoom {
                                             System.out.println("4. Dejar silla");
 
                                             //Asignamos valor introducido por teclado y validamos para la seleccion de mover silla
-                                            eleccion = comp.valorEntre1y4(teclado.nextInt(), teclado);//GUAU como funke esta vaina
+                                            eleccion = comp.valorEntrenym(teclado.nextInt(),1, 4, teclado);//GUAU como funke esta vaina
 
                                             switch (eleccion) {
 
@@ -1734,9 +1734,9 @@ public class EscapeRoom {
                                         eleccion = teclado.nextInt();
                                         
                                         if(inventario.length==5)
-                                            eleccion=comp.valorEntre1y5(eleccion, teclado);
+                                            eleccion=comp.valorEntrenym(eleccion,1 ,5, teclado);
                                         else//Modo normal --> longitud = 7
-                                            eleccion=comp.valorEntre1y7(eleccion, teclado);
+                                            eleccion=comp.valorEntrenym(eleccion, 1, 7, teclado);
                                         eleccion--;
                                         
                                         switch (inventario[eleccion]){

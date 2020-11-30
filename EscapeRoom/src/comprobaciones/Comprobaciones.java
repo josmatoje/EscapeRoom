@@ -46,26 +46,26 @@ public class Comprobaciones {
         eleccion=teclado.nextInt();
         
         switch(sala){
-            case 0: valorEntre1y6(eleccion, teclado);
+            case 0: valorEntrenym (eleccion, 1, 6, teclado);
             break;
             
-            case 1: valorEntre1y5(eleccion, teclado);
+            case 1: valorEntrenym (eleccion, 1, 5, teclado);
             break;
             
-            case 2: valorEntre1y5(eleccion, teclado);
+            case 2: valorEntrenym (eleccion, 1, 5, teclado);
             break;
             
             case 3: 
                 System.out.println("Enfermeria - No action");
             break;
             
-            case 4: valorEntre1y6(eleccion, teclado);
+            case 4: valorEntrenym (eleccion,1, 6, teclado);
             break;
             
-            case 5: valorEntre1y4(eleccion, teclado);
+            case 5: valorEntrenym (eleccion, 1, 4, teclado);
             break;
             
-            case 6: valorEntre1y4(eleccion, teclado);
+            case 6: valorEntrenym (eleccion, 1, 4, teclado);
             break;
             
         }
@@ -85,9 +85,9 @@ public class Comprobaciones {
         numero de elecciones que tenga el menu
         */
         if (sala==5){
-            valorEntre1y7(eleccion, teclado);
+            valorEntrenym (eleccion, 1, 7, teclado);
         }else{
-            valorEntre1y6(eleccion, teclado);
+            valorEntrenym (eleccion, 1, 6, teclado);
         }
         
         return eleccion;
@@ -101,14 +101,16 @@ public class Comprobaciones {
         Postcondiciones: el numero debe ser >0 y menos o igual que el valor maximo
     */
 
-    public int valorEntrenym(int eleccion, int valorInicial, int valorFinal Scanner teclado){
+    public int valorEntrenym(int eleccion, int valorInicial, int valorFinal, Scanner teclado){
+        
         while(eleccion<=valorInicial || eleccion>=valorFinal){
             System.out.println("Introduzca un valor válido (de " + valorInicial + " a " + valorFinal + "): ");
             eleccion=teclado.nextInt();
         }
+        
         return eleccion;
     }
-
+/*
     public int valorEntre1y3(int eleccion, Scanner teclado){
         while(eleccion<1 || eleccion>3){
             System.out.println("Introduzca un valor válido (de 1 a 3): ");
@@ -150,4 +152,5 @@ public class Comprobaciones {
         return eleccion;
     }
     
+*/
 }

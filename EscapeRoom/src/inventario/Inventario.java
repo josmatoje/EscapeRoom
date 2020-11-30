@@ -151,9 +151,9 @@ public class Inventario {
                     System.out.println("Introduzca un objeto usable");
                 usar=teclado.nextInt();
                 if(inventario.length==5)
-                    usar=comp.valorEntre1y5(usar, teclado);
+                    usar=comp.valorEntrenym(usar, 1, 5, teclado);
                 else//Modo normal --> longitud = 7
-                    usar=comp.valorEntre1y7(usar, teclado);
+                    usar=comp.valorEntrenym(usar, 1, 7, teclado);
                 usar--;
             }while((inventario[usar]!=3 || inventario[usar]!=6 || inventario[usar]!=10 || inventario[usar]!=13));
             //Si usar <0 al comprobar bucle dara error en el array
