@@ -220,7 +220,7 @@ public class EscapeRoom {
                                                     System.out.println("Ya volveré en otro momento...");
                                                 }
                                                 movimientos--;
-                                            }while(respuestaSiNo);
+                                            }while(respuestaSiNo && sala!=3);
                                             //Si tiene sierra mecanica
                                             if(inven.comprobarInventario(14, inventario)){
                                                 System.out.println("¿Quieres usar la sierra mecanica");
@@ -997,7 +997,7 @@ public class EscapeRoom {
                                             System.out.println("4. Dejar silla");
 
                                             //Asignamos valor introducido por teclado y validamos para la seleccion de mover silla
-                                            eleccion = comp.valorEntrenym(teclado.nextInt(),1, 4, teclado);//GUAU como funke esta vaina
+                                            eleccion = comp.valorEntrenym(teclado.nextInt(),1, 4, teclado);
 
                                             switch (eleccion) {
 
