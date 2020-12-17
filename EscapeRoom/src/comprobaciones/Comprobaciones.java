@@ -93,7 +93,7 @@ public class Comprobaciones {
         return eleccion;
     }
     /*
-    Metodos que comprueban si el valor dado está entre un valor n y otro m
+    Metodo que comprueba si el valor dado está entre un valor n y otro m
         Signatura:public int valorEntrenym(int eleccion, int valorInicial, int valorFinal, Scanner teclado)
         Precondiciones: --
         Entrada: enteros maximo y minimo entre los que se quiere acotar la eleccion, objeto de la clase Scanner
